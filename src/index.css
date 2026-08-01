@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --color-bg: #0d1011;
+  --color-surface: #181e20;
+  --color-border: #2a2a2a;
+  --color-muted: #9c9a9a;
+  --color-text: #f1f1f1;
+  --color-text-soft: #e1e1e1;
+}
+
+@custom-variant hoverable (@media (hover: hover));
+
+@utility transition-motion {
+  transition-property: transform, translate, scale, rotate, opacity, color, background-color, border-color, box-shadow, filter, letter-spacing, background-position;
+  transition-timing-function: ease-out;
+  transition-duration: 150ms;
+}
+
+@utility transition-motion-slow {
+  transition-property: transform, translate, scale, rotate, opacity, color, background-color, border-color, box-shadow, filter, letter-spacing, background-position;
+  transition-timing-function: ease-out;
+  transition-duration: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  *:hover,
+  *:active,
+  *:focus-visible,
+  *:hover *,
+  *:active *,
+  *:focus-visible * {
+    translate: none !important;
+    scale: none !important;
+    rotate: none !important;
+  }
+}
