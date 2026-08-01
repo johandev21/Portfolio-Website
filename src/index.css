@@ -9,6 +9,11 @@
   --color-muted: #9c9a9a;
   --color-text: #f1f1f1;
   --color-text-soft: #e1e1e1;
+  --text-sm: clamp(13px, calc(13px + (100vw - 375px) * 0.00154), 14px);
+  --text-base: clamp(14.5px, calc(14.5px + (100vw - 375px) * 0.00231), 16px);
+  --text-2xl: clamp(20px, calc(20px + (100vw - 375px) * 0.00616), 24px);
+  --text-4xl: clamp(30px, calc(30px + (100vw - 375px) * 0.00925), 36px);
+  --text-5xl: clamp(36px, calc(36px + (100vw - 375px) * 0.01849), 48px);
 }
 
 @custom-variant hoverable (@media (hover: hover));

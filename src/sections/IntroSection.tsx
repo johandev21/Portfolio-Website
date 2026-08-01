@@ -14,7 +14,7 @@ export default function IntroSection() {
         />
         <div className="flex w-full flex-col items-center gap-2 md:w-[352px] md:shrink-0 md:items-start">
           <div className="flex w-full flex-col gap-0.5">
-            <p className="w-full font-serif text-[17.94px] leading-normal text-center md:text-left text-[#eaeaea]">
+            <p className="w-full font-serif text-[clamp(16px,calc(16px_+_(100vw_-_375px)_*_0.00299),17.94px)] leading-normal text-center md:text-left text-[#eaeaea]">
               {hero.greeting}
             </p>
             <h1 className="w-full bg-linear-to-r from-[#f1f1f1] to-[#7ebde8] bg-clip-text font-serif text-center md:text-left text-4xl leading-none text-transparent md:text-5xl md:leading-normal">
@@ -29,7 +29,7 @@ export default function IntroSection() {
           </div>
         </div>
       </div>
-      <p className="w-full text-base leading-normal text-text lg:w-[773px]">
+      <p className="w-full text-base leading-normal text-text text-center md:text-left lg:w-[773px]">
         {hero.description}
       </p>
     </section>
