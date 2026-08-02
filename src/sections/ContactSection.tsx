@@ -12,7 +12,7 @@ export default function ContactSection() {
         src={crowsImage}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-luminosity"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover mix-blend-luminosity"
       />
       <div
         aria-hidden="true"
