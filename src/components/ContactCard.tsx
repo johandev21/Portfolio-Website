@@ -1,3 +1,5 @@
+import { createElement } from "react";
+import { ChevronUp } from "lucide";
 import type { ContactData } from "../types";
 import Icon from "./Icon";
 
@@ -52,18 +54,17 @@ export default function ContactCard({ contact }: ContactCardProps) {
           className="group absolute bottom-2 right-[7px] flex h-[28px] w-[28px] cursor-pointer items-center justify-center bg-[#c0c0c0] transition-motion hover:brightness-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
         >
           <svg
-            viewBox="0 0 12 6"
-            className="h-[4.5px] w-[9px] transition-motion hoverable:group-hover:translate-x-[1px]"
+            viewBox="0 0 24 24"
+            className="h-[18px] w-[18px] text-[#0d1011] transition-motion hoverable:group-hover:translate-x-[1px]"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <path
-              d="M12 6L6 0L0 6"
-              fill="none"
-              stroke="#0d1011"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              vectorEffect="non-scaling-stroke"
-            />
+            {ChevronUp.map(([tag, attributes], index) =>
+              createElement(tag, { ...attributes, key: index }),
+            )}
           </svg>
         </button>
       </div>
