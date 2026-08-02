@@ -30,14 +30,14 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             <span
               className={`flex h-[20px] w-fit shrink-0 items-center p-1 transition-motion hoverable:group-hover:scale-105 ${bulletStagger[index] ?? ""}`}
             >
-              <svg viewBox="0 0 12 12" className="h-[7px] w-[7px]">
+              <svg viewBox="0 0 16 16" className="h-[7px] w-[7px] overflow-visible">
                 <circle
-                  cx="6"
-                  cy="6"
-                  r="5.5"
+                  cx="8"
+                  cy="8"
+                  r="6"
                   fill="none"
                   stroke="#e1e1e1"
-                  strokeWidth="1.2"
+                  strokeWidth="1.5"
                   vectorEffect="non-scaling-stroke"
                 />
               </svg>

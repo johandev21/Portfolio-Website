@@ -12,11 +12,15 @@ export default function ContactSection() {
         src={crowsImage}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-luminosity"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg via-bg/90 to-bg"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,var(--color-bg)_0%,var(--color-bg)_15%,rgba(13,16,17,0.85)_50%,var(--color-bg)_85%,var(--color-bg)_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--color-bg)_95%)]"
       />
       <div className="relative mx-auto max-w-[812px] px-6 md:px-8 lg:px-0">
         <Reveal>
