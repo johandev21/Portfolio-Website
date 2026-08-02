@@ -5,6 +5,7 @@ import ProjectsSection from "./sections/ProjectsSection";
 import TechnologiesSection from "./sections/TechnologiesSection";
 import ContactSection from "./sections/ContactSection";
 import Reveal from "./components/Reveal";
+import BackToTop from "./components/BackToTop";
 
 function Portfolio() {
   return (
@@ -25,6 +26,7 @@ function Portfolio() {
           </Reveal>
         </div>
         <ContactSection />
+        <BackToTop />
       </main>
     </MotionConfig>
   );

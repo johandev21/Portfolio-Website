@@ -46,11 +46,19 @@ export default function ContactCard({ contact }: ContactCardProps) {
         </div>
       </div>
       <div className="relative flex min-h-[97px] w-full flex-row items-start justify-between bg-surface/60 p-3 px-4 backdrop-blur-[1.75px] sm:h-[97px]">
-        <span className="pr-12 text-sm leading-normal text-muted lg:pr-0">
-          {contact.placeholder}
-        </span>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={3}
+          required
+          spellCheck
+          placeholder={contact.placeholder}
+          aria-label="Mensaje"
+          className="h-full min-h-[73px] w-full resize-none bg-transparent pr-12 pb-10 text-sm leading-normal text-text outline-none placeholder:text-muted focus-visible:ring-0"
+        />
         <button
-          type="button"
+          type="submit"
+          aria-label="Enviar mensaje"
           className="group absolute bottom-2 right-[7px] flex h-[28px] w-[28px] cursor-pointer items-center justify-center bg-action transition-motion hover:brightness-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
         >
           <svg

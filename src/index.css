@@ -3,6 +3,17 @@
 html {
   overflow-x: clip;
   color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+::-moz-selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 @theme {
@@ -17,6 +28,8 @@ html {
   --color-accent: #7ebde8;
   --color-action: #c0c0c0;
   --color-action-foreground: #0d1011;
+  --selection-bg: #7ebde8;
+  --selection-text: #0d1011;
   --contact-overlay: rgba(13, 16, 17, 0.85);
   --text-sm: clamp(13px, calc(13px + (100vw - 375px) * 0.00154), 14px);
   --text-base: clamp(14.5px, calc(14.5px + (100vw - 375px) * 0.00231), 16px);
@@ -37,6 +50,8 @@ html {
     --color-accent: #47728f;
     --color-action: #252321;
     --color-action-foreground: #f4f1eb;
+    --selection-bg: #47728f;
+    --selection-text: #f4f1eb;
     --contact-overlay: rgba(244, 241, 235, 0.84);
   }
 }
@@ -56,6 +71,10 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
