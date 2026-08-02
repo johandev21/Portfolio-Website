@@ -90,13 +90,14 @@ export const portfolioData: PortfolioData = {
   ],
   contact: {
     social: [
-      { icon: "linkedin", href: "https://www.linkedin.com/" },
-      { icon: "github", href: "https://github.com/" },
+      { icon: "linkedin", href: "https://www.linkedin.com/in/johandev21/" },
+      { icon: "github", href: "https://github.com/johandev21" },
     ],
     buttons: [
       { icon: "mail", label: "Correo" },
       { icon: "cv", label: "CV" },
     ],
+    email: "johandev21@gmail.com",
     placeholder:
       "Un puesto, un proyecto, una idea o simplemente un saludo. Cuéntame qué tienes en mente.",
     helperText: "Todos los mensajes llegan directamente a mi correo",

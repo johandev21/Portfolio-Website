@@ -32,16 +32,10 @@ export default function Header() {
       lastScrollY.current = currentScrollY;
     };
 
-    const handlePointerMove = (event: PointerEvent) => {
-      if (event.clientY < 88) setIsHidden(false);
-    };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("pointermove", handlePointerMove);
     };
   }, [isMenuOpen]);
 

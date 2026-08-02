@@ -69,6 +69,7 @@ export interface ContactButton {
 export interface ContactData {
   social: ContactSocial[];
   buttons: ContactButton[];
+  email: string;
   placeholder: string;
   helperText: string;
 }
