@@ -1,6 +1,7 @@
 import { createElement, useState, type FormEvent } from "react";
 import { ChevronUp } from "lucide";
 import type { ContactData } from "../types";
+import cvUrl from "../assets/johan-carrasco-cv.pdf";
 import Icon from "./Icon";
 
 interface ContactCardProps {
@@ -128,6 +129,8 @@ export default function ContactCard({ contact }: ContactCardProps) {
               <a
                 key={button.label}
                 href={mailtoUrl}
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Abrir correo"
                 className="group flex cursor-pointer flex-row items-center gap-1 rounded-sm transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
               >
@@ -141,9 +144,13 @@ export default function ContactCard({ contact }: ContactCardProps) {
                 </span>
               </a>
             ) : (
-              <button
+              <a
                 key={button.label}
-                type="button"
+                href={cvUrl}
+                download="johan-carrasco-cv.pdf"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Descargar CV"
                 className="group flex cursor-pointer flex-row items-center gap-1 rounded-sm transition-motion active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
               >
                 <Icon
@@ -154,7 +161,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
                 <span className="whitespace-nowrap text-sm leading-normal text-muted transition-motion hoverable:group-hover:text-text">
                   {button.label}
                 </span>
-              </button>
+              </a>
             ),
           )}
         </div>
@@ -268,6 +275,8 @@ export default function ContactCard({ contact }: ContactCardProps) {
       {status?.type === "error" && (
         <a
           href={mailtoUrl}
+          target="_blank"
+          rel="noreferrer"
           className="rounded-sm px-4 text-sm text-text underline decoration-border underline-offset-4 transition-motion hoverable:hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
         >
           Enviar usando mi correo
