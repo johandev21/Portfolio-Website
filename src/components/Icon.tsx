@@ -104,6 +104,7 @@ export default function Icon({ name, size, className = "" }: IconProps) {
             src={brandIcons[name as keyof typeof brandIcons]}
             alt=""
             className="h-full w-full"
+            style={{ filter: "var(--icon-filter)" }}
           />
         </span>
       ) : (

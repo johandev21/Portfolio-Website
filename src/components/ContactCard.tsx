@@ -9,7 +9,7 @@ interface ContactCardProps {
 
 export default function ContactCard({ contact }: ContactCardProps) {
   return (
-    <form className="flex w-full flex-col items-center justify-end gap-2 border border-border/50 bg-[#111617]/60 p-2 pt-4 backdrop-blur-[1.75px] transition-motion motion-reduce:transition-none">
+    <form className="flex w-full flex-col items-center justify-end gap-2 border border-border/50 bg-bg/60 p-2 pt-4 backdrop-blur-[1.75px] transition-motion motion-reduce:transition-none">
       <div className="flex w-full flex-wrap flex-row items-center justify-between px-4">
         <div className="flex flex-row items-center gap-[13px]">
           {contact.social.map((social) => (
@@ -51,11 +51,11 @@ export default function ContactCard({ contact }: ContactCardProps) {
         </span>
         <button
           type="button"
-          className="group absolute bottom-2 right-[7px] flex h-[28px] w-[28px] cursor-pointer items-center justify-center bg-[#c0c0c0] transition-motion hover:brightness-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
+          className="group absolute bottom-2 right-[7px] flex h-[28px] w-[28px] cursor-pointer items-center justify-center bg-action transition-motion hover:brightness-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
         >
           <svg
             viewBox="0 0 24 24"
-            className="h-[18px] w-[18px] text-[#0d1011] transition-motion hoverable:group-hover:translate-x-[1px]"
+            className="h-[18px] w-[18px] text-action-foreground transition-motion hoverable:group-hover:translate-x-[1px]"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"

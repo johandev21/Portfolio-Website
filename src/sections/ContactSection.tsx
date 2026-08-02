@@ -16,7 +16,7 @@ export default function ContactSection() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,var(--color-bg)_0%,var(--color-bg)_15%,rgba(13,16,17,0.85)_50%,var(--color-bg)_85%,var(--color-bg)_100%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,var(--color-bg)_0%,var(--color-bg)_15%,var(--contact-overlay)_50%,var(--color-bg)_85%,var(--color-bg)_100%)]"
       />
       <div
         aria-hidden="true"

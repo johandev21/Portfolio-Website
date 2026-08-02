@@ -20,7 +20,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
           <h3 className="w-full text-base leading-normal text-text">{experience.title}</h3>
           <p className="w-full text-sm leading-normal text-text-soft">{experience.company}</p>
         </div>
-        <p className="whitespace-nowrap text-sm leading-normal text-[#d1d1d1]">
+        <p className="whitespace-nowrap text-sm leading-normal text-text-soft">
           {experience.start} – {experience.end}
         </p>
       </div>
@@ -28,7 +28,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         {experience.bullets.map((bullet, index) => (
           <li key={bullet} className="flex w-full flex-row items-start gap-3">
             <span
-              className={`flex h-[20px] w-fit shrink-0 items-center p-1 transition-motion hoverable:group-hover:scale-105 ${bulletStagger[index] ?? ""}`}
+              className={`flex h-[20px] w-fit shrink-0 items-center p-1 text-text-soft transition-motion hoverable:group-hover:scale-105 ${bulletStagger[index] ?? ""}`}
             >
               <svg viewBox="0 0 16 16" className="h-[7px] w-[7px] overflow-visible">
                 <circle
@@ -36,7 +36,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                   cy="8"
                   r="6"
                   fill="none"
-                  stroke="#e1e1e1"
+                  stroke="currentColor"
                   strokeWidth="1.5"
                   vectorEffect="non-scaling-stroke"
                 />

@@ -2,6 +2,7 @@
 
 html {
   overflow-x: clip;
+  color-scheme: dark;
 }
 
 @theme {
@@ -13,11 +14,33 @@ html {
   --color-muted: #9c9a9a;
   --color-text: #f1f1f1;
   --color-text-soft: #e1e1e1;
+  --color-accent: #7ebde8;
+  --color-action: #c0c0c0;
+  --color-action-foreground: #0d1011;
+  --icon-filter: none;
+  --contact-overlay: rgba(13, 16, 17, 0.85);
   --text-sm: clamp(13px, calc(13px + (100vw - 375px) * 0.00154), 14px);
   --text-base: clamp(14.5px, calc(14.5px + (100vw - 375px) * 0.00231), 16px);
   --text-2xl: clamp(20px, calc(20px + (100vw - 375px) * 0.00616), 24px);
   --text-4xl: clamp(30px, calc(30px + (100vw - 375px) * 0.00925), 36px);
   --text-5xl: clamp(36px, calc(36px + (100vw - 375px) * 0.01849), 48px);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --color-bg: #f4f1eb;
+    --color-surface: #ebe7df;
+    --color-border: #d2ccc1;
+    --color-muted: #6f6a63;
+    --color-text: #252321;
+    --color-text-soft: #4e4a45;
+    --color-accent: #47728f;
+    --color-action: #252321;
+    --color-action-foreground: #f4f1eb;
+    --icon-filter: brightness(0);
+    --contact-overlay: rgba(244, 241, 235, 0.84);
+  }
 }
 
 @custom-variant hoverable (@media (hover: hover));
