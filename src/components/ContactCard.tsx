@@ -16,6 +16,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
             <a
               key={social.icon}
               href={social.href}
+              aria-label={social.icon === "linkedin" ? "LinkedIn" : "GitHub"}
               className="group inline-flex rounded-sm transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
             >
               <Icon
