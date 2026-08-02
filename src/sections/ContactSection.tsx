@@ -7,7 +7,7 @@ import crowsImage from "../assets/crows.jpg";
 export default function ContactSection() {
   const { contact } = portfolioData;
   return (
-    <section className="relative mt-12 overflow-hidden pb-16 md:mt-16 xl:mt-[111px] xl:pb-[122px]">
+    <section id="contacto" className="relative mt-20 scroll-mt-24 overflow-hidden pb-16 md:mt-16 xl:mt-[111px] xl:pb-[122px]">
       <img
         src={crowsImage}
         alt=""

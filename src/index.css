@@ -56,6 +56,38 @@ html {
   }
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0d1011;
+  --color-surface: #181e20;
+  --color-border: #2a2a2a;
+  --color-muted: #9c9a9a;
+  --color-text: #f1f1f1;
+  --color-text-soft: #e1e1e1;
+  --color-accent: #7ebde8;
+  --color-action: #c0c0c0;
+  --color-action-foreground: #0d1011;
+  --selection-bg: #7ebde8;
+  --selection-text: #0d1011;
+  --contact-overlay: rgba(13, 16, 17, 0.85);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f4f1eb;
+  --color-surface: #ebe7df;
+  --color-border: #d2ccc1;
+  --color-muted: #6f6a63;
+  --color-text: #252321;
+  --color-text-soft: #4e4a45;
+  --color-accent: #47728f;
+  --color-action: #252321;
+  --color-action-foreground: #f4f1eb;
+  --selection-bg: #47728f;
+  --selection-text: #f4f1eb;
+  --contact-overlay: rgba(244, 241, 235, 0.84);
+}
+
 @custom-variant hoverable (@media (hover: hover));
 
 @utility transition-motion {

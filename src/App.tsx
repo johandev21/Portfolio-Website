@@ -6,12 +6,14 @@ import TechnologiesSection from "./sections/TechnologiesSection";
 import ContactSection from "./sections/ContactSection";
 import Reveal from "./components/Reveal";
 import BackToTop from "./components/BackToTop";
+import Header from "./components/Header";
 
 function Portfolio() {
   return (
     <MotionConfig reducedMotion="user">
       <main className="min-h-screen w-full bg-bg font-sans text-text">
-        <div className="mx-auto flex w-full max-w-full flex-col items-stretch px-6 pt-12 md:px-8 md:pt-[132px] lg:max-w-[812px] lg:px-0">
+        <Header />
+        <div className="mx-auto flex w-full max-w-full flex-col items-stretch px-6 pt-28 md:px-8 md:pt-[132px] lg:max-w-[812px] lg:px-0">
           <Reveal>
             <IntroSection />
           </Reveal>

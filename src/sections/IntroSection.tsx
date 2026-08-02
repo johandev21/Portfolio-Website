@@ -5,7 +5,7 @@ import Placeholder from "../components/Placeholder";
 export default function IntroSection() {
   const { hero } = portfolioData;
   return (
-    <section className="flex flex-col gap-4">
+    <section id="inicio" className="scroll-mt-24 flex flex-col gap-4">
       <div className="flex flex-col items-center gap-5 md:flex-row">
         <Placeholder
           label="AVATAR"

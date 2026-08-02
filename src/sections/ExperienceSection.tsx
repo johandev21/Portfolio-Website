@@ -4,7 +4,7 @@ import ExperienceCard from "../components/ExperienceCard";
 
 export default function ExperienceSection() {
   return (
-    <section className="mt-12 flex flex-col gap-4 md:mt-16 xl:mt-[95px]">
+    <section id="experiencia" className="mt-20 scroll-mt-24 flex flex-col gap-4 md:mt-16 xl:mt-[95px]">
       <SectionTitle>Experiencia</SectionTitle>
       {portfolioData.experience.map((experience) => (
         <ExperienceCard key={experience.title} experience={experience} />
