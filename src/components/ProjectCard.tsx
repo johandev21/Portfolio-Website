@@ -1,6 +1,7 @@
 import type { Project } from "../types";
 import Icon from "./Icon";
 import Placeholder from "./Placeholder";
+import Tooltip from "./Tooltip";
 
 const iconStagger = [
   "",
@@ -32,13 +33,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </p>
         </div>
         <div className="flex w-fit flex-row items-center gap-2">
-          {project.icons.map((icon, index) => (
-            <Icon
-              key={icon}
-              name={icon}
-              size={20}
-              className={`hoverable:group-hover:scale-110 ${iconStagger[index] ?? ""}`}
-            />
+          {project.icons.map((technology, index) => (
+            <Tooltip key={technology.icon} label={technology.name}>
+              <Icon
+                name={technology.icon}
+                size={20}
+                className={`hoverable:group-hover:scale-110 ${iconStagger[index] ?? ""}`}
+              />
+            </Tooltip>
           ))}
         </div>
       </div>

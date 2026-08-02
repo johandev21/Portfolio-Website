@@ -1,5 +1,6 @@
 import type { TechCategory } from "../types";
 import Icon from "./Icon";
+import Tooltip from "./Tooltip";
 
 const iconStagger = [
   "",
@@ -23,12 +24,13 @@ export default function TechRow({ category }: TechRowProps) {
       </span>
       <div className="flex w-full flex-wrap flex-row items-center gap-3 sm:w-fit sm:shrink-0">
         {category.technologies.map((tech, index) => (
-          <Icon
-            key={tech.name}
-            name={tech.icon}
-            size={24}
-            className={`hoverable:group-hover:scale-105 hoverable:group-hover:rotate-2 hover:border-text-soft ${iconStagger[index] ?? ""}`}
-          />
+          <Tooltip key={tech.name} label={tech.name}>
+            <Icon
+              name={tech.icon}
+              size={24}
+              className={`hoverable:group-hover:scale-105 hoverable:group-hover:rotate-2 hover:border-text-soft ${iconStagger[index] ?? ""}`}
+            />
+          </Tooltip>
         ))}
       </div>
     </div>

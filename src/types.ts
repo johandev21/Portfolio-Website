@@ -38,7 +38,7 @@ export interface TechCategory {
 export interface Project {
   title: string;
   subtitle: string;
-  icons: IconName[];
+  icons: Technology[];
 }
 
 export interface Experience {

@@ -1,14 +1,14 @@
-import type { PortfolioData } from "../types";
+import type { PortfolioData, Technology } from "../types";
 
 const projectIcons = [
-  "nestjs",
-  "typescript",
-  "zod",
-  "react",
-  "tanstack-query",
-  "nextjs",
-  "shadcn",
-] as const;
+  { name: "NestJS", icon: "nestjs" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "Zod", icon: "zod" },
+  { name: "React", icon: "react" },
+  { name: "TanStack Query", icon: "tanstack-query" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "shadcn", icon: "shadcn" },
+] satisfies Technology[];
 
 export const portfolioData: PortfolioData = {
   hero: {
