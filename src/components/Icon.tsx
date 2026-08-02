@@ -1,24 +1,24 @@
 import { createElement } from "react";
 import { Download, Mail, MapPin } from "lucide";
-import css from "../assets/icons/thesvg/CSS.svg";
-import django from "../assets/icons/thesvg/Django.svg";
-import drizzle from "../assets/icons/thesvg/Drizzle.svg";
-import github from "../assets/icons/thesvg/GitHub.svg";
-import html5 from "../assets/icons/thesvg/HTML.svg";
-import javascript from "../assets/icons/thesvg/JavaScript.svg";
-import linkedin from "../assets/icons/thesvg/Linkedin.svg";
-import mysql from "../assets/icons/thesvg/MySQL.svg";
-import nestjs from "../assets/icons/thesvg/NestJS.svg";
-import nextjs from "../assets/icons/thesvg/Nextjs.svg";
-import postgresql from "../assets/icons/thesvg/Postgresql.svg";
-import prisma from "../assets/icons/thesvg/Prisma.svg";
-import python from "../assets/icons/thesvg/Python.svg";
-import react from "../assets/icons/thesvg/React.svg";
-import shadcn from "../assets/icons/thesvg/Shadcn.svg";
-import tailwind from "../assets/icons/thesvg/Tailwind.svg";
-import tanstackQuery from "../assets/icons/thesvg/Tanstack Query.svg";
-import typescript from "../assets/icons/thesvg/TypeScript.svg";
-import zod from "../assets/icons/thesvg/Zod.svg";
+import css from "../assets/icons/thesvg/CSS.svg?raw";
+import django from "../assets/icons/thesvg/Django.svg?raw";
+import drizzle from "../assets/icons/thesvg/Drizzle.svg?raw";
+import github from "../assets/icons/thesvg/GitHub.svg?raw";
+import html5 from "../assets/icons/thesvg/HTML.svg?raw";
+import javascript from "../assets/icons/thesvg/JavaScript.svg?raw";
+import linkedin from "../assets/icons/thesvg/Linkedin.svg?raw";
+import mysql from "../assets/icons/thesvg/MySQL.svg?raw";
+import nestjs from "../assets/icons/thesvg/NestJS.svg?raw";
+import nextjs from "../assets/icons/thesvg/Nextjs.svg?raw";
+import postgresql from "../assets/icons/thesvg/Postgresql.svg?raw";
+import prisma from "../assets/icons/thesvg/Prisma.svg?raw";
+import python from "../assets/icons/thesvg/Python.svg?raw";
+import react from "../assets/icons/thesvg/React.svg?raw";
+import shadcn from "../assets/icons/thesvg/Shadcn.svg?raw";
+import tailwind from "../assets/icons/thesvg/Tailwind.svg?raw";
+import tanstackQuery from "../assets/icons/thesvg/Tanstack Query.svg?raw";
+import typescript from "../assets/icons/thesvg/TypeScript.svg?raw";
+import zod from "../assets/icons/thesvg/Zod.svg?raw";
 import type { IconName } from "../types";
 
 const sizes = {
@@ -78,6 +78,15 @@ function renderIcon(iconNode: IconNode) {
   );
 }
 
+function themeBrandSvg(svg: string) {
+  return svg
+    .replace(/fill="#F1F1F1"/g, 'fill="var(--color-text)"')
+    .replace(/fill="#0D1011"/g, 'fill="var(--color-bg)"')
+    .replace(/fill="#9C9A9A"/g, 'fill="var(--color-muted)"')
+    .replace(/stop-color="#0D1011"/g, 'stop-color="var(--color-bg)"')
+    .replace(/fill="none"(?= xmlns)/, 'fill="var(--color-bg)"');
+}
+
 interface IconProps {
   name: IconName;
   size: 16 | 20 | 24;
@@ -99,14 +108,10 @@ export default function Icon({ name, size, className = "" }: IconProps) {
         <span
           className="h-full w-full text-text-soft [&>svg]:h-full [&>svg]:w-full"
           aria-hidden="true"
-        >
-          <img
-            src={brandIcons[name as keyof typeof brandIcons]}
-            alt=""
-            className="h-full w-full"
-            style={{ filter: "var(--icon-filter)" }}
-          />
-        </span>
+          dangerouslySetInnerHTML={{
+            __html: themeBrandSvg(brandIcons[name as keyof typeof brandIcons]),
+          }}
+        />
       ) : (
         <span className="px-0.5 text-[8px] uppercase leading-none tracking-wide text-text">
           {name.replace(/-/g, " ").toUpperCase()}
