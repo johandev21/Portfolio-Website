@@ -1,4 +1,5 @@
 import type { TechCategory } from "../types";
+import { technologyDescriptions } from "../data/technologies";
 import Icon from "./Icon";
 import Tooltip from "./Tooltip";
 
@@ -24,7 +25,11 @@ export default function TechRow({ category }: TechRowProps) {
       </span>
       <div className="flex w-full flex-wrap flex-row items-center gap-3 sm:w-fit sm:shrink-0">
         {category.technologies.map((tech, index) => (
-          <Tooltip key={tech.name} label={tech.name}>
+          <Tooltip
+            key={tech.name}
+            label={tech.name}
+            description={technologyDescriptions[tech.icon]}
+          >
             <Icon
               name={tech.icon}
               size={24}

@@ -23,11 +23,16 @@ export type IconName =
   | "send"
   | "cv";
 
+export type TechnologyIconName = Exclude<
+  IconName,
+  "linkedin" | "github" | "mail" | "pin" | "send" | "cv"
+>;
+
 export type BulletPoint = string;
 
 export interface Technology {
   name: string;
-  icon: IconName;
+  icon: TechnologyIconName;
 }
 
 export interface TechCategory {
