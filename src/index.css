@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  overflow-x: clip;
+}
+
 @theme {
   --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
   --font-sans: "Poppins", system-ui, sans-serif;

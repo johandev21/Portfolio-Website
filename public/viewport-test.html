@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Viewport Test</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0d1011; height: 100%; }
+  #site { border: 0; position: fixed; top: 0; left: 0; display: block; }
+  #results { position: fixed; top: 4px; right: 4px; z-index: 99999; max-height: 200px; max-width: 360px; overflow: auto; background: rgba(0,0,0,0.85); color: #eaffea; font: 10px/1.3 monospace; padding: 6px; white-space: pre; }
+</style>
+</head>
+<body>
+<iframe id="site" title="site"></iframe>
+<div id="results">running…</div>
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var w = parseInt(params.get("w") || "1440", 10);
+    var h = parseInt(params.get("h") || "900", 10);
+    var frame = document.getElementById("site");
+    frame.width = w;
+    frame.height = h;
+    frame.src = "/?t=" + Date.now();
+    var out = document.getElementById("results");
+
+    function report(status) {
+      out.setAttribute("data-status", status);
+    }
+
+    frame.addEventListener("load", function () {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc) { report("blocked"); return; }
+        var scrollTo = function () {
+          var sec = doc.querySelector("section.relative");
+          if (sec) { sec.scrollIntoView({ block: "start", behavior: "instant" }); }
+        };
+        setTimeout(scrollTo, 300);
+        setTimeout(function () {
+          var sec = doc.querySelector("section.relative");
+          if (!sec) { report("no-section"); return; }
+          sec.scrollIntoView({ block: "start", behavior: "instant" });
+          setTimeout(function () {
+            var lines = [];
+            lines.push("WIDTH " + w);
+            var root = doc.documentElement;
+            var body = doc.body;
+            var sw = Math.max(root.scrollWidth, body ? body.scrollWidth : 0);
+            var cw = Math.max(root.clientWidth, body ? body.clientWidth : 0);
+            var sh = Math.max(root.scrollHeight, body ? body.scrollHeight : 0);
+            lines.push("docScrollWidth " + sw);
+            lines.push("docClientWidth " + cw);
+            lines.push("docScrollHeight " + sh);
+            lines.push("noHorizontalOverflow " + (sw <= cw));
+            var img = sec.querySelector("img[aria-hidden='true']");
+            var overlay = sec.querySelector("div[aria-hidden='true'].bg-gradient-to-b");
+            var reveal = sec.children.length > 2 ? sec.children[2] : null;
+            var secR = sec.getBoundingClientRect();
+            lines.push("section x " + Math.round(secR.x) + " y " + Math.round(secR.y) + " w " + Math.round(secR.width) + " h " + Math.round(secR.height));
+            lines.push("viewport " + doc.defaultView.innerWidth + "x" + doc.defaultView.innerHeight);
+            if (img) {
+              var ir = img.getBoundingClientRect();
+              var ics = getComputedStyle(img);
+              lines.push("img x " + Math.round(ir.x) + " y " + Math.round(ir.y) + " w " + Math.round(ir.width) + " h " + Math.round(ir.height));
+              lines.push("imgStyleW " + ics.width + " L " + ics.left + " R " + ics.right + " T " + ics.top + " B " + ics.bottom);
+              lines.push("imgObjectFit " + ics.objectFit);
+              lines.push("imgComplete " + img.complete + " natural " + (img.naturalWidth || 0) + "x" + (img.naturalHeight || 0));
+              lines.push("imgPointerEvents " + ics.pointerEvents);
+            } else {
+              lines.push("img MISSING");
+            }
+            if (overlay) {
+              var or = overlay.getBoundingClientRect();
+              lines.push("overlay x " + Math.round(or.x) + " w " + Math.round(or.width) + " h " + Math.round(or.height));
+              lines.push("overlayBg " + getComputedStyle(overlay).backgroundImage);
+              lines.push("overlayPointerEvents " + getComputedStyle(overlay).pointerEvents);
+            } else {
+              lines.push("overlay MISSING");
+            }
+            if (reveal) {
+              lines.push("revealOpacity " + getComputedStyle(reveal).opacity);
+            }
+            var title = sec.querySelector("h2");
+            if (title) {
+              var tr = title.getBoundingClientRect();
+              lines.push("title inView " + (tr.top >= 0 && tr.bottom <= doc.defaultView.innerHeight));
+              lines.push("titleTopInSection " + (tr.top >= secR.top - 1));
+            }
+            var main = doc.querySelector("main");
+            if (main) {
+              lines.push("mainBg " + getComputedStyle(main).backgroundColor);
+            }
+            out.textContent = lines.join("\n");
+            report("done");
+          }, 900);
+        }, 1500);
+      } catch (e) {
+        report("error");
+      }
+    });
+  })();
+</script>
+</body>
+</html>

@@ -23,8 +23,8 @@ function Portfolio() {
           <Reveal>
             <TechnologiesSection />
           </Reveal>
-          <ContactSection />
         </div>
+        <ContactSection />
       </main>
     </MotionConfig>
   );

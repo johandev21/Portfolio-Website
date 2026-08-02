@@ -7,7 +7,7 @@ interface ContactCardProps {
 
 export default function ContactCard({ contact }: ContactCardProps) {
   return (
-    <form className="flex w-full flex-col items-center justify-end gap-2 border border-border p-2 pt-4 transition-motion hover:bg-surface/60 motion-reduce:transition-none">
+    <form className="flex w-full flex-col items-center justify-end gap-2 border border-border bg-[#111617]/60 p-2 pt-4 backdrop-blur-[1.75px] transition-motion motion-reduce:transition-none">
       <div className="flex w-full flex-wrap flex-row items-center justify-between px-4">
         <div className="flex flex-row items-center gap-[13px]">
           {contact.social.map((social) => (
@@ -43,7 +43,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
           ))}
         </div>
       </div>
-      <div className="relative flex min-h-[97px] w-full flex-row items-start justify-between bg-surface/60 p-3 px-4 backdrop-blur-sm sm:h-[97px]">
+      <div className="relative flex min-h-[97px] w-full flex-row items-start justify-between bg-surface/60 p-3 px-4 backdrop-blur-[1.75px] sm:h-[97px]">
         <span className="pr-12 text-sm leading-normal text-muted lg:pr-0">
           {contact.placeholder}
         </span>
