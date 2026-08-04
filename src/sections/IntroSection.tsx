@@ -8,7 +8,7 @@ export default function IntroSection() {
   return (
     <section id="inicio" className="scroll-mt-24 flex flex-col gap-4">
       <div className="flex flex-col items-center gap-5 md:flex-row">
-          <div className="h-20 w-20 overflow-hidden border border-border transition-motion-slow hover:scale-[1.03] hover:border-text-soft motion-reduce:hover:scale-none motion-reduce:transition-none md:h-[120px] md:w-[120px]">
+          <div className="h-20 w-20 overflow-hidden border border-border md:h-[120px] md:w-[120px]">
             <picture>
               <source media="(min-width: 768px)" srcSet={myselfImageDesktop} />
               <img

@@ -3,16 +3,6 @@ import Icon from "./Icon";
 import Placeholder from "./Placeholder";
 import Tooltip from "./Tooltip";
 
-const iconStagger = [
-  "",
-  "hoverable:group-hover:[transition-delay:35ms]",
-  "hoverable:group-hover:[transition-delay:70ms]",
-  "hoverable:group-hover:[transition-delay:105ms]",
-  "hoverable:group-hover:[transition-delay:140ms]",
-  "hoverable:group-hover:[transition-delay:175ms]",
-  "hoverable:group-hover:[transition-delay:210ms]",
-];
-
 interface ProjectCardProps {
   project: Project;
 }
@@ -33,12 +23,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </p>
         </div>
         <div className="flex w-fit flex-row items-center gap-2">
-          {project.icons.map((technology, index) => (
+          {project.icons.map((technology) => (
             <Tooltip key={technology.icon} label={technology.name}>
               <Icon
                 name={technology.icon}
                 size={20}
-                className={`hoverable:group-hover:scale-110 ${iconStagger[index] ?? ""}`}
               />
             </Tooltip>
           ))}

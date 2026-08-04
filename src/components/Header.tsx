@@ -56,7 +56,7 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-40 px-4 pt-3 transition-motion md:px-6 ${isHidden ? "md:-translate-y-full md:opacity-0 md:pointer-events-none" : ""}`}
     >
-      <div className="mx-auto max-w-[860px] border border-border/70 bg-bg/85 shadow-lg backdrop-blur-md">
+      <div className="mx-auto max-w-[860px] border border-border/70 bg-bg/85 backdrop-blur-md">
         <div className="flex h-14 items-center justify-between px-4 md:px-5">
           <a
             href="#inicio"
