@@ -1,32 +1,43 @@
-# React + TypeScript + Vite
+# Portafolio personal
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sitio web personal de Johan Carrasco, Ingeniero de Software de Rancagua, Chile. Presenta su experiencia, proyectos, tecnologías y datos de contacto en una interfaz clara y adaptable a distintos dispositivos.
 
-Currently, two official plugins are available:
+## Contenido
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Presentación profesional y ubicación.
+- Experiencia en desarrollo de aplicaciones web.
+- Proyectos y tecnologías principales.
+- Formulario de contacto, enlaces a redes profesionales y descarga del CV.
+- Modo claro y oscuro, navegación responsive e imágenes optimizadas.
 
-## React Compiler
+## Tecnologías
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 y TypeScript.
+- Vite.
+- Tailwind CSS.
+- Lucide y TheSVG para iconos.
+- Oxlint para validación del código.
 
-## Expanding the Oxlint configuration
+## Desarrollo local
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Requisitos: Node.js y pnpm.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+pnpm install
+pnpm dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Otros comandos disponibles:
+
+```bash
+pnpm build    # Compila la aplicación para producción
+pnpm lint     # Ejecuta el análisis estático
+pnpm preview  # Sirve la compilación localmente
+```
+
+## Contacto
+
+- [LinkedIn](https://www.linkedin.com/in/johandev21/)
+- [GitHub](https://github.com/johandev21)
+- [Descargar CV](src/assets/johan-carrasco-cv.pdf)
+- [johandev21@gmail.com](mailto:johandev21@gmail.com)
