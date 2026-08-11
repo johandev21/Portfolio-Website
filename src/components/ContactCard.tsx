@@ -114,7 +114,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
               target="_blank"
               rel="noreferrer"
               aria-label={social.icon === "linkedin" ? "LinkedIn" : "GitHub"}
-              className="group inline-flex rounded-sm transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
+              className="group inline-flex rounded-none transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
             >
               <Icon
                 name={social.icon}
@@ -133,7 +133,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Abrir correo"
-                className="group flex cursor-pointer flex-row items-center gap-1 rounded-sm transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
+                className="group flex cursor-pointer flex-row items-center gap-1 rounded-none transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
               >
                 <Icon
                   name={button.icon}
@@ -152,7 +152,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Descargar CV"
-                className="group flex cursor-pointer flex-row items-center gap-1 rounded-sm transition-motion active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
+                className="group flex cursor-pointer flex-row items-center gap-1 rounded-none transition-motion active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
               >
                 <Icon
                   name={button.icon}
@@ -182,7 +182,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
               maxLength={80}
               placeholder="Tu nombre"
               required
-              className="min-h-10 rounded-sm border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+              className="min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
             />
           </label>
           <label className="flex flex-col gap-2 text-sm leading-5 text-muted">
@@ -198,7 +198,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
               maxLength={254}
               placeholder="Tu correo"
               required
-              className="min-h-10 rounded-sm border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+              className="min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
             />
           </label>
         </div>
@@ -216,14 +216,14 @@ export default function ContactCard({ contact }: ContactCardProps) {
             spellCheck
             placeholder={contact.placeholder}
             aria-label="Mensaje"
-            className="h-full min-h-[112px] w-full resize-none rounded-sm border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+            className="h-full min-h-[112px] w-full resize-none rounded-none border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
           />
           <Button
             type="submit"
             aria-label={isSubmitting ? "Enviando mensaje" : "Enviar mensaje"}
             aria-busy={isSubmitting}
             disabled={isSubmitting}
-            className="group absolute bottom-3 right-3 flex h-[28px] w-[28px] cursor-pointer items-center justify-center rounded-sm bg-action transition-motion hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
+            className="group absolute bottom-3 right-3 flex h-[28px] w-[28px] cursor-pointer items-center justify-center rounded-none bg-action transition-motion hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
           >
             {isSubmitting ? (
               <span

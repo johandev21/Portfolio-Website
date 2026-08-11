@@ -1,12 +1,13 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#experiencia", label: "Experiencia" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#tecnologias", label: "Tecnologías" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#experiencia", label: "Experiencia" },
+  { href: "/#proyectos", label: "Proyectos" },
+  { href: "/#tecnologias", label: "Tecnologías" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 export default function Header() {
@@ -58,14 +59,14 @@ export default function Header() {
     >
       <div className="mx-auto max-w-[860px] border border-border/70 bg-bg/85 backdrop-blur-md">
         <div className="flex h-14 items-center justify-between px-4 md:px-5">
-          <a
-            href="#inicio"
+          <Link
+            to="/"
             onClick={closeMenu}
-            className="rounded-sm font-serif text-lg leading-none text-text transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="rounded-none font-serif text-lg leading-none text-text transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             JC
             <span className="sr-only">Johan Carrasco</span>
-          </a>
+          </Link>
 
           <nav aria-label="Navegación principal" className="hidden md:block">
             <ul className="flex items-center gap-5">
@@ -73,7 +74,7 @@ export default function Header() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="rounded-sm text-xs leading-none text-muted transition-motion hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                    className="rounded-none text-sm leading-none text-muted transition-motion hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
                   >
                     {item.label}
                   </a>
@@ -90,7 +91,7 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="group flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-sm text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg md:hidden"
+              className="group flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-none text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg md:hidden"
             >
               <span
                 aria-hidden="true"
@@ -116,7 +117,7 @@ export default function Header() {
                   <a
                     href={item.href}
                     onClick={closeMenu}
-                    className="block rounded-sm px-2 py-2.5 text-sm text-muted transition-motion hover:bg-surface hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft"
+                    className="block rounded-none px-2 py-2.5 text-sm text-muted transition-motion hover:bg-surface hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft"
                   >
                     {item.label}
                   </a>

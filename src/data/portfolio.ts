@@ -10,6 +10,72 @@ const projectIcons = [
   { name: "shadcn", icon: "shadcn" },
 ] satisfies Technology[];
 
+const sampleMarkdown = `## Contexto del Proyecto
+
+Insight nace de la necesidad de centralizar métricas complejas en un entorno visualmente limpio e intuitivo. En las plataformas tradicionales, los usuarios ejecutivos suelen perderse entre tablas densas y dashboards recargados que dificultan la extracción rápida de conclusiones estratégicas.
+
+Para abordar esta problemática, diseñamos una arquitectura orientada a la claridad visual y la velocidad de respuesta. El sistema recopila datos operativos en tiempo real desde múltiples orígenes de eventos y los consolida en paneles adaptativos.
+
+### Objetivos Principales
+
+El desarrollo se estructuró en torno a tres pilares fundamentales que guiaron las decisiones de diseño e ingeniería desde el primer momento.
+
+1. **Reducción de Latencia**: Lograr tiempos de renderizado por debajo de los 100ms incluso en consultas de grandes volúmenes de datos.
+2. **Interfaz Adaptativa**: Permitir a usuarios no técnicos personalizar widgets y filtros mediante un flujo intuitivo.
+3. **Escalabilidad**: Mantener la estabilidad del servidor ante picos repentinos de tráfico de datos en tiempo real.
+
+## Arquitectura del Sistema
+
+La solución adopta un patrón monorepo modular impulsado por NestJS en la capa de servidor y Next.js en la capa de cliente. Esta separación clara de responsabilidades garantiza la reusabilidad de tipos y schemas de datos mediante TypeScript y Zod.
+
+En el backend, implementamos un pipeline de procesamiento asíncrono que ingiere los eventos entrantes y los almacena en PostgreSQL con índices optimizados para consultas temporales.
+
+\`\`\`ts
+// Ejemplo de validación del evento con Zod
+const EventSchema = z.object({
+  id: z.string().uuid(),
+  timestamp: z.date(),
+  metric: z.string(),
+  value: z.number(),
+});
+\`\`\`
+
+### Gestión de Estado en Cliente
+
+En el cliente, utilizamos TanStack Query para gestionar el cacheo reactivo y la invalidación inteligente de consultas. Esto evita peticiones redundantes y asegura que la UI refleje el estado más reciente del servidor sin sobrecargar la red.
+
+La combinación de componentes de UI minimalistas inspirados en shadcn con la flexibilidad de Tailwind CSS nos permitió construir una interfaz moderna, responsiva y accesible.
+
+> "La simplicidad no es la ausencia de desorden, sino la presencia de propósito claro en cada elemento."
+
+## Rendimiento y Optimización
+
+Durante las pruebas de estrés, identificamos cuellos de botella en la renderización de listas largas de eventos. Para resolverlo, implementamos virtualización de listas y lazy loading de componentes pesados.
+
+Adicionalmente, se configuró compresión de respuestas y estrategias de cache en borde (CDN), logrando un puntaje sobresaliente en las auditorías de rendimiento de Lighthouse.
+
+- **FCP (First Contentful Paint)**: 0.8s
+- **LCP (Largest Contentful Paint)**: 1.2s
+- **CLS (Cumulative Layout Shift)**: 0.01
+
+## Seguridad y Control de Acceso
+
+La seguridad fue un requerimiento transversal en todo el desarrollo. Implementamos autenticación mediante Tokens JWT con rotación automática y control de acceso basado en roles (RBAC).
+
+Cada petición al servidor es auditada en logs estructurados para permitir un rastreo detallado de acciones administrativas y cambios de configuración dentro de la plataforma.
+
+## Despliegue e Infraestructura
+
+El despliegue automatizado se gestiona mediante pipelines de integración continua (CI/CD) que ejecutan suites de pruebas unitarias y de integración antes de cada lanzamiento a producción.
+
+La aplicación corre en contenedores Docker orquestados, lo que facilita el escalado horizontal automático según la demanda de los usuarios.
+
+## Próximos Pasos
+
+Continuamos trabajando en la expansión de las capacidades analíticas de Insight. La próxima fase del proyecto contempla la integración de modelos predictivos para anticipar tendencias operativas.
+
+Asimismo, planeamos añadir soporte para alertas personalizadas mediante webhooks y notificaciones en tiempo real a plataformas de comunicación.`;
+
 export const portfolioData: PortfolioData = {
   hero: {
     greeting: "Hola, soy",
@@ -40,6 +106,7 @@ export const portfolioData: PortfolioData = {
       subtitle: "Convierte datos en decisiones accionables.",
       description:
         "Plataforma web de analítica avanzada orientada a la toma de decisiones. Centraliza datos dispersos en paneles interactivos que responden en tiempo real a las necesidades del negocio.",
+      detailsMarkdown: sampleMarkdown,
       year: "2026",
       role: "Desarrollo Full Stack",
       liveUrl: "https://example.com/insight",
@@ -50,21 +117,6 @@ export const portfolioData: PortfolioData = {
           title: "Visión General y Contexto",
           content:
             "El objetivo de Insight es eliminar la fricción al analizar grandes conjuntos de datos. Permite a los usuarios crear vistas personalizadas sin requerir conocimientos técnicos complejos.",
-        },
-        {
-          title: "Desafíos y Soluciones",
-          content:
-            "Garantizar baja latencia con actualización continua de datos requerió estructurar una capa de cache optimizada.",
-          bullets: [
-            "Procesamiento asíncrono de eventos de alta frecuencia",
-            "Gestión eficiente del estado global en el cliente con TanStack Query",
-            "Validación estricta del esquema de datos mediante Zod en ambas capas",
-          ],
-        },
-        {
-          title: "Arquitectura & Stack",
-          content:
-            "Desarrollado sobre un monorepo modular con NestJS en el servidor y Next.js en la capa de interfaz, priorizando mantenibilidad a largo plazo.",
         },
       ],
       media: [
@@ -91,6 +143,7 @@ export const portfolioData: PortfolioData = {
       subtitle: "Organiza datos con rapidez y claridad.",
       description:
         "Sistema interactivo de tablas de datos enfocado en la manipulación rápida de información masiva con mínima sobrecarga visual.",
+      detailsMarkdown: sampleMarkdown,
       year: "2026",
       role: "Desarrollo Frontend",
       liveUrl: "https://example.com/gridly",
@@ -101,11 +154,6 @@ export const portfolioData: PortfolioData = {
           title: "Manipulación de Datos Eficiente",
           content:
             "Gridly permite realizar búsquedas instantáneas, reordenamiento de columnas y edición en celda garantizando un rendimiento constante incluso con miles de registros.",
-        },
-        {
-          title: "Experiencia de Usuario",
-          content:
-            "Diseñado con atajos de teclado y animaciones sutiles para ofrecer una sensación nativa y fluida durante el flujo de trabajo continuo.",
         },
       ],
       media: [
@@ -127,6 +175,7 @@ export const portfolioData: PortfolioData = {
       subtitle: "Visualiza indicadores desde un solo lugar.",
       description:
         "Panel centralizado de monitoreo distribuido para alertas e indicadores críticos de infraestructura y servicios web.",
+      detailsMarkdown: sampleMarkdown,
       year: "2025",
       role: "Arquitectura & Backend",
       liveUrl: "https://example.com/metrichub",
@@ -137,11 +186,6 @@ export const portfolioData: PortfolioData = {
           title: "Monitoreo en Tiempo Real",
           content:
             "Agrega logs y métricas de rendimiento procedentes de múltiples servidores reduciendo el tiempo de respuesta ante incidentes.",
-        },
-        {
-          title: "Sistema de Alertas",
-          content:
-            "Reglas configurables de notificación automática basadas en umbrales de uso de recursos y estados de salud.",
         },
       ],
       media: [
@@ -163,6 +207,7 @@ export const portfolioData: PortfolioData = {
       subtitle: "Espacio de trabajo centralizado en la nube.",
       description:
         "Entorno digital para gestión colaborativa de documentos y permisos en equipos distribuidos.",
+      detailsMarkdown: sampleMarkdown,
       year: "2025",
       role: "Desarrollo Full Stack",
       liveUrl: "https://example.com/clouddesk",

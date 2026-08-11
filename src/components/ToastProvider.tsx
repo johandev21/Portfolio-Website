@@ -34,12 +34,12 @@ function ToastList() {
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <Toast.Title className="text-sm font-medium leading-5 text-text" />
           <Toast.Description className="text-sm leading-5 text-muted" />
-          <Toast.Action className="mt-1 inline-flex w-fit cursor-pointer rounded-sm text-sm text-text underline decoration-border underline-offset-4 transition-motion hoverable:hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none" />
+          <Toast.Action className="mt-1 inline-flex w-fit cursor-pointer rounded-none text-sm text-text underline decoration-border underline-offset-4 transition-motion hoverable:hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none" />
         </div>
       </Toast.Content>
       <Toast.Close
         aria-label="Cerrar notificación"
-        className="flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-sm text-muted transition-motion hoverable:hover:bg-border/30 hoverable:hover:text-text active:scale-95 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
+        className="flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-none text-muted transition-motion hoverable:hover:bg-border/30 hoverable:hover:text-text active:scale-95 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
       >
         {closeIcon}
       </Toast.Close>

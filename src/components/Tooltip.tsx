@@ -24,7 +24,7 @@ export default function Tooltip({ label, description, children }: TooltipProps) 
         <BaseTooltip.Portal>
           <BaseTooltip.Positioner sideOffset={8} collisionPadding={16}>
             <BaseTooltip.Popup
-              className={`border-border/50 bg-surface shadow-lg transition-motion data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 ${description ? "w-56 max-w-[calc(100vw-2rem)] rounded-lg border p-3 text-left" : "whitespace-nowrap rounded border px-2 py-1 text-xs leading-none"}`}
+              className={`border-border/50 bg-surface shadow-lg transition-motion data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 ${description ? "w-56 max-w-[calc(100vw-2rem)] border p-3 text-left" : "whitespace-nowrap border px-2 py-1 text-xs leading-none"}`}
             >
               <span className="block text-xs font-medium leading-tight text-text">{label}</span>
               {description ? (

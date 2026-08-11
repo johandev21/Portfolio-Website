@@ -57,6 +57,7 @@ export interface Project {
   title: string;
   subtitle: string;
   description?: string;
+  detailsMarkdown?: string;
   sections?: ProjectSection[];
   media?: MediaItem[];
   year?: string;

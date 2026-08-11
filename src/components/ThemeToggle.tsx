@@ -51,7 +51,7 @@ export default function ThemeToggle() {
       type="button"
       aria-label={`Cambiar a tema ${nextTheme === "dark" ? "oscuro" : "claro"}`}
       onClick={handleToggle}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
     >
       {theme === "dark" ? renderIcon(Sun) : renderIcon(Moon)}
     </button>
