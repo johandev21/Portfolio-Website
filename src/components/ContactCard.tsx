@@ -1,26 +1,26 @@
 import { createElement, useState, type FormEvent } from "react";
+import { Button } from "@base-ui/react/button";
+import { Input } from "@base-ui/react/input";
+import { Toast } from "@base-ui/react/toast";
 import { ChevronUp } from "lucide";
 import type { ContactData } from "../types";
 import cvUrl from "../assets/johan-carrasco-cv.pdf";
 import Icon from "./Icon";
 
-interface ContactCardProps {
+type ContactCardProps = {
   contact: ContactData;
-}
-
-type FormStatus = {
-  type: "success" | "error";
-  message: string;
-} | null;
+};
 
 type Web3FormsResponse = {
   success?: boolean;
-  message?: string;
 };
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY =
   import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "YOUR_WEB3FORMS_ACCESS_KEY";
+
+const ERROR_MESSAGE =
+  "Algo salió mal al enviar tu mensaje. Por favor, inténtalo de nuevo.";
 
 function createMailtoUrl(
   recipient: string,
@@ -42,20 +42,13 @@ export default function ContactCard({ contact }: ContactCardProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<FormStatus>(null);
+  const toastManager = Toast.useToastManager();
 
   const mailtoUrl = createMailtoUrl(contact.email, name, email, message);
-
-  function clearStatus() {
-    if (status) {
-      setStatus(null);
-    }
-  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
-    setStatus(null);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -71,11 +64,14 @@ export default function ContactCard({ contact }: ContactCardProps) {
       const data = (await response.json()) as Web3FormsResponse;
 
       if (!response.ok || !data.success) {
-        setStatus({
+        toastManager.add({
           type: "error",
-          message:
-            data.message ??
-            "No se pudo enviar el mensaje. Puedes usar el correo alternativo.",
+          title: "Error",
+          description: ERROR_MESSAGE,
+          actionProps: {
+            children: "Enviar usando mi correo",
+            onClick: () => window.open(mailtoUrl, "_blank"),
+          },
         });
         return;
       }
@@ -84,15 +80,20 @@ export default function ContactCard({ contact }: ContactCardProps) {
       setName("");
       setEmail("");
       setMessage("");
-      setStatus({
+      toastManager.add({
         type: "success",
-        message: "Mensaje enviado. Gracias por escribirme.",
+        title: "Mensaje enviado",
+        description: "Gracias por escribirme.",
       });
     } catch {
-      setStatus({
+      toastManager.add({
         type: "error",
-        message:
-          "No se pudo conectar con el servicio. Puedes usar el correo alternativo.",
+        title: "Error",
+        description: ERROR_MESSAGE,
+        actionProps: {
+          children: "Enviar usando mi correo",
+          onClick: () => window.open(mailtoUrl, "_blank"),
+        },
       });
     } finally {
       setIsSubmitting(false);
@@ -170,13 +171,12 @@ export default function ContactCard({ contact }: ContactCardProps) {
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           <label className="flex flex-col gap-2 text-sm leading-5 text-muted">
             Nombre
-            <input
+            <Input
               type="text"
               name="name"
               value={name}
-              onChange={(event) => {
-                setName(event.target.value);
-                clearStatus();
+              onValueChange={(value) => {
+                setName(value);
               }}
               autoComplete="name"
               maxLength={80}
@@ -187,13 +187,12 @@ export default function ContactCard({ contact }: ContactCardProps) {
           </label>
           <label className="flex flex-col gap-2 text-sm leading-5 text-muted">
             Correo
-            <input
+            <Input
               type="email"
               name="email"
               value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-                clearStatus();
+              onValueChange={(value) => {
+                setEmail(value);
               }}
               autoComplete="email"
               maxLength={254}
@@ -211,17 +210,15 @@ export default function ContactCard({ contact }: ContactCardProps) {
             value={message}
             onChange={(event) => {
               setMessage(event.target.value);
-              clearStatus();
             }}
             maxLength={2000}
             required
             spellCheck
             placeholder={contact.placeholder}
             aria-label="Mensaje"
-            aria-describedby="contact-status"
             className="h-full min-h-[112px] w-full resize-none rounded-sm border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
           />
-          <button
+          <Button
             type="submit"
             aria-label={isSubmitting ? "Enviando mensaje" : "Enviar mensaje"}
             aria-busy={isSubmitting}
@@ -248,7 +245,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
                 )}
               </svg>
             )}
-          </button>
+          </Button>
         </div>
         <input
           type="checkbox"
@@ -258,30 +255,6 @@ export default function ContactCard({ contact }: ContactCardProps) {
           className="hidden"
         />
       </div>
-      <div
-        id="contact-status"
-        role={status?.type === "error" ? "alert" : "status"}
-        aria-live="polite"
-        className={`w-full overflow-hidden px-4 text-sm transition-[max-height,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${status ? "max-h-20 translate-y-0 opacity-100" : "max-h-0 -translate-y-1 opacity-0"} ${status?.type === "error" ? "text-red-400" : "text-accent"}`}
-      >
-        <div className="flex items-start gap-2 pb-1 pt-0.5">
-          <span
-            aria-hidden="true"
-            className={`mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full ${status?.type === "error" ? "bg-red-400" : "bg-accent"}`}
-          />
-          <span>{status?.message}</span>
-        </div>
-      </div>
-      {status?.type === "error" && (
-        <a
-          href={mailtoUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-sm px-4 text-sm text-text underline decoration-border underline-offset-4 transition-motion hoverable:hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
-        >
-          Enviar usando mi correo
-        </a>
-      )}
     </form>
   );
 }

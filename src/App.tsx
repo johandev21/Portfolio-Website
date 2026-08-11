@@ -6,6 +6,7 @@ import ContactSection from "./sections/ContactSection";
 import Reveal from "./components/Reveal";
 import BackToTop from "./components/BackToTop";
 import Header from "./components/Header";
+import ToastProvider from "./components/ToastProvider";
 
 function Portfolio() {
   return (
@@ -32,7 +33,11 @@ function Portfolio() {
 }
 
 function App() {
-  return <Portfolio />;
+  return (
+    <ToastProvider>
+      <Portfolio />
+    </ToastProvider>
+  );
 }
 
 export default App;
