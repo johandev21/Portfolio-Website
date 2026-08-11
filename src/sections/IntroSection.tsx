@@ -6,7 +6,7 @@ import myselfImageDesktop from "../assets/myself-240.jpg";
 export default function IntroSection() {
   const { hero } = portfolioData;
   return (
-    <section id="inicio" className="scroll-mt-24 flex flex-col gap-4">
+    <section className="flex flex-col gap-4">
       <div className="flex flex-col items-center gap-5 md:flex-row">
           <div className="h-20 w-20 overflow-hidden border border-border md:h-[120px] md:w-[120px]">
             <picture>
