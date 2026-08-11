@@ -5,11 +5,17 @@ import Tooltip from "./Tooltip";
 
 interface ProjectCardProps {
   project: Project;
+  onSelect?: () => void;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
   return (
-    <article className="group flex w-full flex-col gap-4 border border-border p-4 transition-motion-slow hover:-translate-y-[3px] hover:bg-surface/60 active:translate-y-[1px] motion-reduce:hover:translate-none motion-reduce:active:translate-none motion-reduce:transition-none">
+    <article
+      onClick={onSelect}
+      className={`group flex w-full flex-col gap-4 border border-border p-4 transition-motion-slow hover:-translate-y-[3px] hover:bg-surface/60 active:translate-y-[1px] motion-reduce:hover:translate-none motion-reduce:active:translate-none motion-reduce:transition-none ${
+        onSelect ? "cursor-pointer" : ""
+      }`}
+    >
       <Placeholder
         label="PROJECT IMAGE"
         className="h-[140px] w-full"
@@ -17,7 +23,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       />
       <div className="flex w-full flex-col gap-4">
         <div className="flex w-full flex-col gap-1.5">
-          <h3 className="w-full text-base leading-normal text-text">{project.title}</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="w-full text-base leading-normal text-text">{project.title}</h3>
+            <span className="text-xs text-accent opacity-0 transition-motion group-hover:opacity-100">
+              Ver detalles &gt;
+            </span>
+          </div>
           <p className="w-full text-sm leading-normal text-text-soft transition-motion hoverable:group-hover:text-text">
             {project.subtitle}
           </p>

@@ -40,9 +40,29 @@ export interface TechCategory {
   technologies: Technology[];
 }
 
+export interface ProjectSection {
+  title: string;
+  content: string;
+  bullets?: string[];
+}
+
+export interface MediaItem {
+  type: "image" | "video";
+  title: string;
+  caption?: string;
+}
+
 export interface Project {
+  slug?: string;
   title: string;
   subtitle: string;
+  description?: string;
+  sections?: ProjectSection[];
+  media?: MediaItem[];
+  year?: string;
+  role?: string;
+  liveUrl?: string;
+  githubUrl?: string;
   icons: Technology[];
 }
 
