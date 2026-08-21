@@ -19,7 +19,6 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
       <Placeholder
         label="PROJECT IMAGE"
         className="h-[140px] w-full"
-        labelClassName="transition-motion hoverable:group-hover:tracking-[0.28em]"
       />
       <div className="flex w-full flex-col gap-4">
         <div className="flex w-full flex-col gap-1.5">

@@ -18,7 +18,7 @@ export default function IntroSection() {
                 height="240"
                 sizes="(max-width: 767px) 80px, 120px"
                 decoding="async"
-                className="h-full w-full scale-[1.12] object-cover blur-[0.25px]"
+                className="h-full w-full object-cover"
               />
             </picture>
           </div>

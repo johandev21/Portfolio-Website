@@ -110,8 +110,8 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
 
   return (
     <section className="w-full pb-20">
-      <div className="mx-auto w-full max-w-4xl px-4 md:px-6">
-        <article className="flex w-full flex-col gap-4 border border-border bg-surface p-4 md:p-6">
+      <div className="mx-auto w-full max-w-4xl">
+        <article className="group flex w-full flex-col gap-4 border border-border p-4 transition-motion-slow hover:bg-surface/60 md:p-6">
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
               <h1 className="font-serif text-2xl md:text-3xl font-normal text-text">
@@ -128,7 +128,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
             </button>
           </div>
 
-          <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:flex-wrap">
             {renderTechIcons()}
             <div className="flex items-center gap-4">
               {project.liveUrl && (
@@ -136,7 +136,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-accent font-medium transition-motion underline-offset-4 hover:underline"
+                  className="text-xs md:text-sm text-accent font-medium transition-motion underline-offset-4 hover:underline"
                 >
                   Ver sitio
                 </a>
@@ -146,7 +146,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-accent font-medium transition-motion underline-offset-4 hover:underline"
+                  className="text-xs md:text-sm text-accent font-medium transition-motion underline-offset-4 hover:underline"
                 >
                   Ver código
                 </a>
@@ -204,7 +204,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
 
             {activeTab === "sections" && (
               <div className="border border-border bg-bg p-4 md:p-6">
-                <div className="typeset">
+                <div className="typeset text-sm md:text-base">
                   <ReactMarkdown
                     components={{
                       pre({ children }) {
