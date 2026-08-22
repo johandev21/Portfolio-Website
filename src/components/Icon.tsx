@@ -1,8 +1,13 @@
 import { createElement } from "react";
 import { Download, Mail, MapPin } from "lucide";
+import betterAuth from "../assets/icons/thesvg/better-auth.svg?raw";
+import bun from "../assets/icons/thesvg/bun.svg?raw";
+import clerk from "../assets/icons/thesvg/clerk.svg?raw";
+import convex from "../assets/icons/thesvg/convex.svg?raw";
 import css from "../assets/icons/thesvg/CSS.svg?raw";
 import django from "../assets/icons/thesvg/Django.svg?raw";
 import drizzle from "../assets/icons/thesvg/Drizzle.svg?raw";
+import elysiajs from "../assets/icons/thesvg/elysiajs.svg?raw";
 import github from "../assets/icons/thesvg/GitHub.svg?raw";
 import html5 from "../assets/icons/thesvg/HTML.svg?raw";
 import javascript from "../assets/icons/thesvg/JavaScript.svg?raw";
@@ -15,9 +20,12 @@ import prisma from "../assets/icons/thesvg/Prisma.svg?raw";
 import python from "../assets/icons/thesvg/Python.svg?raw";
 import react from "../assets/icons/thesvg/React.svg?raw";
 import shadcn from "../assets/icons/thesvg/Shadcn.svg?raw";
+import sqlite from "../assets/icons/thesvg/sqlite.svg?raw";
 import tailwind from "../assets/icons/thesvg/Tailwind.svg?raw";
 import tanstackQuery from "../assets/icons/thesvg/Tanstack Query.svg?raw";
+import tanstackRouter from "../assets/icons/thesvg/tanstack.svg?raw";
 import typescript from "../assets/icons/thesvg/TypeScript.svg?raw";
+import vite from "../assets/icons/thesvg/vite.svg?raw";
 import zod from "../assets/icons/thesvg/Zod.svg?raw";
 import type { IconName } from "../types";
 
@@ -34,9 +42,14 @@ const icons = {
 } as const;
 
 const brandIcons = {
+  "better-auth": betterAuth,
+  bun,
+  clerk,
+  convex,
   css,
   django,
   drizzle,
+  elysia: elysiajs,
   github,
   html5,
   javascript,
@@ -49,9 +62,12 @@ const brandIcons = {
   python,
   react,
   shadcn,
+  sqlite,
   tailwind,
   "tanstack-query": tanstackQuery,
+  "tanstack-router": tanstackRouter,
   typescript,
+  vite,
   zod,
 } as const;
 

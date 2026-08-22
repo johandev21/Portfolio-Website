@@ -1,80 +1,169 @@
 import type { PortfolioData, Technology } from "../types";
 
-const projectIcons = [
-  { name: "NestJS", icon: "nestjs" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "Zod", icon: "zod" },
+const memsystemsIcons = [
   { name: "React", icon: "react" },
-  { name: "TanStack Query", icon: "tanstack-query" },
-  { name: "Next.js", icon: "nextjs" },
-  { name: "shadcn", icon: "shadcn" },
+  { name: "Vite", icon: "vite" },
+  { name: "TanStack Router", icon: "tanstack-router" },
+  { name: "NestJS", icon: "nestjs" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "Drizzle", icon: "drizzle" },
+  { name: "Better Auth", icon: "better-auth" },
+  { name: "TypeScript", icon: "typescript" },
 ] satisfies Technology[];
 
-const sampleMarkdown = `## Contexto del Proyecto
+const tasklaneIcons = [
+  { name: "TanStack Start", icon: "tanstack-router" },
+  { name: "React", icon: "react" },
+  { name: "Tailwind", icon: "tailwind" },
+  { name: "shadcn", icon: "shadcn" },
+  { name: "Convex", icon: "convex" },
+  { name: "Clerk", icon: "clerk" },
+  { name: "Zod", icon: "zod" },
+  { name: "TypeScript", icon: "typescript" },
+] satisfies Technology[];
 
-Insight nace de la necesidad de centralizar métricas complejas en un entorno visualmente limpio e intuitivo. En las plataformas tradicionales, los usuarios ejecutivos suelen perderse entre tablas densas y dashboards recargados que dificultan la extracción rápida de conclusiones estratégicas.
+const threadnestIcons = [
+  { name: "Bun", icon: "bun" },
+  { name: "Elysia", icon: "elysia" },
+  { name: "Better Auth", icon: "better-auth" },
+  { name: "SQLite", icon: "sqlite" },
+  { name: "Drizzle", icon: "drizzle" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "React", icon: "react" },
+  { name: "Tailwind", icon: "tailwind" },
+  { name: "TanStack Query", icon: "tanstack-query" },
+] satisfies Technology[];
 
-Para abordar esta problemática, diseñamos una arquitectura orientada a la claridad visual y la velocidad de respuesta. El sistema recopila datos operativos en tiempo real desde múltiples orígenes de eventos y los consolida en paneles adaptativos.
+const radIcons = [
+  { name: "Next.js", icon: "nextjs" },
+  { name: "Prisma", icon: "prisma" },
+  { name: "MariaDB", icon: "mysql" },
+  { name: "Better Auth", icon: "better-auth" },
+  { name: "Tailwind", icon: "tailwind" },
+  { name: "shadcn", icon: "shadcn" },
+  { name: "Zod", icon: "zod" },
+  { name: "TypeScript", icon: "typescript" },
+] satisfies Technology[];
 
-### Objetivos Principales
+const memsystemsMarkdown = `## Contexto del Proyecto
 
-El desarrollo se estructuró en torno a tres pilares fundamentales que guiaron las decisiones de diseño e ingeniería desde el primer momento.
+Memsystems es una aplicación para organizar notebooks, consultar fuentes y generar materiales de estudio con modelos de inteligencia artificial. Busca reunir en un solo lugar la investigación, el contexto y las herramientas de estudio que un usuario necesita.
 
-1. **Reducción de Latencia**: Lograr tiempos de renderizado por debajo de los 100ms incluso en consultas de grandes volúmenes de datos.
-2. **Interfaz Adaptativa**: Permitir a usuarios no técnicos personalizar widgets y filtros mediante un flujo intuitivo.
-3. **Escalabilidad**: Mantener la estabilidad del servidor ante picos repentinos de tráfico de datos en tiempo real.
+Para lograrlo, el proyecto se organizó como un monorepo con una interfaz web desarrollada con React, Vite y TanStack Router, y una API construida con NestJS, PostgreSQL y Drizzle ORM.
 
-## Arquitectura del Sistema
+### Funcionalidades Principales
 
-La solución adopta un patrón monorepo modular impulsado por NestJS en la capa de servidor y Next.js en la capa de cliente. Esta separación clara de responsabilidades garantiza la reusabilidad de tipos y schemas de datos mediante TypeScript y Zod.
+1. **Notebooks**: Espacios de trabajo con título, descripción, ícono e imagen de banner personalizados, además de búsqueda y listado.
+2. **Fuentes de información**: Asociadas al notebook, permiten añadir texto, importar contenido desde una URL, subir archivos y consultar fuentes mediante búsqueda web.
+3. **Chat contextual**: Chat persistente por notebook para interactuar con sus fuentes, con respuestas en streaming, selección de modelo e historial de mensajes.
+4. **Materiales de estudio**: Cuestionarios, tarjetas de estudio, rutas de aprendizaje y mapas mentales, organizados en carpetas y con papelera de recuperación.
 
-En el backend, implementamos un pipeline de procesamiento asíncrono que ingiere los eventos entrantes y los almacena en PostgreSQL con índices optimizados para consultas temporales.
+## Proveedores y Modelos de IA
 
-\`\`\`ts
-// Ejemplo de validación del evento con Zod
-const EventSchema = z.object({
-  id: z.string().uuid(),
-  timestamp: z.date(),
-  metric: z.string(),
-  value: z.number(),
-});
-\`\`\`
+La aplicación integra múltiples proveedores (OpenAI, DeepSeek, Anthropic, Google Gemini y Kimi) y permite consultar los modelos disponibles desde la interfaz. Las claves se configuran mediante variables de entorno o desde los ajustes de usuario.
 
-### Gestión de Estado en Cliente
-
-En el cliente, utilizamos TanStack Query para gestionar el cacheo reactivo y la invalidación inteligente de consultas. Esto evita peticiones redundantes y asegura que la UI refleje el estado más reciente del servidor sin sobrecargar la red.
-
-La combinación de componentes de UI minimalistas inspirados en shadcn con la flexibilidad de Tailwind CSS nos permitió construir una interfaz moderna, responsiva y accesible.
-
-> "La simplicidad no es la ausencia de desorden, sino la presencia de propósito claro en cada elemento."
-
-## Rendimiento y Optimización
-
-Durante las pruebas de estrés, identificamos cuellos de botella en la renderización de listas largas de eventos. Para resolverlo, implementamos virtualización de listas y lazy loading de componentes pesados.
-
-Adicionalmente, se configuró compresión de respuestas y estrategias de cache en borde (CDN), logrando un puntaje sobresaliente en las auditorías de rendimiento de Lighthouse.
-
-- **FCP (First Contentful Paint)**: 0.8s
-- **LCP (Largest Contentful Paint)**: 1.2s
-- **CLS (Cumulative Layout Shift)**: 0.01
-
-## Seguridad y Control de Acceso
-
-La seguridad fue un requerimiento transversal en todo el desarrollo. Implementamos autenticación mediante Tokens JWT con rotación automática y control de acceso basado en roles (RBAC).
-
-Cada petición al servidor es auditada en logs estructurados para permitir un rastreo detallado de acciones administrativas y cambios de configuración dentro de la plataforma.
+La autenticación y las sesiones se gestionan con Better Auth, mientras que la persistencia de notebooks, fuentes, chats y configuraciones se almacena en PostgreSQL.
 
 ## Despliegue e Infraestructura
 
-El despliegue automatizado se gestiona mediante pipelines de integración continua (CI/CD) que ejecutan suites de pruebas unitarias y de integración antes de cada lanzamiento a producción.
+Docker ofrece dos flujos aislados: un modo de desarrollo con recarga automática y un stack local similar a producción que sirve el frontend con nginx y ejecuta el backend compilado.
 
-La aplicación corre en contenedores Docker orquestados, lo que facilita el escalado horizontal automático según la demanda de los usuarios.
+- **Frontend**: Vite con HMR activo.
+- **Backend**: NestJS con reinicio automático al detectar cambios.
+- **Persistencia**: PostgreSQL y almacenamiento local, S3, R2 o MinIO mediante una interfaz compatible con S3.
 
-## Próximos Pasos
+## Estado del Proyecto
 
-Continuamos trabajando en la expansión de las capacidades analíticas de Insight. La próxima fase del proyecto contempla la integración de modelos predictivos para anticipar tendencias operativas.
+El proyecto se encuentra en desarrollo. Algunas funciones y configuraciones pueden cambiar mientras evoluciona la aplicación.`;
 
-Asimismo, planeamos añadir soporte para alertas personalizadas mediante webhooks y notificaciones en tiempo real a plataformas de comunicación.`;
+const tasklaneMarkdown = `## Contexto del Proyecto
+
+Tasklane es una aplicación web de gestión visual del trabajo diseñada para equipos de alto rendimiento. Su objetivo central es ofrecer una experiencia de colaboración fluida e instantánea: cualquier cambio realizado por un miembro se refleja de forma inmediata en las pantallas de todos los usuarios conectados sin necesidad de recargar la página.
+
+La aplicación se estructura mediante tableros, listas y tarjetas, y sigue un lenguaje ubicuo estricto para garantizar consistencia entre el código, la base de datos y la interfaz de usuario.
+
+### Funcionalidades Principales
+
+1. **Identidad**: Registro e inicio de sesión con email y contraseña mediante Clerk.
+2. **Dashboard**: Vista de todos los Boards del usuario, con creación y estados vacíos guiados.
+3. **Boards, Lists y Cards**: CRUD completo con reordenamiento drag & drop, movimiento entre listas y edición en línea.
+4. **Detalle de Card**: Descripción con Markdown, etiquetas, fecha límite, asignación de miembros y hilo de comentarios.
+5. **Presence en tiempo real**: Franja de avatares con indicador de los miembros que están viendo el tablero.
+
+## Stack Tecnológico
+
+- **Frontend**: TanStack Start (React 19) con renderizado en servidor y enrutamiento tipado.
+- **Diseño**: Tailwind CSS v4 y shadcn/ui.
+- **Backend**: Convex como base de datos reactiva y funciones serverless.
+- **Identidad**: Clerk con validación de tokens JWT en el backend.
+- **Pruebas**: Vitest con convex-test para pruebas en memoria.
+
+## Decisiones de Arquitectura
+
+El desarrollo se fundamenta en Registros de Decisiones Arquitectónicas (ADRs) documentados en \`docs/adr/\`:
+
+1. **Stack Unificado**: Convex centraliza persistencia, funciones de servidor y suscripciones reactivas.
+2. **Autenticación Delegada**: Clerk gestiona las credenciales y Convex verifica la firma JWT.
+3. **Tiempo Real y Ordenamiento**: Reordenamiento basado en anclas posicionales resueltas en el servidor y presencia mediante latidos periódicos.`;
+
+const threadnestMarkdown = `## Contexto del Proyecto
+
+ThreadNest es un clon ligero de Reddit. Las comunidades se llaman **nests**, las publicaciones viven dentro de los nests y los hilos de comentarios se anidan dentro de cada publicación.
+
+El proyecto es un monorepo con dos aplicaciones: una API REST con Elysia.js (autenticación, base de datos SQLite y WebSockets) y un frontend con Next.js (App Router).
+
+### Funcionalidades Principales
+
+1. **Nests**: Comunidades con slug, descripción y contador de miembros y publicaciones.
+2. **Publicaciones**: De tipo texto o enlace dentro de cada nest.
+3. **Comentarios anidados**: Respuestas ilimitadas.
+4. **Sistema de votos**: Positivo, negativo o neutro sobre publicaciones y comentarios.
+5. **Feed**: Ordenamiento por populares, recientes o mejor votados, con paginación por cursor.
+6. **Tiempo real**: Actualizaciones vía WebSockets sin recargar la página.
+
+## Stack Tecnológico
+
+- **Runtime**: Bun.
+- **Backend**: Elysia.js.
+- **Autenticación**: Better Auth (correo y contraseña).
+- **Base de datos**: SQLite mediante el driver nativo \`bun:sqlite\`.
+- **ORM**: Drizzle ORM con drizzle-kit para migraciones.
+- **Type safety**: Eden Treaty para un cliente de API tipado de extremo a extremo.
+- **Frontend**: Next.js 16 (App Router), React 19.
+- **UI**: shadcn/ui, Tailwind CSS 4 y lucide-react.
+- **Estado de datos**: TanStack Query v5.
+
+## API y Tiempo Real
+
+El servidor expone grupos de ruta bajo \`/api\` para salud, autenticación, nests, posts, comments y votes. El módulo \`realtime/hub.ts\` implementa un registro de temas con helpers de difusión mediante los WebSockets nativos de Elysia, lo que permite sincronizar votos, comentarios y actividad en tiempo real.`;
+
+const radMarkdown = `## Contexto del Proyecto
+
+Sistema de gestión para la Relación Asistencial Docente (RAD) del Hospital Regional de Rancagua. Diseñado para centralizar y optimizar el control de alumnos, rotaciones, servicios clínicos y centros formadores, reemplazando un flujo de trabajo manual basado en Excel.
+
+### Funcionalidades Principales
+
+1. **Centros Formadores y Carreras**: Registro y control de convenios.
+2. **Capacidad Formadora**: Gestión de cupos por servicio clínico, jornada y nivel de formación.
+3. **Gestión de Alumnos**: Carga masiva de nóminas y seguimiento individual.
+4. **Eventos Adversos**: Registro seguro de incidentes con carga de evidencia protegida.
+5. **Repositorio de Documentos**: Biblioteca centralizada para normativas y guías.
+
+## Stack Tecnológico
+
+- **Frontend y Backend**: Next.js 16 (App Router, Server Components).
+- **Base de datos**: MariaDB con Prisma ORM.
+- **Autenticación**: Better-Auth.
+- **Estilos**: Tailwind CSS y shadcn/ui.
+- **Validación**: Zod.
+
+## Seguridad y Almacenamiento
+
+Los archivos sensibles se almacenan en el directorio \`.storage/\` fuera de la carpeta pública. El acceso se gestiona mediante tokens cifrados y validación de sesión para garantizar la privacidad de la información clínica.
+
+## Despliegue
+
+El repositorio incluye utilidades en \`/scripts\`, como un generador de archivos Excel para pruebas de carga masiva y un script de despliegue automatizado.`;
 
 export const portfolioData: PortfolioData = {
   hero: {
@@ -101,132 +190,88 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
-      slug: "insight",
-      title: "Insight",
-      subtitle: "Convierte datos en decisiones accionables.",
+      slug: "memsystems",
+      title: "Memsystems",
+      subtitle: "Organiza tu conocimiento y genera materiales de estudio con IA.",
       description:
-        "Plataforma web de analítica avanzada orientada a la toma de decisiones. Centraliza datos dispersos en paneles interactivos que responden en tiempo real a las necesidades del negocio.",
-      detailsMarkdown: sampleMarkdown,
+        "Plataforma para organizar notebooks, consultar fuentes y generar materiales de estudio (cuestionarios, tarjetas y mapas mentales) con modelos de inteligencia artificial.",
+      detailsMarkdown: memsystemsMarkdown,
       year: "2026",
       role: "Desarrollo Full Stack",
-      liveUrl: "https://example.com/insight",
-      githubUrl: "https://github.com/johandev21/insight",
-      icons: [...projectIcons],
+      liveUrl: "https://example.com/memsystems",
+      githubUrl: "https://github.com/johandev21/Memsystems-AI",
+      icons: [...memsystemsIcons],
       sections: [
         {
-          title: "Visión General y Contexto",
+          title: "Ecosistema de Estudio",
           content:
-            "El objetivo de Insight es eliminar la fricción al analizar grandes conjuntos de datos. Permite a los usuarios crear vistas personalizadas sin requerir conocimientos técnicos complejos.",
+            "Notebooks, fuentes de información, chat contextual y materiales de estudio generados por IA, unificados en una sola aplicación.",
         },
       ],
-      media: [
-        {
-          type: "video",
-          title: "Demostración de flujo interactivo",
-          caption: "Demostración en video del panel en vivo con actualización en tiempo real",
-        },
-        {
-          type: "image",
-          title: "Vista de métricas generales",
-          caption: "Tablero ejecutivo con gráficos de rendimiento y agregaciones",
-        },
-        {
-          type: "image",
-          title: "Configuración de filtros",
-          caption: "Interfaz de filtrado avanzado por rangos y categorías",
-        },
-      ],
+      media: [],
     },
     {
-      slug: "gridly",
-      title: "Gridly",
-      subtitle: "Organiza datos con rapidez y claridad.",
+      slug: "tasklane",
+      title: "Tasklane",
+      subtitle: "Gestión visual de proyectos y colaboración en tiempo real.",
       description:
-        "Sistema interactivo de tablas de datos enfocado en la manipulación rápida de información masiva con mínima sobrecarga visual.",
-      detailsMarkdown: sampleMarkdown,
+        "Aplicación web de gestión visual del trabajo mediante tableros, listas y tarjetas, con colaboración instantánea y presencia en tiempo real.",
+      detailsMarkdown: tasklaneMarkdown,
       year: "2026",
-      role: "Desarrollo Frontend",
-      liveUrl: "https://example.com/gridly",
-      githubUrl: "https://github.com/johandev21/gridly",
-      icons: [...projectIcons],
-      sections: [
-        {
-          title: "Manipulación de Datos Eficiente",
-          content:
-            "Gridly permite realizar búsquedas instantáneas, reordenamiento de columnas y edición en celda garantizando un rendimiento constante incluso con miles de registros.",
-        },
-      ],
-      media: [
-        {
-          type: "video",
-          title: "Vista previa de interacción",
-          caption: "Video corto demostrando edición masiva y navegación por teclado",
-        },
-        {
-          type: "image",
-          title: "Captura de tabla extendida",
-          caption: "Vista de cuadrícula con grupos y columnas personalizadas",
-        },
-      ],
-    },
-    {
-      slug: "metrichub",
-      title: "MetricHub",
-      subtitle: "Visualiza indicadores desde un solo lugar.",
-      description:
-        "Panel centralizado de monitoreo distribuido para alertas e indicadores críticos de infraestructura y servicios web.",
-      detailsMarkdown: sampleMarkdown,
-      year: "2025",
-      role: "Arquitectura & Backend",
-      liveUrl: "https://example.com/metrichub",
-      githubUrl: "https://github.com/johandev21/metrichub",
-      icons: [...projectIcons],
-      sections: [
-        {
-          title: "Monitoreo en Tiempo Real",
-          content:
-            "Agrega logs y métricas de rendimiento procedentes de múltiples servidores reduciendo el tiempo de respuesta ante incidentes.",
-        },
-      ],
-      media: [
-        {
-          type: "image",
-          title: "Panel principal de servidores",
-          caption: "Indicadores de CPU, memoria y tasa de peticiones",
-        },
-        {
-          type: "video",
-          title: "Simulación de alerta en directo",
-          caption: "Video demostrativo de detección automática de anomalías",
-        },
-      ],
-    },
-    {
-      slug: "clouddesk",
-      title: "CloudDesk",
-      subtitle: "Espacio de trabajo centralizado en la nube.",
-      description:
-        "Entorno digital para gestión colaborativa de documentos y permisos en equipos distribuidos.",
-      detailsMarkdown: sampleMarkdown,
-      year: "2025",
       role: "Desarrollo Full Stack",
-      liveUrl: "https://example.com/clouddesk",
-      githubUrl: "https://github.com/johandev21/clouddesk",
-      icons: [...projectIcons],
+      liveUrl: "https://example.com/tasklane",
+      githubUrl: "https://github.com/johandev21/Tasklane",
+      icons: [...tasklaneIcons],
       sections: [
         {
-          title: "Gestión Documental",
+          title: "Colaboración Instantánea",
           content:
-            "Organización estructurada de carpetas con control de acceso específico por usuario y nivel de autorización.",
+            "Cada cambio realizado por un miembro se refleja de inmediato en las pantallas de todos los usuarios conectados, sin recargar la página.",
         },
       ],
-      media: [
+      media: [],
+    },
+    {
+      slug: "threadnest",
+      title: "ThreadNest",
+      subtitle: "Comunidades y conversaciones anidadas.",
+      description:
+        "Clon ligero de Reddit donde las comunidades (nests) alojan publicaciones y los hilos de comentarios se anidan dentro de cada una.",
+      detailsMarkdown: threadnestMarkdown,
+      year: "2026",
+      role: "Desarrollo Full Stack",
+      liveUrl: "https://example.com/threadnest",
+      githubUrl: "https://github.com/johandev21/ThreadNest",
+      icons: [...threadnestIcons],
+      sections: [
         {
-          type: "image",
-          title: "Explorador de archivos",
-          caption: "Interfaz de navegación por carpetas y vista previa de documentos",
+          title: "Comunidades y Votos",
+          content:
+            "Nests, publicaciones de texto o enlace, comentarios anidados ilimitados y sistema de votos con feed en tiempo real.",
         },
       ],
+      media: [],
+    },
+    {
+      slug: "gestor-rad",
+      title: "Gestor RAD",
+      subtitle: "Control centralizado de la relación asistencial docente.",
+      description:
+        "Sistema de gestión para la Relación Asistencial Docente (RAD) del Hospital Regional de Rancagua, que centraliza el control de alumnos, rotaciones, servicios clínicos y centros formadores.",
+      detailsMarkdown: radMarkdown,
+      year: "2026",
+      role: "Desarrollo Full Stack",
+      liveUrl: "https://example.com/gestor-rad",
+      githubUrl: "https://github.com/johandev21/proyecto-rad-hospital-rancagua",
+      icons: [...radIcons],
+      sections: [
+        {
+          title: "Gestión de Rotaciones",
+          content:
+            "Registro de centros formadores, capacidad formadora, nóminas de alumnos, eventos adversos y repositorio de documentos.",
+        },
+      ],
+      media: [],
     },
   ],
   techCategories: [
@@ -239,6 +284,7 @@ export const portfolioData: PortfolioData = {
         { name: "MySQL", icon: "mysql" },
         { name: "Prisma", icon: "prisma" },
         { name: "Drizzle", icon: "drizzle" },
+        { name: "SQLite", icon: "sqlite" },
       ],
     },
     {
@@ -246,6 +292,7 @@ export const portfolioData: PortfolioData = {
       technologies: [
         { name: "React", icon: "react" },
         { name: "Next.js", icon: "nextjs" },
+        { name: "Vite", icon: "vite" },
         { name: "shadcn", icon: "shadcn" },
         { name: "Tailwind", icon: "tailwind" },
         { name: "HTML5", icon: "html5" },
@@ -254,11 +301,30 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
-      label: "Lenguajes",
+      label: "Lenguajes y Runtimes",
       technologies: [
         { name: "TypeScript", icon: "typescript" },
         { name: "Python", icon: "python" },
         { name: "JavaScript", icon: "javascript" },
+        { name: "Bun", icon: "bun" },
+      ],
+    },
+    {
+      label: "Frameworks y APIs",
+      technologies: [
+        { name: "Elysia", icon: "elysia" },
+        { name: "NestJS", icon: "nestjs" },
+        { name: "TanStack Router", icon: "tanstack-router" },
+      ],
+    },
+    {
+      label: "Herramientas",
+      technologies: [
+        { name: "TanStack Query", icon: "tanstack-query" },
+        { name: "TanStack Router", icon: "tanstack-router" },
+        { name: "Better Auth", icon: "better-auth" },
+        { name: "Clerk", icon: "clerk" },
+        { name: "Convex", icon: "convex" },
       ],
     },
   ],
