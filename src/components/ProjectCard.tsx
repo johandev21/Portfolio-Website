@@ -2,6 +2,7 @@ import type { Project } from "../types";
 import Icon from "./Icon";
 import Placeholder from "./Placeholder";
 import Tooltip from "./Tooltip";
+import { preloadProjectDetailPage } from "../pages/projectDetailRouteComponent";
 
 interface ProjectCardProps {
   project: Project;
@@ -9,9 +10,16 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
+  const preloadDetails = () => {
+    if (!onSelect) return;
+    void preloadProjectDetailPage().catch(() => undefined);
+  };
+
   return (
     <article
       onClick={onSelect}
+      onPointerEnter={preloadDetails}
+      onPointerDown={preloadDetails}
       className={`group flex w-full flex-col gap-4 border border-border p-4 transition-motion-slow hover:-translate-y-[3px] hover:bg-surface/60 active:translate-y-[1px] motion-reduce:hover:translate-none motion-reduce:active:translate-none motion-reduce:transition-none ${
         onSelect ? "cursor-pointer" : ""
       }`}

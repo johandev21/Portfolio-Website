@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-router";
 import RootLayout from "./pages/RootLayout";
 import PortfolioHome from "./pages/PortfolioHome";
-import ProjectDetailPage from "./pages/ProjectDetailPage";
+import { ProjectDetailRouteComponent } from "./pages/projectDetailRouteComponent";
 
 const rootRoute = createRootRoute({
   component: RootLayout,
@@ -20,7 +20,7 @@ const indexRoute = createRoute({
 const projectDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/project/$slug",
-  component: ProjectDetailPage,
+  component: ProjectDetailRouteComponent,
 });
 
 const routeTree = rootRoute.addChildren([indexRoute, projectDetailRoute]);

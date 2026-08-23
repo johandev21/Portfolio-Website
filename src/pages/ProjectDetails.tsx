@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { codeToHtml } from "shiki";
 import type { Project, MediaItem } from "../types";
 import Icon from "../components/Icon";
 import Tooltip from "../components/Tooltip";
@@ -8,50 +7,6 @@ import Tooltip from "../components/Tooltip";
 interface ProjectDetailsProps {
   project: Project;
   onBack: () => void;
-}
-
-function CodeHighlight({ code, language }: { code: string; language: string }) {
-  const [html, setHtml] = useState<string>("");
-
-  useEffect(() => {
-    let active = true;
-
-    codeToHtml(code, {
-      lang: language,
-      themes: {
-        light: "github-light",
-        dark: "github-dark",
-      },
-    })
-      .then((out) => {
-        if (active) setHtml(out);
-      })
-      .catch(() => {
-        codeToHtml(code, {
-          lang: "text",
-          themes: {
-            light: "github-light",
-            dark: "github-dark",
-          },
-        }).then((out) => {
-          if (active) setHtml(out);
-        });
-      });
-
-    return () => {
-      active = false;
-    };
-  }, [code, language]);
-
-  if (!html) {
-    return (
-      <pre className="border border-border bg-bg p-3 font-mono text-xs text-text overflow-x-auto">
-        <code>{code}</code>
-      </pre>
-    );
-  }
-
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 export default function ProjectDetails({ project, onBack }: ProjectDetailsProps) {
@@ -205,25 +160,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
             {activeTab === "sections" && (
               <div className="border border-border bg-bg p-4 md:p-6">
                 <div className="typeset text-sm md:text-base">
-                  <ReactMarkdown
-                    components={{
-                      pre({ children }) {
-                        return <>{children}</>;
-                      },
-                      code(props) {
-                        const { children, className, ...rest } = props;
-                        const match = /language-(\w+)/.exec(className || "");
-                        const codeStr = String(children).replace(/\n$/, "");
-                        return match ? (
-                          <CodeHighlight language={match[1]} code={codeStr} />
-                        ) : (
-                          <code className={className} {...rest}>
-                            {children}
-                          </code>
-                        );
-                      },
-                    }}
-                  >
+                  <ReactMarkdown>
                     {project.detailsMarkdown || project.description || ""}
                   </ReactMarkdown>
                 </div>

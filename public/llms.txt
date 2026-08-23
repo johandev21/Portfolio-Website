@@ -1,0 +1,24 @@
+# Johan Carrasco — Ingeniero de Software
+
+Portafolio profesional de Johan Carrasco, ingeniero de software enfocado en aplicaciones web escalables, confiables y mantenibles.
+
+## Secciones principales
+
+- [Inicio](/)
+- [Experiencia](/#experiencia)
+- [Proyectos](/#proyectos)
+- [Tecnologías](/#tecnologias)
+- [Contacto](/#contacto)
+
+## Proyectos
+
+- [Memsystems](/project/memsystems)
+- [Tasklane](/project/tasklane)
+- [ThreadNest](/project/threadnest)
+- [Gestor RAD](/project/gestor-rad)
+
+## Enlaces
+
+- [GitHub](https://github.com/johandev21)
+- [LinkedIn](https://www.linkedin.com/in/johandev21/)
+- [Correo](mailto:johandev21@gmail.com)

@@ -16,9 +16,10 @@ export default function Header() {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    lastScrollY.current = window.scrollY;
+    let frameId: number | null = null;
 
-    const handleScroll = () => {
+    const updateHeader = () => {
+      frameId = null;
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY.current;
 
@@ -33,10 +34,21 @@ export default function Header() {
       lastScrollY.current = currentScrollY;
     };
 
+    const handleScroll = () => {
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(updateHeader);
+      }
+    };
+
+    frameId = window.requestAnimationFrame(() => {
+      frameId = null;
+      lastScrollY.current = window.scrollY;
+    });
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frameId !== null) window.cancelAnimationFrame(frameId);
     };
   }, [isMenuOpen]);
 
