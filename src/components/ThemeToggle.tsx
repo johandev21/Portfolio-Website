@@ -1,4 +1,4 @@
-import { createElement, useEffect, useState } from "react";
+import { createElement, useCallback, useEffect, useState } from "react";
 import { Moon, Sun } from "lucide";
 
 type Theme = "light" | "dark";
@@ -38,19 +38,47 @@ export default function ThemeToggle() {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
-  const nextTheme = theme === "dark" ? "light" : "dark";
-
-  const handleToggle = () => {
-    const updatedTheme = nextTheme;
+  const toggleTheme = useCallback(() => {
+    const updatedTheme = theme === "dark" ? "light" : "dark";
     window.localStorage.setItem("theme", updatedTheme);
     setTheme(updatedTheme);
-  };
+  }, [theme]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target;
+      const isTyping =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        (target instanceof HTMLElement && target.isContentEditable);
+
+      if (
+        event.key.toLowerCase() !== "d" ||
+        event.repeat ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey ||
+        isTyping
+      ) {
+        return;
+      }
+
+      toggleTheme();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [toggleTheme]);
+
+  const nextTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <button
       type="button"
       aria-label={`Cambiar a tema ${nextTheme === "dark" ? "oscuro" : "claro"}`}
-      onClick={handleToggle}
+      aria-keyshortcuts="d"
+      onClick={toggleTheme}
       className="inline-flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
     >
       {theme === "dark" ? renderIcon(Sun) : renderIcon(Moon)}
