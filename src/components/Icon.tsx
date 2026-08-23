@@ -14,7 +14,7 @@ import javascript from "../assets/icons/thesvg/JavaScript.svg?raw";
 import linkedin from "../assets/icons/thesvg/Linkedin.svg?raw";
 import mysql from "../assets/icons/thesvg/MySQL.svg?raw";
 import nestjs from "../assets/icons/thesvg/NestJS.svg?raw";
-import nextjs from "../assets/icons/thesvg/Nextjs.svg?raw";
+import nextjs from "../assets/icons/thesvg/nextjs.svg?raw";
 import postgresql from "../assets/icons/thesvg/Postgresql.svg?raw";
 import prisma from "../assets/icons/thesvg/Prisma.svg?raw";
 import python from "../assets/icons/thesvg/Python.svg?raw";
