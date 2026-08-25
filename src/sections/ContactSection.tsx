@@ -42,17 +42,21 @@ export default function ContactSection() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--color-bg)_95%)]"
       />
       <div className="relative mx-auto max-w-[812px] px-6 md:px-8 lg:px-0">
-        <Reveal>
-          <div className="flex w-full flex-col gap-4 pt-[76px]">
+        <div className="flex w-full flex-col gap-4 pt-[76px]">
+          <Reveal variant="heading">
             <SectionTitle>Contacto</SectionTitle>
-            <div className="flex w-full flex-col items-center gap-4">
+          </Reveal>
+          <div className="flex w-full flex-col items-center gap-4">
+            <Reveal className="w-full" delay={55}>
               <ContactCard contact={contact} />
+            </Reveal>
+            <Reveal delay={110}>
               <p className="text-center text-sm leading-normal text-muted">
                 {contact.helperText}
               </p>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

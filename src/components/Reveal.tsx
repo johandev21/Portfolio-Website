@@ -1,19 +1,40 @@
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
+
+type RevealVariant = "default" | "heading" | "image" | "project";
 
 interface RevealProps {
   children: ReactNode;
+  className?: string;
+  delay?: number;
+  variant?: RevealVariant;
 }
 
-export default function Reveal({ children }: RevealProps) {
+type RevealStyle = CSSProperties & {
+  "--reveal-delay": string;
+};
+
+export default function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  variant = "default",
+}: RevealProps) {
   const elementRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
     const element = elementRef.current;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
-    if (!element || !("IntersectionObserver" in window)) {
-      setIsVisible(true);
+    if (
+      !element ||
+      prefersReducedMotion ||
+      !("IntersectionObserver" in window)
+    ) {
+      setIsRevealed(true);
       return;
     }
 
@@ -21,20 +42,30 @@ export default function Reveal({ children }: RevealProps) {
       ([entry]) => {
         if (!entry.isIntersecting) return;
 
-        setIsVisible(true);
+        setIsRevealed(true);
         observer.disconnect();
       },
-      { threshold: 0.2 },
+      {
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.12,
+      },
     );
 
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
+  const revealDelay = Math.min(Math.max(delay, 0), 240);
+  const style: RevealStyle = {
+    "--reveal-delay": `${revealDelay}ms`,
+  };
+
   return (
     <div
       ref={elementRef}
-      className={`transition-motion-slow motion-reduce:translate-none motion-reduce:opacity-100 motion-reduce:transition-none ${isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
+      className={`scroll-reveal scroll-reveal--${variant} ${className}`}
+      data-revealed={isRevealed ? "" : undefined}
+      style={style}
     >
       {children}
     </div>
