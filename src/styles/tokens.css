@@ -1,0 +1,69 @@
+@theme {
+  --font-serif: "Source Serif Pro", "Source Serif 4", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-heading: "Source Serif Pro", "Source Serif 4", Georgia, serif;
+  --font-body: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --color-bg: light-dark(oklch(95.88% 0.0086 84.6), oklch(17.01% 0.0053 219.8));
+  --color-surface: light-dark(oklch(94.12% 0.0103 81.8), oklch(20.57% 0.0073 229.3));
+  --color-border: light-dark(oklch(84.70% 0.0164 82.8), oklch(28.50% 0 89.9));
+  --color-muted: light-dark(oklch(52.67% 0.0125 76.5), oklch(68.79% 0.0023 17.2));
+  --color-muted-foreground: var(--color-muted);
+  --color-text: light-dark(oklch(25.76% 0.0048 67.6), oklch(95.81% 0 89.9));
+  --color-text-soft: light-dark(oklch(41.13% 0.0098 73.6), oklch(90.97% 0 89.9));
+  --color-foreground: var(--color-text);
+  --color-accent: light-dark(oklch(53.27% 0.0661 239.2), oklch(77.18% 0.0894 239.3));
+  --color-action: light-dark(oklch(25.76% 0.0048 67.6), oklch(80.78% 0 89.9));
+  --color-action-foreground: var(--color-bg);
+  --color-ring: var(--color-accent);
+  --color-primary: var(--color-accent);
+  --selection-bg: var(--color-accent);
+  --selection-text: var(--color-bg);
+  --text-sm: clamp(13px, calc(13px + (100vw - 375px) * 0.00154), 14px);
+  --text-base: clamp(14.5px, calc(14.5px + (100vw - 375px) * 0.00231), 16px);
+  --text-2xl: clamp(20px, calc(20px + (100vw - 375px) * 0.00616), 24px);
+  --text-4xl: clamp(30px, calc(30px + (100vw - 375px) * 0.00925), 36px);
+  --text-5xl: clamp(36px, calc(36px + (100vw - 375px) * 0.01849), 48px);
+}
+
+:root {
+  --contact-overlay: light-dark(oklch(95.88% 0.0086 84.6 / 0.84), oklch(17.01% 0.0053 219.8 / 0.85));
+  --project-card-background: light-dark(oklch(94.12% 0.0103 81.8 / 0.2), oklch(20.57% 0.0073 229.3 / 0.36));
+  --project-card-active-background: light-dark(oklch(94.12% 0.0103 81.8), oklch(21.69% 0.013 233.2));
+  --project-card-border: var(--color-border);
+  --project-media-frame: light-dark(oklch(25.76% 0.0048 67.6 / 0.12), oklch(77.18% 0.0894 239.3 / 0.2));
+  --project-media-filter: brightness(0.86) saturate(1.08) contrast(1.04);
+  --project-media-blend-mode: normal;
+  --project-media-overlay: light-dark(oklch(95.88% 0.0086 84.6), oklch(18.35% 0.0249 236.7));
+  --project-media-overlay-opacity: 0.18;
+  --project-media-overlay-active-opacity: 0.08;
+  --project-media-noise-opacity: 0.14;
+  --project-logo-backdrop: radial-gradient(circle at center, oklch(17.01% 0.0053 219.8 / 0.54) 0%, oklch(17.01% 0.0053 219.8 / 0.26) 28%, transparent 60%);
+  --project-logo-rest: light-dark(oklch(49.70% 0.0223 231.1), oklch(88.18% 0.0288 231.5));
+  --project-logo-shadow: light-dark(oklch(95.88% 0.0086 84.6 / 0.82), oklch(17.01% 0.0053 219.8 / 0.92));
+  --project-logo-active: linear-gradient(180deg, oklch(95.81% 0 89.9) 0%, oklch(77.18% 0.0894 239.3) 100%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --project-media-filter: brightness(1.14) saturate(0.55) contrast(0.86);
+    --project-media-blend-mode: luminosity;
+    --project-media-overlay-opacity: 0.58;
+    --project-media-overlay-active-opacity: 0.42;
+    --project-media-noise-opacity: 0.08;
+    --project-logo-backdrop: radial-gradient(circle at center, oklch(95.88% 0.0086 84.6 / 0.58) 0%, oklch(95.88% 0.0086 84.6 / 0.24) 28%, transparent 60%);
+    --project-logo-active: linear-gradient(180deg, oklch(25.76% 0.0048 67.6) 0%, oklch(53.27% 0.0661 239.2) 100%);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --project-media-filter: brightness(1.14) saturate(0.55) contrast(0.86);
+  --project-media-blend-mode: luminosity;
+  --project-media-overlay-opacity: 0.58;
+  --project-media-overlay-active-opacity: 0.42;
+  --project-media-noise-opacity: 0.08;
+  --project-logo-backdrop: radial-gradient(circle at center, oklch(95.88% 0.0086 84.6 / 0.58) 0%, oklch(95.88% 0.0086 84.6 / 0.24) 28%, transparent 60%);
+  --project-logo-active: linear-gradient(180deg, oklch(25.76% 0.0048 67.6) 0%, oklch(53.27% 0.0661 239.2) 100%);
+}
+:root[data-theme="dark"] { color-scheme: dark; }
