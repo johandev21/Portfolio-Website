@@ -61,7 +61,7 @@ export default function BackToTop() {
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
       onClick={handleClick}
-      className={`fixed right-5 bottom-5 z-50 inline-flex h-10 w-10 items-center justify-center border border-border bg-surface/90 text-text-soft shadow-lg backdrop-blur-sm transition-motion hover:-translate-y-0.5 hover:border-text-soft hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:translate-y-0 motion-reduce:transition-none md:right-8 md:bottom-8 ${isVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
+      className={`fixed right-5 bottom-5 z-50 inline-flex h-10 w-10 items-center justify-center border border-border bg-surface/90 text-text-soft shadow-lg backdrop-blur-sm transition-motion hover:border-text-soft hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:translate-y-0 motion-reduce:transition-none md:right-8 md:bottom-8 ${isVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}
     >
       {icon}
     </button>

@@ -67,7 +67,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 px-4 pt-3 transition-motion md:px-6 ${isHidden ? "md:-translate-y-full md:opacity-0 md:pointer-events-none" : ""}`}
+      className={`fixed inset-x-0 top-0 z-40 px-3 pt-3 transition-motion md:px-6 ${isHidden ? "md:-translate-y-full md:opacity-0 md:pointer-events-none" : ""}`}
     >
       <div className="mx-auto max-w-4xl border border-border/70 bg-bg/85 backdrop-blur-md">
         <div className="flex h-14 items-center justify-between px-4 md:px-5">
@@ -103,15 +103,15 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="group flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-none text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg md:hidden"
+              className="group relative flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg md:hidden"
             >
               <span
                 aria-hidden="true"
-                className={`h-px w-4 bg-current transition-motion ${isMenuOpen ? "translate-y-1 rotate-45" : ""}`}
+                className={`absolute top-1/2 left-1/2 h-px w-4 -translate-x-1/2 bg-current transition-motion ${isMenuOpen ? "rotate-45" : "-translate-y-[3px]"}`}
               />
               <span
                 aria-hidden="true"
-                className={`h-px w-4 bg-current transition-motion ${isMenuOpen ? "-translate-y-1 -rotate-45" : ""}`}
+                className={`absolute top-1/2 left-1/2 h-px w-4 -translate-x-1/2 bg-current transition-motion ${isMenuOpen ? "-rotate-45" : "translate-y-[3px]"}`}
               />
             </button>
           </div>

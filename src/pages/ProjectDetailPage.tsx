@@ -12,7 +12,7 @@ export default function ProjectDetailPage() {
     portfolioData.projects[0];
 
   return (
-    <div className="mx-auto flex w-full max-w-full flex-col items-stretch px-6 pt-28 md:px-8 md:pt-32">
+    <div className="mx-auto flex w-full max-w-full flex-col items-stretch px-3 pt-28 md:px-8 md:pt-32">
       <Reveal>
         <ProjectDetails
           project={activeProject}

@@ -12,7 +12,7 @@ export default function PortfolioHome() {
     <>
       <div
         id="inicio"
-        className="mx-auto flex w-full max-w-full flex-col items-stretch px-6 pt-28 md:px-8 md:pt-32 lg:max-w-4xl lg:px-0"
+        className="mx-auto flex w-full max-w-full flex-col items-stretch px-3 pt-28 md:px-8 md:pt-32 lg:max-w-4xl lg:px-0"
       >
         <IntroSection />
         <ExperienceSection />

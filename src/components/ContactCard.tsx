@@ -233,7 +233,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
             ) : (
               <svg
                 viewBox="0 0 24 24"
-                className="h-[18px] w-[18px] text-action-foreground transition-motion hoverable:group-hover:translate-x-[1px]"
+                className="h-[18px] w-[18px] text-action-foreground transition-motion"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"

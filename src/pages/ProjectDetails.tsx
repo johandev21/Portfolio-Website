@@ -77,7 +77,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
             <button
               type="button"
               onClick={onBack}
-              className="text-xs md:text-sm text-muted transition-motion hover:text-text cursor-pointer"
+              className="hidden cursor-pointer text-xs text-muted transition-motion hover:text-text md:block md:text-sm"
             >
               &lt; Volver a proyectos
             </button>
@@ -119,7 +119,7 @@ export default function ProjectDetails({ project, onBack }: ProjectDetailsProps)
                   : "text-muted hover:text-text"
               }`}
             >
-              Visión General
+              Visión<span className="hidden md:inline"> General</span>
             </button>
             <button
               type="button"
