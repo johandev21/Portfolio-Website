@@ -1,6 +1,6 @@
 import type { KeyboardEvent } from "react";
 import type { Project } from "../types";
-import projectBackground from "../assets/project-background.avif";
+import projectBackground from "../assets/project-background.jpg";
 import gestorRadLogo from "../assets/project-logos/Gestor RAD.svg";
 import memsystemsLogo from "../assets/project-logos/Memsystems.svg";
 import tasklaneLogo from "../assets/project-logos/Tasklane.svg";
@@ -59,7 +59,7 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
         <div className="project-media relative z-[1] flex h-[140px] w-full shrink-0 items-center justify-center overflow-hidden bg-surface">
           <div
             aria-hidden="true"
-            className="project-media-image absolute inset-0 bg-[length:100%_100%] bg-no-repeat"
+            className="project-media-image absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url("${projectBackground}")` }}
           />
           <div

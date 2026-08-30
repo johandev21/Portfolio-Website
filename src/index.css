@@ -85,12 +85,19 @@ html {
   --selection-bg: #7ebde8;
   --selection-text: #0d1011;
   --contact-overlay: rgba(13, 16, 17, 0.85);
-  --project-media-filter: brightness(0.7) saturate(0.65) contrast(1.02);
-  --project-media-overlay: #0d1011;
-  --project-media-overlay-opacity: 0.42;
-  --project-media-overlay-active-opacity: 0.18;
-  --project-media-noise-opacity: 0.1;
-  --project-logo-rest: #43515a;
+  --project-card-background: rgba(20, 24, 26, 0.36);
+  --project-card-active-background: #141b1f;
+  --project-card-border: #34434b;
+  --project-media-frame: rgba(126, 189, 232, 0.2);
+  --project-media-filter: brightness(0.86) saturate(1.08) contrast(1.04);
+  --project-media-blend-mode: normal;
+  --project-media-overlay: #07141c;
+  --project-media-overlay-opacity: 0.18;
+  --project-media-overlay-active-opacity: 0.08;
+  --project-media-noise-opacity: 0.14;
+  --project-logo-backdrop: radial-gradient(circle at center, rgba(3, 12, 18, 0.54) 0%, rgba(3, 12, 18, 0.26) 28%, transparent 60%);
+  --project-logo-rest: #c6dce8;
+  --project-logo-shadow: rgba(3, 9, 12, 0.92);
   --project-logo-active: linear-gradient(180deg, #f1f1f1 0%, #7ebde8 100%);
   --text-sm: clamp(13px, calc(13px + (100vw - 375px) * 0.00154), 14px);
   --text-base: clamp(14.5px, calc(14.5px + (100vw - 375px) * 0.00231), 16px);
@@ -118,12 +125,19 @@ html {
     --selection-bg: #47728f;
     --selection-text: #f4f1eb;
     --contact-overlay: rgba(244, 241, 235, 0.84);
+    --project-card-background: rgba(239, 235, 228, 0.2);
+    --project-card-active-background: #efebe4;
+    --project-card-border: #d2ccc1;
+    --project-media-frame: rgba(37, 35, 33, 0.12);
     --project-media-filter: brightness(1.14) saturate(0.55) contrast(0.86);
+    --project-media-blend-mode: luminosity;
     --project-media-overlay: #f4f1eb;
     --project-media-overlay-opacity: 0.58;
     --project-media-overlay-active-opacity: 0.42;
     --project-media-noise-opacity: 0.08;
+    --project-logo-backdrop: radial-gradient(circle at center, rgba(244, 241, 235, 0.58) 0%, rgba(244, 241, 235, 0.24) 28%, transparent 60%);
     --project-logo-rest: #56656d;
+    --project-logo-shadow: rgba(244, 241, 235, 0.82);
     --project-logo-active: linear-gradient(180deg, #252321 0%, #47728f 100%);
   }
 }
@@ -146,12 +160,19 @@ html {
   --selection-bg: #7ebde8;
   --selection-text: #0d1011;
   --contact-overlay: rgba(13, 16, 17, 0.85);
-  --project-media-filter: brightness(0.7) saturate(0.65) contrast(1.02);
-  --project-media-overlay: #0d1011;
-  --project-media-overlay-opacity: 0.42;
-  --project-media-overlay-active-opacity: 0.18;
-  --project-media-noise-opacity: 0.4;
-  --project-logo-rest: #43515a;
+  --project-card-background: rgba(20, 24, 26, 0.36);
+  --project-card-active-background: #141b1f;
+  --project-card-border: #34434b;
+  --project-media-frame: rgba(126, 189, 232, 0.2);
+  --project-media-filter: brightness(0.86) saturate(1.08) contrast(1.04);
+  --project-media-blend-mode: normal;
+  --project-media-overlay: #07141c;
+  --project-media-overlay-opacity: 0.18;
+  --project-media-overlay-active-opacity: 0.08;
+  --project-media-noise-opacity: 0.14;
+  --project-logo-backdrop: radial-gradient(circle at center, rgba(3, 12, 18, 0.54) 0%, rgba(3, 12, 18, 0.26) 28%, transparent 60%);
+  --project-logo-rest: #c6dce8;
+  --project-logo-shadow: rgba(3, 9, 12, 0.92);
   --project-logo-active: linear-gradient(180deg, #f1f1f1 0%, #7ebde8 100%);
 }
 
@@ -173,12 +194,19 @@ html {
   --selection-bg: #47728f;
   --selection-text: #f4f1eb;
   --contact-overlay: rgba(244, 241, 235, 0.84);
+  --project-card-background: rgba(239, 235, 228, 0.2);
+  --project-card-active-background: #efebe4;
+  --project-card-border: #d2ccc1;
+  --project-media-frame: rgba(37, 35, 33, 0.12);
   --project-media-filter: brightness(1.14) saturate(0.55) contrast(0.86);
+  --project-media-blend-mode: luminosity;
   --project-media-overlay: #f4f1eb;
   --project-media-overlay-opacity: 0.58;
   --project-media-overlay-active-opacity: 0.42;
-  --project-media-noise-opacity: 1;
+  --project-media-noise-opacity: 0.08;
+  --project-logo-backdrop: radial-gradient(circle at center, rgba(244, 241, 235, 0.58) 0%, rgba(244, 241, 235, 0.24) 28%, transparent 60%);
   --project-logo-rest: #56656d;
+  --project-logo-shadow: rgba(244, 241, 235, 0.82);
   --project-logo-active: linear-gradient(180deg, #252321 0%, #47728f 100%);
 }
 
@@ -284,6 +312,8 @@ html {
 
 .project-card {
   position: relative;
+  border-color: var(--project-card-border);
+  background: var(--project-card-background);
 }
 
 .project-card::before {
@@ -297,7 +327,7 @@ html {
 
 .project-card::before {
   inset: 0;
-  background: var(--color-surface);
+  background: var(--project-card-active-background);
 }
 
 .project-card:focus-visible {
@@ -307,12 +337,23 @@ html {
 
 .project-media {
   isolation: isolate;
+  outline: 1px solid var(--project-media-frame);
+  outline-offset: -1px;
+}
+
+.project-media::before {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: var(--project-logo-backdrop);
+  content: "";
 }
 
 .project-media-image {
   z-index: 0;
   filter: var(--project-media-filter);
-  mix-blend-mode: luminosity;
+  mix-blend-mode: var(--project-media-blend-mode);
 }
 
 .project-media-overlay {
@@ -334,6 +375,9 @@ html {
 
 .project-logo {
   background: var(--project-logo-rest);
+  filter:
+    drop-shadow(0 1px 1px var(--project-logo-shadow))
+    drop-shadow(0 0 10px var(--project-logo-shadow));
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;
