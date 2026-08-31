@@ -1,5 +1,4 @@
-import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
@@ -12,45 +11,6 @@ const navItems = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    let frameId: number | null = null;
-
-    const updateHeader = () => {
-      frameId = null;
-      const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY.current;
-
-      if (isMenuOpen || currentScrollY < 96) {
-        setIsHidden(false);
-      } else if (scrollingDown && currentScrollY - lastScrollY.current > 4) {
-        setIsHidden(true);
-      } else if (!scrollingDown && lastScrollY.current - currentScrollY > 4) {
-        setIsHidden(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    const handleScroll = () => {
-      if (frameId === null) {
-        frameId = window.requestAnimationFrame(updateHeader);
-      }
-    };
-
-    frameId = window.requestAnimationFrame(() => {
-      frameId = null;
-      lastScrollY.current = window.scrollY;
-    });
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (frameId !== null) window.cancelAnimationFrame(frameId);
-    };
-  }, [isMenuOpen]);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -67,26 +27,17 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 px-3 pt-3 transition-motion md:px-6 ${isHidden ? "md:-translate-y-full md:opacity-0 md:pointer-events-none" : ""}`}
+      className="w-full px-3 pt-3 md:px-6"
     >
-      <div className="mx-auto max-w-4xl border border-border/70 bg-bg/85 backdrop-blur-md">
-        <div className="flex h-14 items-center justify-between px-4 md:px-5">
-          <Link
-            to="/"
-            onClick={closeMenu}
-            className="rounded-none font-serif text-lg leading-none text-text transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-          >
-            JC
-            <span className="sr-only">Johan Carrasco</span>
-          </Link>
-
+      <div className="mx-auto max-w-4xl">
+        <div className="flex h-14 items-center justify-between">
           <nav aria-label="Navegación principal" className="hidden md:block">
             <ul className="flex items-center gap-5">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="rounded-none text-sm leading-none text-muted transition-motion hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                    className="focus-link rounded-none text-sm leading-none text-muted transition-motion hover:text-text"
                   >
                     {item.label}
                   </a>
@@ -95,7 +46,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-1">
+          <div className="ml-auto flex items-center gap-1">
             <ThemeToggle />
             <button
               type="button"
@@ -103,7 +54,7 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="group relative flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg md:hidden"
+              className="focus-control group relative flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent md:hidden"
             >
               <span
                 aria-hidden="true"
@@ -129,7 +80,7 @@ export default function Header() {
                   <a
                     href={item.href}
                     onClick={closeMenu}
-                    className="block rounded-none px-2 py-2.5 text-sm text-muted transition-motion hover:bg-surface hover:text-text focus-visible:ring-2 focus-visible:ring-text-soft"
+                    className="focus-link block rounded-none px-2 py-2.5 text-sm text-muted transition-motion hover:bg-surface hover:text-text"
                   >
                     {item.label}
                   </a>

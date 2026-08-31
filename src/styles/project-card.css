@@ -1,6 +1,6 @@
 .project-card { position: relative; border-color: var(--project-card-border); background: var(--project-card-background); }
 .project-card::before { position: absolute; z-index: 0; inset: 0; pointer-events: none; background: var(--project-card-active-background); content: ""; opacity: 0; transition: opacity 140ms ease; }
-.project-card:focus-visible { outline: 1px solid color-mix(in srgb, var(--color-text-soft) 72%, transparent); outline-offset: 2px; }
+.project-card:focus-visible { outline-color: var(--color-ring); }
 .project-media { isolation: isolate; outline: 1px solid var(--project-media-frame); outline-offset: -1px; }
 .project-media::before { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: var(--project-logo-backdrop); content: ""; }
 .project-media-image { z-index: 0; filter: var(--project-media-filter); mix-blend-mode: var(--project-media-blend-mode); }

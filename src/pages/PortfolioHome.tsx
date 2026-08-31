@@ -12,7 +12,7 @@ export default function PortfolioHome() {
     <>
       <div
         id="inicio"
-        className="mx-auto flex w-full max-w-full flex-col items-stretch px-3 pt-28 md:px-8 md:pt-32 lg:max-w-4xl lg:px-0"
+        className="mx-auto flex w-full max-w-full flex-col items-stretch px-3 pt-11 md:px-8 md:pt-15 lg:max-w-4xl lg:px-0"
       >
         <IntroSection />
         <ExperienceSection />
@@ -20,7 +20,8 @@ export default function PortfolioHome() {
           onSelectProject={(project) => {
             const slug = project.slug || project.title.toLowerCase();
             navigate({ to: "/project/$slug", params: { slug } });
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            // window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0 });
           }}
         />
         <TechnologiesSection />

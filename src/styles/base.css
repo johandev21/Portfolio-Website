@@ -41,7 +41,7 @@
 html {
   overflow-x: clip;
   color-scheme: light dark;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 *,

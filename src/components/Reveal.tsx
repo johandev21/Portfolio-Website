@@ -1,3 +1,27 @@
+import type { ReactNode } from "react";
+
+type RevealVariant = "default" | "heading" | "image" | "project";
+
+interface RevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  variant?: RevealVariant;
+}
+
+/**
+ * Scroll reveals are temporarily disabled while keeping the implementation below
+ * available for a future re-enable. The wrapper remains so callers do not need
+ * to change when the motion is restored.
+ */
+export default function Reveal({
+  children,
+  className = "",
+}: RevealProps) {
+  return <div className={className}>{children}</div>;
+}
+
+/*
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -71,3 +95,4 @@ export default function Reveal({
     </div>
   );
 }
+*/

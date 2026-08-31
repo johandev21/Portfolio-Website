@@ -1,15 +1,16 @@
-import { Outlet } from "@tanstack/react-router";
+import { Outlet, useLocation } from "@tanstack/react-router";
 import ToastProvider from "../components/ToastProvider";
 import Header from "../components/Header";
-import BackToTop from "../components/BackToTop";
 
 export default function RootLayout() {
+  const location = useLocation();
+  const isProjectRoute = location.pathname.startsWith("/project/");
+
   return (
     <ToastProvider>
       <main className="min-h-screen w-full bg-bg font-sans text-text">
-        <Header />
+        {!isProjectRoute && <Header />}
         <Outlet />
-        <BackToTop />
       </main>
     </ToastProvider>
   );

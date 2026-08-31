@@ -1,5 +1,6 @@
 @custom-variant hoverable (@media (hover: hover));
 
+/* Scroll reveal motion is temporarily disabled; preserve the rules for re-enabling later.
 :root { --ease-reveal: cubic-bezier(0.23, 1, 0.32, 1); }
 .scroll-reveal { --reveal-delay: 0ms; opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity 420ms var(--ease-reveal) var(--reveal-delay), transform 620ms var(--ease-reveal) var(--reveal-delay); }
 .scroll-reveal--heading { transform: translate3d(0, 10px, 0); }
@@ -8,6 +9,7 @@
 .scroll-reveal[data-revealed] { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 .scroll-reveal--image[data-revealed], .scroll-reveal--project[data-revealed] .project-media { clip-path: inset(0 0 0 0); }
 .scroll-reveal--project[data-revealed] .project-media { transform: scale(1); }
+*/
 
 @utility transition-motion { transition-property: transform, translate, scale, rotate, opacity, color, background-color, border-color, box-shadow, filter, letter-spacing, background-position; transition-timing-function: ease-out; transition-duration: 150ms; }
 @utility transition-motion-slow { transition-property: transform, translate, scale, rotate, opacity, color, background-color, border-color, box-shadow, filter, letter-spacing, background-position; transition-timing-function: ease-out; transition-duration: 200ms; }
@@ -16,8 +18,7 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
   *:hover, *:active, *:focus-visible, *:hover *, *:active *, *:focus-visible * { translate: none !important; scale: none !important; rotate: none !important; }
-  .scroll-reveal { clip-path: none !important; transform: none !important; transition: opacity 160ms ease !important; }
-  .scroll-reveal--project .project-media { clip-path: none !important; transform: none !important; transition: none !important; }
+  /* Scroll-reveal reduced-motion overrides are retained with the disabled motion rules above. */
   .project-card::before, .project-media-overlay, .project-logo::after { transition: opacity 100ms ease !important; }
   .project-card-copy { transition: color 100ms ease !important; }
 }

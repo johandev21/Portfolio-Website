@@ -28,12 +28,14 @@ export type IconName =
   | "github"
   | "mail"
   | "pin"
+  | "arrow-left"
+  | "external-link"
   | "send"
   | "cv";
 
 export type TechnologyIconName = Exclude<
   IconName,
-  "linkedin" | "github" | "mail" | "pin" | "send" | "cv"
+  "linkedin" | "github" | "mail" | "pin" | "arrow-left" | "external-link" | "send" | "cv"
 >;
 
 export type BulletPoint = string;
@@ -58,6 +60,8 @@ export interface MediaItem {
   type: "image" | "video";
   title: string;
   caption?: string;
+  src?: string;
+  poster?: string;
 }
 
 export interface Project {

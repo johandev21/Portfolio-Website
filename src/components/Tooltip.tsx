@@ -14,7 +14,7 @@ export default function Tooltip({ label, description, children }: TooltipProps) 
         <BaseTooltip.Trigger
           render={
             <span
-              className="group/tooltip relative inline-flex focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+              className="focus-tooltip group/tooltip relative inline-flex"
               tabIndex={0}
             />
           }

@@ -1,4 +1,14 @@
 import type { PortfolioData, Technology } from "../types";
+import projectVideoPoster from "../assets/project-background.jpg";
+import projectVideo from "../assets/project-videos/from-music-festivals-to-developer.mp4";
+
+const testProjectVideo = {
+  type: "video",
+  title: "De festivales de música a desarrollador",
+  caption: "Video de presentación del proyecto",
+  poster: projectVideoPoster,
+  src: projectVideo,
+} as const;
 
 const memsystemsIcons = [
   { name: "React", icon: "react" },
@@ -208,7 +218,7 @@ export const portfolioData: PortfolioData = {
             "Notebooks, fuentes de información, chat contextual y materiales de estudio generados por IA, unificados en una sola aplicación.",
         },
       ],
-      media: [],
+      media: [testProjectVideo],
     },
     {
       slug: "tasklane",
@@ -250,7 +260,7 @@ export const portfolioData: PortfolioData = {
             "Nests, publicaciones de texto o enlace, comentarios anidados ilimitados y sistema de votos con feed en tiempo real.",
         },
       ],
-      media: [],
+      media: [testProjectVideo],
     },
     {
       slug: "gestor-rad",
@@ -271,7 +281,7 @@ export const portfolioData: PortfolioData = {
             "Registro de centros formadores, capacidad formadora, nóminas de alumnos, eventos adversos y repositorio de documentos.",
         },
       ],
-      media: [],
+      media: [testProjectVideo],
     },
   ],
   techCategories: [

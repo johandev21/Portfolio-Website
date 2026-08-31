@@ -6,6 +6,7 @@ import { ChevronUp } from "lucide";
 import type { ContactData } from "../types";
 import cvUrl from "../assets/johan-carrasco-cv.pdf";
 import Icon from "./Icon";
+import Tooltip from "./Tooltip";
 
 type ContactCardProps = {
   contact: ContactData;
@@ -105,71 +106,69 @@ export default function ContactCard({ contact }: ContactCardProps) {
       onSubmit={handleSubmit}
       className="flex w-full flex-col items-center justify-end gap-2 overflow-hidden border border-border/50 bg-bg/60 p-2 pt-4 backdrop-blur-[1.75px]"
     >
-      <div className="flex w-full flex-wrap flex-row items-center justify-between px-4 pb-3">
-        <div className="flex flex-row items-center gap-[13px]">
+      <div className="flex w-full flex-wrap flex-row items-center justify-start px-4 pb-3">
+        <div className="flex flex-row items-center">
           {contact.social.map((social) => (
-            <a
+            <Tooltip
               key={social.icon}
-              href={social.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={social.icon === "linkedin" ? "LinkedIn" : "GitHub"}
-              className="group inline-flex rounded-none transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
+              label={social.icon === "linkedin" ? "LinkedIn" : "GitHub"}
             >
-              <Icon
-                name={social.icon}
-                size={16}
-                className="hoverable:group-hover:-translate-y-[1px] hoverable:group-hover:border-text-soft"
-              />
-            </a>
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.icon === "linkedin" ? "LinkedIn" : "GitHub"}
+                className="contact-icon-link focus-control group inline-flex h-8 w-8 items-center justify-center rounded-none transition-motion motion-reduce:transition-none"
+              >
+                <Icon
+                  name={social.icon}
+                  size={16}
+                  className="contact-icon"
+                />
+              </a>
+            </Tooltip>
           ))}
-        </div>
-        <div className="flex flex-row items-center gap-4">
           {contact.buttons.map((button) =>
             button.icon === "mail" ? (
-              <a
-                key={button.label}
-                href={mailtoUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Abrir correo"
-                className="group flex cursor-pointer flex-row items-center gap-1 rounded-none transition-motion focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:transition-none"
-              >
-                <Icon
-                  name={button.icon}
-                  size={16}
-                  className="hoverable:group-hover:border-text-soft"
-                />
-                <span className="whitespace-nowrap text-sm leading-normal text-muted transition-motion hoverable:group-hover:text-text">
-                  {button.label}
-                </span>
-              </a>
+              <Tooltip key={button.label} label={button.label}>
+                <a
+                  href={mailtoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Abrir correo"
+                  className="contact-icon-link focus-control group inline-flex h-8 w-8 items-center justify-center rounded-none transition-motion motion-reduce:transition-none"
+                >
+                  <Icon
+                    name={button.icon}
+                    size={16}
+                    className="contact-icon"
+                  />
+                </a>
+              </Tooltip>
             ) : (
-              <a
-                key={button.label}
-                href={cvUrl}
-                download="johan-carrasco-cv.pdf"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Descargar CV"
-                className="group flex cursor-pointer flex-row items-center gap-1 rounded-none transition-motion active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
-              >
-                <Icon
-                  name={button.icon}
-                  size={16}
-                  className="hoverable:group-hover:border-text-soft"
-                />
-                <span className="whitespace-nowrap text-sm leading-normal text-muted transition-motion hoverable:group-hover:text-text">
-                  {button.label}
-                </span>
-              </a>
+              <Tooltip key={button.label} label="Descargar CV">
+                <a
+                  href={cvUrl}
+                  download="johan-carrasco-cv.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Descargar CV"
+                  className="contact-icon-link focus-control group inline-flex h-8 w-8 items-center justify-center rounded-none transition-motion motion-reduce:transition-none"
+                >
+                  <Icon
+                    name={button.icon}
+                    size={16}
+                    className="contact-icon"
+                  />
+                </a>
+              </Tooltip>
             ),
           )}
         </div>
       </div>
       <div className="flex w-full flex-col gap-4 bg-surface/60 p-4 backdrop-blur-[1.75px] sm:gap-5">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-          <label className="flex flex-col gap-2 text-sm leading-5 text-muted">
+          <label className="focus-field-label flex flex-col gap-2 text-sm leading-5 text-muted transition-motion">
             Nombre
             <Input
               type="text"
@@ -182,10 +181,10 @@ export default function ContactCard({ contact }: ContactCardProps) {
               maxLength={80}
               placeholder="Tu nombre"
               required
-              className="min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+              className="focus-field min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
             />
           </label>
-          <label className="flex flex-col gap-2 text-sm leading-5 text-muted">
+          <label className="focus-field-label flex flex-col gap-2 text-sm leading-5 text-muted transition-motion">
             Correo
             <Input
               type="email"
@@ -198,7 +197,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
               maxLength={254}
               placeholder="Tu correo"
               required
-              className="min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+              className="focus-field min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
             />
           </label>
         </div>
@@ -216,14 +215,14 @@ export default function ContactCard({ contact }: ContactCardProps) {
             spellCheck
             placeholder={contact.placeholder}
             aria-label="Mensaje"
-            className="h-full min-h-[112px] w-full resize-none rounded-none border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text outline-none transition-motion placeholder:text-muted hover:border-border focus:border-text-soft/40 focus-visible:ring-2 focus-visible:ring-accent/10 disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+            className="focus-field h-full min-h-[112px] w-full resize-none rounded-none border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
           />
           <Button
             type="submit"
             aria-label={isSubmitting ? "Enviando mensaje" : "Enviar mensaje"}
             aria-busy={isSubmitting}
             disabled={isSubmitting}
-            className="group absolute bottom-3 right-3 flex h-[28px] w-[28px] cursor-pointer items-center justify-center rounded-none bg-action transition-motion hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-text-soft focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-reduce:active:scale-none motion-reduce:transition-none"
+            className="focus-control group absolute bottom-3 right-3 flex h-[28px] w-[28px] cursor-pointer items-center justify-center rounded-none bg-action text-action-foreground transition-motion hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none"
           >
             {isSubmitting ? (
               <span

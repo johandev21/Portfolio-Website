@@ -1,0 +1,79 @@
+@layer components {
+  :where(
+    a[href],
+    button,
+    input,
+    textarea,
+    select,
+    video,
+    [tabindex]:not([tabindex="-1"])
+  ):focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :where(
+    a[href],
+    button,
+    input,
+    textarea,
+    select,
+    video,
+    [tabindex]:not([tabindex="-1"])
+  ):focus-visible {
+    outline: 1px solid var(--color-ring);
+    outline-offset: 2px;
+    transition-duration: 0ms;
+  }
+
+  :where(button, input, textarea, select):disabled:focus-visible {
+    outline: none;
+  }
+
+  .focus-control:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .focus-link:focus-visible {
+    color: var(--color-text);
+    text-decoration-color: currentColor;
+  }
+
+  .focus-field {
+    outline: none;
+  }
+
+  .focus-field:focus-visible {
+    border-color: color-mix(in oklab, var(--color-ring) 72%, var(--color-text));
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-ring) 16%, transparent);
+    outline: none;
+  }
+
+  .focus-field-label:focus-within {
+    color: var(--color-text);
+  }
+
+  .focus-surface:focus-visible {
+    outline-offset: 3px;
+  }
+
+  .focus-tooltip:focus-visible {
+    color: var(--color-text);
+    outline-offset: 2px;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(
+    a[href],
+    button,
+    input,
+    textarea,
+    select,
+    video,
+    [tabindex]:not([tabindex="-1"])
+  ):focus-visible {
+    box-shadow: none;
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}

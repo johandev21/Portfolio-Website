@@ -51,7 +51,7 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
       role={onSelect ? "button" : undefined}
       tabIndex={onSelect ? 0 : undefined}
       aria-labelledby={onSelect ? projectTitleId : undefined}
-      className={`project-card group isolate flex h-full w-full flex-col gap-4 border border-border p-4 ${
+      className={`project-card focus-surface group isolate flex h-full w-full flex-col gap-4 border border-border p-4 ${
         onSelect ? "project-card-interactive cursor-pointer" : ""
       }`}
     >

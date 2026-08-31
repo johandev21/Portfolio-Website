@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { Download, Mail, MapPin } from "lucide";
+import { ArrowLeft, Download, ExternalLink, Mail, MapPin } from "lucide";
 import betterAuth from "../assets/icons/thesvg/better-auth.svg?raw";
 import bun from "../assets/icons/thesvg/bun.svg?raw";
 import clerk from "../assets/icons/thesvg/clerk.svg?raw";
@@ -36,7 +36,9 @@ const sizes = {
 } as const;
 
 const icons = {
+  "arrow-left": ArrowLeft,
   cv: Download,
+  "external-link": ExternalLink,
   mail: Mail,
   pin: MapPin,
 } as const;
@@ -114,10 +116,10 @@ export default function Icon({ name, size, className = "" }: IconProps) {
 
   return (
     <span
-      className={`flex shrink-0 items-center justify-center overflow-hidden transition-motion ${isLibraryIcon ? "" : "border border-border bg-surface"} ${sizes[size]} ${className}`}
+      className={`flex shrink-0 items-center justify-center overflow-hidden leading-none transition-motion ${isLibraryIcon ? "" : "border border-border bg-surface"} ${sizes[size]} ${className}`}
     >
       {name in icons ? (
-        <span className="h-full w-full text-text-soft">
+        <span className="h-full w-full text-current">
           {renderIcon(icons[name as keyof typeof icons])}
         </span>
       ) : name in brandIcons ? (

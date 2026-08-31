@@ -1,0 +1,83 @@
+.contact-pattern {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 4%,
+    black 26%,
+    black 74%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 4%,
+    black 26%,
+    black 74%,
+    transparent 100%
+  );
+}
+
+.contact-pattern::before {
+  content: "";
+  position: absolute;
+  inset: -110% -60%;
+  transform: rotate(-45deg) translate3d(0, -150px, 0);
+  opacity: 0.56;
+  background-image:
+    radial-gradient(3px 72px at 18px 64px, var(--contact-rain-streak), transparent),
+    radial-gradient(1.5px 1.5px at 18px 115px, var(--contact-rain-drop) 100%, transparent 150%),
+    radial-gradient(4px 96px at 66px 224px, var(--contact-rain-streak), transparent),
+    radial-gradient(1.5px 1.5px at 66px 292px, var(--contact-rain-drop) 100%, transparent 150%),
+    radial-gradient(3px 64px at 114px 132px, var(--contact-rain-streak), transparent),
+    radial-gradient(1.5px 1.5px at 114px 178px, var(--contact-rain-drop) 100%, transparent 150%),
+    radial-gradient(4px 88px at 162px 278px, var(--contact-rain-streak), transparent),
+    radial-gradient(1.5px 1.5px at 162px 40px, var(--contact-rain-drop) 100%, transparent 150%),
+    radial-gradient(3px 76px at 210px 76px, var(--contact-rain-streak), transparent),
+    radial-gradient(1.5px 1.5px at 210px 130px, var(--contact-rain-drop) 100%, transparent 150%),
+    radial-gradient(4px 104px at 258px 190px, var(--contact-rain-streak), transparent),
+    radial-gradient(1.5px 1.5px at 258px 264px, var(--contact-rain-drop) 100%, transparent 150%);
+  background-size: 300px 300px;
+  will-change: transform;
+  animation: contact-rain 18s linear infinite;
+}
+
+@keyframes contact-rain {
+  from {
+    transform: rotate(-45deg) translate3d(0, -150px, 0);
+  }
+
+  to {
+    transform: rotate(-45deg) translate3d(0, 150px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-pattern::before {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+/* Contact actions share one neutral tone and shift to the accent on hover. */
+.contact-icon {
+  --icon-primary: var(--color-muted);
+  --icon-secondary: var(--color-bg);
+  --icon-muted: var(--color-muted);
+  color: var(--color-muted);
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-icon-link:hover .contact-icon {
+    --icon-primary: var(--color-text);
+    --icon-muted: var(--color-text);
+    color: var(--color-text);
+  }
+}
+
+.contact-icon-link:focus-visible .contact-icon {
+  --icon-primary: var(--color-text);
+  --icon-muted: var(--color-text);
+  color: var(--color-text);
+}

@@ -4,3 +4,6 @@
 @import "./styles/base.css";
 @import "./styles/motion.css";
 @import "./styles/project-card.css";
+@import "./styles/project-detail.css";
+@import "./styles/focus.css";
+@import "./styles/contact-section.css";
