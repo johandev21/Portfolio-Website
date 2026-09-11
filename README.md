@@ -12,8 +12,8 @@ Sitio web personal de Johan Carrasco, Ingeniero de Software de Rancagua, Chile. 
 
 ## Tecnologías
 
+- Astro (sitio estático con islas de React).
 - React 19 y TypeScript.
-- Vite.
 - Tailwind CSS.
 - Lucide y TheSVG para iconos.
 - Oxlint para validación del código.

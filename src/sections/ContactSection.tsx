@@ -1,6 +1,6 @@
 import { portfolioData } from "../data/portfolio";
 import SectionTitle from "../components/SectionTitle";
-import ContactCard from "../components/ContactCard";
+import ContactIsland from "../components/ContactIsland";
 import Reveal from "../components/Reveal";
 /* Contact background image temporarily disabled.
 import crows640Avif from "../assets/crows-640.avif";
@@ -53,7 +53,7 @@ export default function ContactSection() {
           </Reveal>
           <div className="flex w-full flex-col items-center gap-4">
             <Reveal className="w-full" delay={55}>
-              <ContactCard contact={contact} />
+              <ContactIsland contact={contact} />
             </Reveal>
             <Reveal delay={110}>
               <p className="text-center text-sm leading-normal text-muted">

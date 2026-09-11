@@ -1,0 +1,100 @@
+---
+import type { Project } from "../types";
+import Icon from "../components/Icon";
+import ProjectMedia from "../components/ProjectMedia";
+import ProjectStory from "../components/ProjectStory";
+import ProjectTechIcons from "../components/ProjectTechIcons";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const [heroMedia, ...additionalMedia] = project.media ?? [];
+const additionalVideos = additionalMedia.filter(
+  (item) => item.type === "video" && item.src,
+);
+---
+
+<article class="mx-auto w-full max-w-4xl pb-24">
+  <header>
+    <a
+      href="/#proyectos"
+      class="focus-link group inline-flex items-center gap-2 rounded-none text-sm leading-none text-muted transition-motion motion-reduce:transition-none"
+    >
+      <Icon
+        name="arrow-left"
+        size={16}
+        className="transition-motion hoverable:group-hover:-translate-x-0.5 motion-reduce:transition-none"
+      />
+      <span class="transition-motion hoverable:group-hover:text-text">
+        Volver a proyectos
+      </span>
+    </a>
+
+    <div class="mt-6 md:mt-7">
+      <div class="max-w-2xl">
+        <h1 class="font-serif text-3xl leading-tight font-normal text-text md:text-4xl">
+          {project.title}
+        </h1>
+        <p class="mt-2 text-sm leading-normal text-text-soft md:text-base">
+          {project.subtitle}
+        </p>
+        {(project.liveUrl || project.githubUrl) && (
+          <div class="mt-4 flex shrink-0 items-center gap-5">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="focus-link group inline-flex items-center gap-1.5 rounded-none text-sm leading-none font-medium text-accent underline decoration-transparent underline-offset-4 transition-motion hoverable:hover:decoration-current motion-reduce:transition-none"
+              >
+                Ver sitio
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="focus-link group inline-flex items-center gap-1.5 rounded-none text-sm leading-none font-medium text-accent underline decoration-transparent underline-offset-4 transition-motion hoverable:hover:decoration-current motion-reduce:transition-none"
+              >
+                Ver código
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+
+      <ProjectTechIcons client:idle icons={project.icons} />
+    </div>
+  </header>
+
+  {heroMedia?.type === "video" && heroMedia.src && (
+    <div class="mt-8 md:mt-10">
+      <ProjectMedia item={heroMedia} />
+    </div>
+  )}
+
+  <div class="mt-10 md:mt-14">
+    <ProjectStory project={project} />
+  </div>
+
+  {additionalVideos.length > 0 && (
+    <div class="mt-14 md:mt-20">
+      <section aria-labelledby="project-media-title">
+        <h2
+          id="project-media-title"
+          class="font-serif text-2xl leading-normal font-normal text-text"
+        >
+          Multimedia
+        </h2>
+        <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {additionalVideos.map((item) => (
+            <ProjectMedia item={item} />
+          ))}
+        </div>
+      </section>
+    </div>
+  )}
+</article>

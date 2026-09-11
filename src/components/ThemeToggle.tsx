@@ -4,6 +4,7 @@ import { Moon, Sun } from "lucide";
 type Theme = "light" | "dark";
 
 function getInitialTheme(): Theme {
+  if (typeof window === "undefined") return "dark";
   const storedTheme = window.localStorage.getItem("theme");
 
   if (storedTheme === "light" || storedTheme === "dark") return storedTheme;

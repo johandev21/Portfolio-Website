@@ -1,12 +1,12 @@
 import type { PortfolioData, Technology } from "../types";
-import projectVideoPoster from "../assets/project-background.jpg";
+import projectVideoPoster from "../assets/project-background.avif";
 import projectVideo from "../assets/project-videos/from-music-festivals-to-developer.mp4";
 
 const testProjectVideo = {
   type: "video",
   title: "De festivales de música a desarrollador",
   caption: "Video de presentación del proyecto",
-  poster: projectVideoPoster,
+  poster: projectVideoPoster.src,
   src: projectVideo,
 } as const;
 

@@ -2,13 +2,8 @@ import { portfolioData } from "../data/portfolio";
 import SectionTitle from "../components/SectionTitle";
 import ProjectCard from "../components/ProjectCard";
 import Reveal from "../components/Reveal";
-import type { Project } from "../types";
 
-interface ProjectsSectionProps {
-  onSelectProject?: (project: Project) => void;
-}
-
-export default function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
+export default function ProjectsSection() {
   return (
     <section id="proyectos" className="mt-20 scroll-mt-24 flex flex-col gap-[15px] md:mt-16 xl:mt-[99px]">
       <Reveal variant="heading">
@@ -22,10 +17,7 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
             delay={(index % 2) * 55}
             variant="project"
           >
-            <ProjectCard
-              project={project}
-              onSelect={() => onSelectProject?.(project)}
-            />
+            <ProjectCard project={project} />
           </Reveal>
         ))}
       </div>

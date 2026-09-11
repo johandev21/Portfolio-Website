@@ -1,4 +1,4 @@
-import { createElement, useState, type FormEvent } from "react";
+import { createElement, useState, type SyntheticEvent } from "react";
 import { Button } from "@base-ui/react/button";
 import { Input } from "@base-ui/react/input";
 import { Toast } from "@base-ui/react/toast";
@@ -47,7 +47,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
 
   const mailtoUrl = createMailtoUrl(contact.email, name, email, message);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
 

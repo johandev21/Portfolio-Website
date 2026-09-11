@@ -1,6 +1,5 @@
-import type { KeyboardEvent } from "react";
 import type { Project } from "../types";
-import projectBackground from "../assets/project-background.jpg";
+import projectBackground from "../assets/project-background.avif";
 import gestorRadLogo from "../assets/project-logos/Gestor RAD.svg";
 import memsystemsLogo from "../assets/project-logos/Memsystems.svg";
 import tasklaneLogo from "../assets/project-logos/Tasklane.svg";
@@ -8,59 +7,36 @@ import threadNestLogo from "../assets/project-logos/ThreadNest.svg";
 import Icon from "./Icon";
 import Placeholder from "./Placeholder";
 import Tooltip from "./Tooltip";
-import { preloadProjectDetailPage } from "../pages/projectDetailRouteComponent";
 
 interface ProjectCardProps {
   project: Project;
-  onSelect?: () => void;
 }
 
 const projectLogos: Record<string, string> = {
-  memsystems: memsystemsLogo,
-  tasklane: tasklaneLogo,
-  threadnest: threadNestLogo,
-  "gestor-rad": gestorRadLogo,
+  memsystems: memsystemsLogo.src,
+  tasklane: tasklaneLogo.src,
+  threadnest: threadNestLogo.src,
+  "gestor-rad": gestorRadLogo.src,
 };
 
-export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const projectLogo = project.slug ? projectLogos[project.slug] : undefined;
   const projectTitleId = `project-${
     project.slug ?? project.title.toLowerCase().replaceAll(" ", "-")
   }-title`;
 
-  const preloadDetails = () => {
-    if (!onSelect) return;
-    void preloadProjectDetailPage().catch(() => undefined);
-  };
-
-  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (!onSelect || event.repeat) return;
-    if (event.key !== "Enter" && event.key !== " ") return;
-
-    event.preventDefault();
-    onSelect();
-  };
-
   return (
-    <div
-      onClick={onSelect}
-      onFocus={preloadDetails}
-      onKeyDown={onSelect ? handleKeyDown : undefined}
-      onPointerEnter={preloadDetails}
-      onPointerDown={preloadDetails}
-      role={onSelect ? "button" : undefined}
-      tabIndex={onSelect ? 0 : undefined}
-      aria-labelledby={onSelect ? projectTitleId : undefined}
-      className={`project-card focus-surface group isolate flex h-full w-full flex-col gap-4 border border-border p-4 ${
-        onSelect ? "project-card-interactive cursor-pointer" : ""
-      }`}
+    <a
+      href={`/project/${project.slug}`}
+      aria-labelledby={projectTitleId}
+      className={`project-card project-card-interactive focus-surface group isolate flex h-full w-full flex-col gap-4 border border-border p-4`}
     >
       {projectLogo ? (
         <div className="project-media relative z-[1] flex h-[140px] w-full shrink-0 items-center justify-center overflow-hidden bg-surface">
           <div
             aria-hidden="true"
             className="project-media-image absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url("${projectBackground}")` }}
+            style={{ backgroundImage: `url("${projectBackground.src}")` }}
           />
           <div
             aria-hidden="true"
@@ -108,6 +84,6 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
           ))}
         </div>
       </div>
-    </div>
+    </a>
   );
 }

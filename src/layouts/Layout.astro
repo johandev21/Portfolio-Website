@@ -1,0 +1,67 @@
+---
+import "../index.css";
+import Header from "../components/Header";
+
+interface Props {
+  title?: string;
+  description?: string;
+  hideHeader?: boolean;
+}
+
+const {
+  title = "Johan Carrasco | Ingeniero de Software",
+  description = "Portafolio de Johan Carrasco, ingeniero de software especializado en aplicaciones web escalables y confiables.",
+  hideHeader = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Johan Carrasco" />
+    <meta name="theme-color" content="#0d1011" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var storedTheme = window.localStorage.getItem("theme");
+        var theme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Johan Carrasco",
+      jobTitle: "Ingeniero de Software",
+      description: "Ingeniero de software especializado en aplicaciones web escalables y confiables.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Rancagua",
+        addressCountry: "CL",
+      },
+      knowsAbout: ["Desarrollo web", "React", "Next.js", "NestJS", "TypeScript", "Python"],
+    })} />
+  </head>
+  <body>
+    <main class="min-h-screen w-full bg-bg font-sans text-text">
+      {!hideHeader && <Header client:load />}
+      <slot />
+    </main>
+  </body>
+</html>

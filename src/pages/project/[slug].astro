@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectDetails from "../../components/ProjectDetails.astro";
+import { portfolioData } from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return portfolioData.projects
+    .filter((project) => project.slug)
+    .map((project) => ({
+      params: { slug: project.slug },
+      props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout
+  title={`${project.title} | Johan Carrasco`}
+  description={project.subtitle}
+  hideHeader
+>
+  <div class="mx-auto flex w-full max-w-full flex-col items-stretch px-3 pt-10 md:px-8 md:pt-14 lg:px-0">
+    <ProjectDetails project={project} />
+  </div>
+</Layout>

@@ -12,9 +12,9 @@ export default function IntroSection() {
         <Reveal variant="image" className="shrink-0">
           <div className="h-20 w-20 overflow-hidden border border-border md:h-[120px] md:w-[120px]">
             <picture>
-              <source media="(min-width: 768px)" srcSet={myselfImageDesktop} />
+              <source media="(min-width: 768px)" srcSet={myselfImageDesktop.src} />
               <img
-                src={myselfImageMobile}
+                src={myselfImageMobile.src}
                 alt="Johan Carrasco"
                 width="240"
                 height="240"
