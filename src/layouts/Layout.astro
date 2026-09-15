@@ -1,17 +1,34 @@
 ---
 import "../index.css";
 import Header from "../components/Header";
+import poppins400 from "@fontsource/poppins/files/poppins-latin-400-normal.woff2?url";
+import poppins500 from "@fontsource/poppins/files/poppins-latin-500-normal.woff2?url";
+import poppins600 from "@fontsource/poppins/files/poppins-latin-600-normal.woff2?url";
+import sourceSerif400 from "@fontsource/source-serif-pro/files/source-serif-pro-latin-400-normal.woff2?url";
+import sourceSerif600 from "@fontsource/source-serif-pro/files/source-serif-pro-latin-600-normal.woff2?url";
+
+const fontFiles = {
+  "poppins-400": poppins400,
+  "poppins-500": poppins500,
+  "poppins-600": poppins600,
+  "source-serif-400": sourceSerif400,
+  "source-serif-600": sourceSerif600,
+} as const;
+
+type FontKey = keyof typeof fontFiles;
 
 interface Props {
   title?: string;
   description?: string;
   hideHeader?: boolean;
+  preloadFonts?: FontKey[];
 }
 
 const {
   title = "Johan Carrasco | Ingeniero de Software",
   description = "Portafolio de Johan Carrasco, ingeniero de software especializado en aplicaciones web escalables y confiables.",
   hideHeader = false,
+  preloadFonts = ["poppins-400", "source-serif-400"],
 } = Astro.props;
 ---
 
@@ -22,6 +39,15 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {preloadFonts.map((key) => (
+      <link
+        rel="preload"
+        as="font"
+        type="font/woff2"
+        href={fontFiles[key]}
+        crossorigin
+      />
+    ))}
     <meta name="author" content="Johan Carrasco" />
     <meta name="theme-color" content="#0d1011" />
     <meta property="og:locale" content="es_CL" />

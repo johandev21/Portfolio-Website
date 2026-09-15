@@ -19,6 +19,13 @@ const { project } = Astro.props;
   title={`${project.title} | Johan Carrasco`}
   description={project.subtitle}
   hideHeader
+  preloadFonts={[
+    "poppins-400",
+    "poppins-500",
+    "poppins-600",
+    "source-serif-400",
+    "source-serif-600",
+  ]}
 >
   <div class="mx-auto flex w-full max-w-full flex-col items-stretch px-3 pt-10 md:px-8 md:pt-14 lg:px-0">
     <ProjectDetails project={project} />
