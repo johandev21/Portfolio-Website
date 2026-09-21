@@ -46,7 +46,7 @@ export default function ContactSection() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--color-bg)_95%)]"
       />
       <div aria-hidden="true" className="contact-pattern pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-[812px] px-6 md:px-8 lg:px-0">
+      <div className="relative mx-auto max-w-[812px] px-3 md:px-8 lg:px-0">
         <div className="flex w-full flex-col gap-4 pt-[76px]">
           <Reveal variant="heading">
             <SectionTitle>Contacto</SectionTitle>
