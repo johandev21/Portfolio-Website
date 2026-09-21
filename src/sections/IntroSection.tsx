@@ -1,8 +1,7 @@
 import { portfolioData } from "../data/portfolio";
 import Icon from "../components/Icon";
 import Reveal from "../components/Reveal";
-import myselfImageMobile from "../assets/myself-160.jpg";
-import myselfImageDesktop from "../assets/myself-240.jpg";
+import PuzzleAvatar from "../components/PuzzleAvatar";
 
 export default function IntroSection() {
   const { hero } = portfolioData;
@@ -10,20 +9,7 @@ export default function IntroSection() {
     <section className="flex flex-col gap-4">
       <div className="flex flex-col items-center gap-5 md:flex-row">
         <Reveal variant="image" className="shrink-0">
-          <div className="h-20 w-20 overflow-hidden border border-border md:h-[120px] md:w-[120px]">
-            <picture>
-              <source media="(min-width: 768px)" srcSet={myselfImageDesktop.src} />
-              <img
-                src={myselfImageMobile.src}
-                alt="Johan Carrasco"
-                width="240"
-                height="240"
-                sizes="(max-width: 767px) 80px, 120px"
-                decoding="async"
-                className="h-full w-full object-cover"
-              />
-            </picture>
-          </div>
+          <PuzzleAvatar />
         </Reveal>
         <Reveal delay={55} className="w-full md:w-[352px] md:shrink-0">
           <div className="flex w-full flex-col items-center gap-2 md:w-[352px] md:shrink-0 md:items-start">

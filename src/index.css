@@ -3,6 +3,7 @@
 @import "./styles/tokens.css";
 @import "./styles/base.css";
 @import "./styles/motion.css";
+@import "./styles/puzzle-avatar.css";
 @import "./styles/project-card.css";
 @import "./styles/project-detail.css";
 @import "./styles/focus.css";
