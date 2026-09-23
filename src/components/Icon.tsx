@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { ArrowLeft, Download, ExternalLink, Mail, MapPin } from "lucide";
+import { ArrowLeft, Download, ExternalLink, Mail, MapPin, X } from "lucide";
 import betterAuth from "../assets/icons/thesvg/better-auth.svg?raw";
 import bun from "../assets/icons/thesvg/bun.svg?raw";
 import clerk from "../assets/icons/thesvg/clerk.svg?raw";
@@ -37,6 +37,7 @@ const sizes = {
 
 const icons = {
   "arrow-left": ArrowLeft,
+  close: X,
   cv: Download,
   "external-link": ExternalLink,
   mail: Mail,

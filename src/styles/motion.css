@@ -14,11 +14,25 @@
 @utility transition-motion { transition-property: transform, translate, scale, rotate, opacity, color, background-color, border-color, box-shadow, filter, letter-spacing, background-position; transition-timing-function: ease-out; transition-duration: 150ms; }
 @utility transition-motion-slow { transition-property: transform, translate, scale, rotate, opacity, color, background-color, border-color, box-shadow, filter, letter-spacing, background-position; transition-timing-function: ease-out; transition-duration: 200ms; }
 
+@keyframes menu-panel-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes menu-item-enter {
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@utility animate-menu-panel { animation: menu-panel-enter 180ms ease-out both; }
+@utility animate-menu-item { animation: menu-item-enter 220ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
   *:hover, *:active, *:focus-visible, *:hover *, *:active *, *:focus-visible * { translate: none !important; scale: none !important; rotate: none !important; }
-  /* Scroll-reveal reduced-motion overrides are retained with the disabled motion rules above. */
+  .animate-menu-item { animation-delay: 0ms !important; }
+  /* Project-card hover transitions are shortened under reduced motion. */
   .project-card::before, .project-media-overlay, .project-logo::after { transition: opacity 100ms ease !important; }
   .project-card-copy { transition: color 100ms ease !important; }
 }
