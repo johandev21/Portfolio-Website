@@ -104,7 +104,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full flex-col items-center justify-end gap-2 overflow-hidden border border-border/50 bg-bg/60 p-2 pt-4 backdrop-blur-[1.75px]"
+      className="flex w-full flex-col items-center justify-end gap-2 overflow-hidden border border-border/50 bg-bg/20 p-2 pt-4 backdrop-blur-[1.75px]"
     >
       <div className="flex w-full flex-wrap flex-row items-center justify-start px-4 pb-3">
         <div className="flex flex-row items-center">
@@ -166,7 +166,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
           )}
         </div>
       </div>
-      <div className="flex w-full flex-col gap-4 bg-surface/60 p-4 backdrop-blur-[1.75px] sm:gap-5">
+      <div className="flex w-full flex-col gap-4 bg-surface/30 p-4 backdrop-blur-[1.75px] sm:gap-5">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           <label className="focus-field-label flex flex-col gap-2 text-sm leading-5 text-muted transition-motion">
             Nombre
