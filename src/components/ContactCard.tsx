@@ -181,7 +181,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
               maxLength={80}
               placeholder="Tu nombre"
               required
-              className="focus-field min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+              className="contact-field focus-field min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
             />
           </label>
           <label className="focus-field-label flex flex-col gap-2 text-sm leading-5 text-muted transition-motion">
@@ -197,7 +197,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
               maxLength={254}
               placeholder="Tu correo"
               required
-              className="focus-field min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+              className="contact-field focus-field min-h-10 rounded-none border border-border/70 bg-transparent px-3 py-2 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
             />
           </label>
         </div>
@@ -215,7 +215,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
             spellCheck
             placeholder={contact.placeholder}
             aria-label="Mensaje"
-            className="focus-field h-full min-h-[112px] w-full resize-none rounded-none border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
+            className="contact-field focus-field h-full min-h-[112px] w-full resize-none rounded-none border border-border/70 bg-transparent px-3 py-2.5 pr-14 pb-12 text-sm leading-5 text-text transition-motion placeholder:text-muted hover:border-border disabled:cursor-not-allowed disabled:border-border/40 disabled:bg-bg/20 disabled:text-muted motion-reduce:transition-none"
           />
           <Button
             type="submit"

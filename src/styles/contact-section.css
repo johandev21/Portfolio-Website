@@ -1,3 +1,65 @@
+/* Contact section background and smooth blending with the main page background */
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--contact-background) 26%,
+    var(--contact-background) 74%,
+    var(--color-bg) 100%
+  );
+}
+
+.contact-bg-picture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 22%,
+    black 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 22%,
+    black 78%,
+    transparent 100%
+  );
+}
+
+.contact-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: luminosity;
+  opacity: 0.16;
+}
+
+:root[data-theme="dark"] .contact-bg-image {
+  opacity: 0.26;
+}
+
+.contact-bg-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 75% 55% at 50% 50%,
+    transparent 20%,
+    var(--color-bg) 100%
+  );
+  opacity: 0.4;
+}
+
 /* Contact actions share one neutral tone and shift to the accent on hover. */
 .contact-icon {
   --icon-primary: var(--color-muted);
@@ -19,4 +81,13 @@
   --icon-primary: var(--color-text);
   --icon-muted: var(--color-text);
   color: var(--color-text);
+}
+
+/* Subtle 10% opacity increase for contact inputs in dark mode */
+:root[data-theme="dark"] .contact-field {
+  border-color: color-mix(in oklab, var(--color-border) 95%, white);
+}
+
+:root[data-theme="dark"] .contact-field:hover:not(:disabled) {
+  border-color: color-mix(in oklab, var(--color-border) 90%, white);
 }
