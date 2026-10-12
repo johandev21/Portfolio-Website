@@ -39,9 +39,13 @@
 }
 
 html {
-  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
   color-scheme: light dark;
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
 }
 
 *,

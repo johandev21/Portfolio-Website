@@ -1,5 +1,13 @@
 import { createElement } from "react";
-import { ArrowLeft, Download, ExternalLink, Mail, MapPin, X } from "lucide";
+import {
+  ArrowLeft,
+  ExternalLink,
+  FileUser,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+} from "lucide";
 import betterAuth from "../assets/icons/thesvg/better-auth.svg?raw";
 import bun from "../assets/icons/thesvg/bun.svg?raw";
 import clerk from "../assets/icons/thesvg/clerk.svg?raw";
@@ -38,9 +46,11 @@ const sizes = {
 const icons = {
   "arrow-left": ArrowLeft,
   close: X,
-  cv: Download,
+  cv: FileUser,
   "external-link": ExternalLink,
+  "file-user": FileUser,
   mail: Mail,
+  menu: Menu,
   pin: MapPin,
 } as const;
 
@@ -117,7 +127,7 @@ export default function Icon({ name, size, className = "" }: IconProps) {
 
   return (
     <span
-      className={`flex shrink-0 items-center justify-center overflow-hidden leading-none transition-motion ${isLibraryIcon ? "" : "border border-border bg-surface"} ${sizes[size]} ${className}`}
+      className={`flex shrink-0 items-center justify-center overflow-hidden leading-none transition-colors duration-150 ${isLibraryIcon ? "" : "border border-border bg-surface"} ${sizes[size]} ${className}`}
     >
       {name in icons ? (
         <span className="h-full w-full text-current">

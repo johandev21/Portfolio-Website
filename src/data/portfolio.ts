@@ -345,7 +345,7 @@ export const portfolioData: PortfolioData = {
     ],
     buttons: [
       { icon: "mail", label: "Correo" },
-      { icon: "cv", label: "CV" },
+      { icon: "file-user", label: "CV" },
     ],
     email: "johandev21@gmail.com",
     placeholder:

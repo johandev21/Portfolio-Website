@@ -158,7 +158,7 @@ export default function MobileMenu({
               type="button"
               aria-label="Cerrar menú"
               onClick={onClose}
-              className="focus-control inline-flex h-9 w-9 items-center justify-center rounded-none text-text transition-motion hoverable:hover:text-accent"
+              className="focus-control inline-flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent"
             >
               <Icon name="close" size={16} />
             </button>

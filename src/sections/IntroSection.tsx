@@ -22,7 +22,7 @@ export default function IntroSection() {
               </h1>
             </div>
             <div className="flex w-fit flex-row items-start gap-2">
-              <Icon name="pin" size={20} />
+              <Icon name="pin" size={20} className="text-text-soft" />
               <span className="whitespace-nowrap text-sm leading-normal text-text-soft">
                 {hero.location}
               </span>

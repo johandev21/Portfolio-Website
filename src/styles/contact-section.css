@@ -31,6 +31,7 @@
     black 78%,
     transparent 100%
   );
+  transform: translateZ(0);
 }
 
 .contact-bg-image {

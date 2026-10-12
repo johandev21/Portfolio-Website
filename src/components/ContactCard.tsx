@@ -166,7 +166,7 @@ export default function ContactCard({ contact }: ContactCardProps) {
           )}
         </div>
       </div>
-      <div className="flex w-full flex-col gap-4 bg-surface/30 p-4 backdrop-blur-[1.75px] sm:gap-5">
+      <div className="flex w-full flex-col gap-4 bg-surface/30 p-4 sm:gap-5">
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           <label className="focus-field-label flex flex-col gap-2 text-sm leading-5 text-muted transition-motion">
             Nombre

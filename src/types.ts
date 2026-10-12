@@ -32,11 +32,23 @@ export type IconName =
   | "external-link"
   | "send"
   | "close"
-  | "cv";
+  | "cv"
+  | "file-user"
+  | "menu";
 
 export type TechnologyIconName = Exclude<
   IconName,
-  "linkedin" | "github" | "mail" | "pin" | "arrow-left" | "external-link" | "send" | "close" | "cv"
+  | "linkedin"
+  | "github"
+  | "mail"
+  | "pin"
+  | "arrow-left"
+  | "external-link"
+  | "send"
+  | "close"
+  | "cv"
+  | "file-user"
+  | "menu"
 >;
 
 export type BulletPoint = string;

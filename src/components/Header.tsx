@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import Icon from "./Icon";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "./ThemeToggle";
 
@@ -43,16 +44,9 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="focus-control group relative flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent md:hidden"
+              className="focus-control inline-flex h-9 w-9 items-center justify-center rounded-none text-text-soft transition-motion hover:text-accent md:hidden"
             >
-              <span
-                aria-hidden="true"
-                className="absolute top-1/2 left-1/2 h-px w-4 -translate-x-1/2 -translate-y-[3px] bg-current"
-              />
-              <span
-                aria-hidden="true"
-                className="absolute top-1/2 left-1/2 h-px w-4 -translate-x-1/2 translate-y-[3px] bg-current"
-              />
+              <Icon name="menu" size={16} />
             </button>
           </div>
         </div>
