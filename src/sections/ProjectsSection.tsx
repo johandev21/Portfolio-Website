@@ -1,6 +1,7 @@
 import { portfolioData } from "../data/portfolio";
 import SectionTitle from "../components/SectionTitle";
 import ProjectCard from "../components/ProjectCard";
+import ProjectPlaceholderCard from "../components/ProjectPlaceholderCard";
 import Reveal from "../components/Reveal";
 
 export default function ProjectsSection() {
@@ -20,6 +21,13 @@ export default function ProjectsSection() {
             <ProjectCard project={project} />
           </Reveal>
         ))}
+        <Reveal
+          className="h-full"
+          delay={(portfolioData.projects.length % 2) * 55}
+          variant="project"
+        >
+          <ProjectPlaceholderCard />
+        </Reveal>
       </div>
     </section>
   );

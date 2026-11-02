@@ -32,18 +32,6 @@ const tasklaneIcons = [
   { name: "TypeScript", icon: "typescript" },
 ] satisfies Technology[];
 
-const threadnestIcons = [
-  { name: "Bun", icon: "bun" },
-  { name: "Elysia", icon: "elysia" },
-  { name: "Better Auth", icon: "better-auth" },
-  { name: "SQLite", icon: "sqlite" },
-  { name: "Drizzle", icon: "drizzle" },
-  { name: "Next.js", icon: "nextjs" },
-  { name: "React", icon: "react" },
-  { name: "Tailwind", icon: "tailwind" },
-  { name: "TanStack Query", icon: "tanstack-query" },
-] satisfies Technology[];
-
 const radIcons = [
   { name: "Next.js", icon: "nextjs" },
   { name: "Prisma", icon: "prisma" },
@@ -115,37 +103,6 @@ El desarrollo se fundamenta en Registros de Decisiones Arquitectónicas (ADRs) d
 1. **Stack Unificado**: Convex centraliza persistencia, funciones de servidor y suscripciones reactivas.
 2. **Autenticación Delegada**: Clerk gestiona las credenciales y Convex verifica la firma JWT.
 3. **Tiempo Real y Ordenamiento**: Reordenamiento basado en anclas posicionales resueltas en el servidor y presencia mediante latidos periódicos.`;
-
-const threadnestMarkdown = `## Contexto del Proyecto
-
-ThreadNest es un clon ligero de Reddit. Las comunidades se llaman **nests**, las publicaciones viven dentro de los nests y los hilos de comentarios se anidan dentro de cada publicación.
-
-El proyecto es un monorepo con dos aplicaciones: una API REST con Elysia.js (autenticación, base de datos SQLite y WebSockets) y un frontend con Next.js (App Router).
-
-### Funcionalidades Principales
-
-1. **Nests**: Comunidades con slug, descripción y contador de miembros y publicaciones.
-2. **Publicaciones**: De tipo texto o enlace dentro de cada nest.
-3. **Comentarios anidados**: Respuestas ilimitadas.
-4. **Sistema de votos**: Positivo, negativo o neutro sobre publicaciones y comentarios.
-5. **Feed**: Ordenamiento por populares, recientes o mejor votados, con paginación por cursor.
-6. **Tiempo real**: Actualizaciones vía WebSockets sin recargar la página.
-
-## Stack Tecnológico
-
-- **Runtime**: Bun.
-- **Backend**: Elysia.js.
-- **Autenticación**: Better Auth (correo y contraseña).
-- **Base de datos**: SQLite mediante el driver nativo \`bun:sqlite\`.
-- **ORM**: Drizzle ORM con drizzle-kit para migraciones.
-- **Type safety**: Eden Treaty para un cliente de API tipado de extremo a extremo.
-- **Frontend**: Next.js 16 (App Router), React 19.
-- **UI**: shadcn/ui, Tailwind CSS 4 y lucide-react.
-- **Estado de datos**: TanStack Query v5.
-
-## API y Tiempo Real
-
-El servidor expone grupos de ruta bajo \`/api\` para salud, autenticación, nests, posts, comments y votes. El módulo \`realtime/hub.ts\` implementa un registro de temas con helpers de difusión mediante los WebSockets nativos de Elysia, lo que permite sincronizar votos, comentarios y actividad en tiempo real.`;
 
 const radMarkdown = `## Contexto del Proyecto
 
@@ -240,27 +197,6 @@ export const portfolioData: PortfolioData = {
         },
       ],
       media: [],
-    },
-    {
-      slug: "threadnest",
-      title: "ThreadNest",
-      subtitle: "Comunidades y conversaciones anidadas.",
-      description:
-        "Clon ligero de Reddit donde las comunidades (nests) alojan publicaciones y los hilos de comentarios se anidan dentro de cada una.",
-      detailsMarkdown: threadnestMarkdown,
-      year: "2026",
-      role: "Desarrollo Full Stack",
-      liveUrl: "https://example.com/threadnest",
-      githubUrl: "https://github.com/johandev21/ThreadNest",
-      icons: [...threadnestIcons],
-      sections: [
-        {
-          title: "Comunidades y Votos",
-          content:
-            "Nests, publicaciones de texto o enlace, comentarios anidados ilimitados y sistema de votos con feed en tiempo real.",
-        },
-      ],
-      media: [testProjectVideo],
     },
     {
       slug: "gestor-rad",

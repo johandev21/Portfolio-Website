@@ -3,7 +3,6 @@ import projectBackground from "../assets/project-background.avif";
 import gestorRadLogo from "../assets/project-logos/Gestor RAD.svg";
 import memsystemsLogo from "../assets/project-logos/Memsystems.svg";
 import tasklaneLogo from "../assets/project-logos/Tasklane.svg";
-import threadNestLogo from "../assets/project-logos/ThreadNest.svg";
 import Icon from "./Icon";
 import Placeholder from "./Placeholder";
 import Tooltip from "./Tooltip";
@@ -15,7 +14,6 @@ interface ProjectCardProps {
 const projectLogos: Record<string, string> = {
   memsystems: memsystemsLogo.src,
   tasklane: tasklaneLogo.src,
-  threadnest: threadNestLogo.src,
   "gestor-rad": gestorRadLogo.src,
 };
 
@@ -58,7 +56,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       ) : (
         <Placeholder
-          label="PROJECT IMAGE"
+          label="IMAGEN DEL PROYECTO"
           className="relative z-[1] h-[140px] w-full"
         />
       )}

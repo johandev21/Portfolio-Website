@@ -14,7 +14,6 @@ Portafolio profesional de Johan Carrasco, ingeniero de software enfocado en apli
 
 - [Memsystems](/project/memsystems)
 - [Tasklane](/project/tasklane)
-- [ThreadNest](/project/threadnest)
 - [Gestor RAD](/project/gestor-rad)
 
 ## Enlaces
