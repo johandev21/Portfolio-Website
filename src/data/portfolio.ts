@@ -1,10 +1,19 @@
 import type { PortfolioData, Technology } from "../types";
 import memsystemsNotebook from "../assets/projects/memsystems-notebook.webp";
 import memsystemsMindmap from "../assets/projects/memsystems-mindmap.webp";
+import memsystemsLibrary from "../assets/projects/memsystems-library.webp";
+import memsystemsFlashcards from "../assets/projects/memsystems-flashcards.webp";
+import memsystemsQuiz from "../assets/projects/memsystems-quiz.webp";
 import tasklaneBoard from "../assets/projects/tasklane-board.webp";
+import tasklaneCardDetail from "../assets/projects/tasklane-card-detail.webp";
+import tasklaneDashboard from "../assets/projects/tasklane-dashboard.webp";
+import tasklaneDark from "../assets/projects/tasklane-dark.webp";
 import tasklanePreview from "../assets/projects/tasklane-preview.webp";
 import nimboCatalog from "../assets/projects/nimbo-catalog.webp";
 import nimboDetail from "../assets/projects/nimbo-detail.webp";
+import nimboHome from "../assets/projects/nimbo-home.webp";
+import nimboDark from "../assets/projects/nimbo-dark.webp";
+import nimboCart from "../assets/projects/nimbo-cart.webp";
 
 const memsystemsIcons = [
   { name: "React", icon: "react" },
@@ -226,6 +235,27 @@ export const portfolioData: PortfolioData = {
           caption: "Visualización de conceptos clave extraídos mediante IA.",
           src: memsystemsMindmap.src,
         },
+        {
+          type: "image",
+          title: "Biblioteca de notebooks organizada por carpetas",
+          caption:
+            "Portadas construidas a partir de los banners y fuentes de cada notebook.",
+          src: memsystemsLibrary.src,
+        },
+        {
+          type: "image",
+          title: "Repaso con tarjetas de estudio",
+          caption:
+            "Sesión activa con pregunta, solución y navegación entre tarjetas generadas desde el notebook.",
+          src: memsystemsFlashcards.src,
+        },
+        {
+          type: "image",
+          title: "Cuestionarios de práctica generados por IA",
+          caption:
+            "Preguntas con alternativas y progreso de avance sobre el contenido de las fuentes.",
+          src: memsystemsQuiz.src,
+        },
       ],
     },
     {
@@ -253,6 +283,27 @@ export const portfolioData: PortfolioData = {
           caption:
             "Gestión de tareas, etiquetas por disciplina y presencia de usuarios.",
           src: tasklaneBoard.src,
+        },
+        {
+          type: "image",
+          title: "Detalle de tarjeta con descripción en Markdown",
+          caption:
+            "Responsables, etiquetas, descripción y comentarios en una sola vista.",
+          src: tasklaneCardDetail.src,
+        },
+        {
+          type: "image",
+          title: "Panel general de tableros y telemetría",
+          caption:
+            "Resumen de tableros, tarjetas en curso, listas y miembros por tablero.",
+          src: tasklaneDashboard.src,
+        },
+        {
+          type: "image",
+          title: "Tablero en modo oscuro",
+          caption:
+            "Tema oscuro con la misma jerarquía visual y estados de las tarjetas.",
+          src: tasklaneDark.src,
         },
         {
           type: "image",
@@ -294,6 +345,27 @@ export const portfolioData: PortfolioData = {
           caption:
             "Detalle con control de stock, selector de unidades y sugerencias contextuales.",
           src: nimboDetail.src,
+        },
+        {
+          type: "image",
+          title: "Portada y selección editorial destacada",
+          caption:
+            "Acceso directo al catálogo y títulos destacados con portadas optimizadas.",
+          src: nimboHome.src,
+        },
+        {
+          type: "image",
+          title: "Catálogo en modo oscuro",
+          caption:
+            "Filtros facetados y grilla de productos con contraste adaptado al tema oscuro.",
+          src: nimboDark.src,
+        },
+        {
+          type: "image",
+          title: "Carrito con subtotal y control de cantidades",
+          caption:
+            "Productos seleccionados, cantidades y resumen del pedido antes del checkout.",
+          src: nimboCart.src,
         },
       ],
     },
