@@ -2,6 +2,7 @@
 import type { Project } from "../types";
 import Icon from "../components/Icon";
 import ProjectMedia from "../components/ProjectMedia";
+import ProjectLightbox from "../components/ProjectLightbox.astro";
 import ProjectStory from "../components/ProjectStory";
 import ProjectTechIcons from "../components/ProjectTechIcons";
 
@@ -12,6 +13,9 @@ interface Props {
 const { project } = Astro.props;
 const [heroMedia, ...additionalMedia] = project.media ?? [];
 const validAdditionalMedia = additionalMedia.filter((item) => item.src);
+const hasLightboxImages = (project.media ?? []).some(
+  (item) => item.src && item.type === "image",
+);
 ---
 
 <article class="mx-auto w-full max-w-4xl pb-24">
@@ -96,3 +100,5 @@ const validAdditionalMedia = additionalMedia.filter((item) => item.src);
     </div>
   )}
 </article>
+
+{hasLightboxImages && <ProjectLightbox />}

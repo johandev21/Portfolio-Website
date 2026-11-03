@@ -1,0 +1,251 @@
+---
+---
+
+<dialog
+  class="project-lightbox"
+  data-lightbox-dialog
+  aria-labelledby="project-lightbox-title"
+  aria-describedby="project-lightbox-caption"
+>
+  <div class="project-lightbox__frame">
+    <div class="project-lightbox__bar">
+      <p
+        class="project-lightbox__counter"
+        data-lightbox-counter
+        aria-live="polite"
+        aria-atomic="true"
+      ></p>
+      <button
+        type="button"
+        class="project-lightbox__control"
+        data-lightbox-close
+        aria-label="Cerrar imagen ampliada"
+      >
+        <svg
+          aria-hidden="true"
+          class="project-lightbox__icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.75"
+          viewBox="0 0 24 24"
+        >
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="project-lightbox__stage" data-lightbox-backdrop>
+      <img
+        class="project-lightbox__image"
+        data-lightbox-image
+        alt=""
+        draggable="false"
+      />
+    </div>
+
+    <div class="project-lightbox__footer">
+      <button
+        type="button"
+        class="project-lightbox__control"
+        data-lightbox-prev
+        aria-label="Imagen anterior"
+      >
+        <svg
+          aria-hidden="true"
+          class="project-lightbox__icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.75"
+          viewBox="0 0 24 24"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+
+      <div class="project-lightbox__caption">
+        <h2 id="project-lightbox-title" data-lightbox-heading></h2>
+        <p id="project-lightbox-caption" data-lightbox-description></p>
+      </div>
+
+      <button
+        type="button"
+        class="project-lightbox__control"
+        data-lightbox-next
+        aria-label="Imagen siguiente"
+      >
+        <svg
+          aria-hidden="true"
+          class="project-lightbox__icon"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.75"
+          viewBox="0 0 24 24"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>(
+    "[data-lightbox-dialog]",
+  );
+
+  if (dialog) {
+    const triggers = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-lightbox-item]"),
+    ).filter((trigger) => trigger.getAttribute("href"));
+
+    const image = dialog.querySelector<HTMLImageElement>("[data-lightbox-image]");
+    const counter = dialog.querySelector<HTMLElement>("[data-lightbox-counter]");
+    const title = dialog.querySelector<HTMLElement>("[data-lightbox-heading]");
+    const caption = dialog.querySelector<HTMLElement>("[data-lightbox-description]");
+    const closeButton = dialog.querySelector<HTMLButtonElement>(
+      "[data-lightbox-close]",
+    );
+    const previousButton = dialog.querySelector<HTMLButtonElement>(
+      "[data-lightbox-prev]",
+    );
+    const nextButton = dialog.querySelector<HTMLButtonElement>(
+      "[data-lightbox-next]",
+    );
+
+    if (
+      triggers.length &&
+      image &&
+      counter &&
+      title &&
+      caption &&
+      closeButton &&
+      previousButton &&
+      nextButton
+    ) {
+      let currentIndex = 0;
+      let lastTrigger: HTMLAnchorElement | null = null;
+      let previousBodyOverflow = "";
+
+      const show = (index: number) => {
+        currentIndex = (index + triggers.length) % triggers.length;
+        const trigger = triggers[currentIndex];
+        const imageTitle = trigger.dataset.lightboxTitle ?? "";
+        const imageCaption = trigger.dataset.lightboxCaption ?? "";
+        const multiple = triggers.length > 1;
+
+        image.src = trigger.getAttribute("href") ?? "";
+        image.alt = imageTitle;
+        title.textContent = imageTitle;
+        counter.textContent = `${currentIndex + 1} / ${triggers.length}`;
+
+        if (imageCaption) {
+          caption.textContent = imageCaption;
+          caption.hidden = false;
+          dialog.setAttribute(
+            "aria-describedby",
+            "project-lightbox-caption",
+          );
+        } else {
+          caption.textContent = "";
+          caption.hidden = true;
+          dialog.removeAttribute("aria-describedby");
+        }
+
+        previousButton.hidden = !multiple;
+        nextButton.hidden = !multiple;
+      };
+
+      const close = () => {
+        if (dialog.open) dialog.close();
+      };
+
+      const open = (index: number, trigger: HTMLAnchorElement) => {
+        lastTrigger = trigger;
+        show(index);
+
+        if (!dialog.open) {
+          previousBodyOverflow = document.body.style.overflow;
+          document.body.style.overflow = "hidden";
+          dialog.showModal();
+        }
+
+        closeButton.focus();
+      };
+
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", (event) => {
+          if (
+            event.button !== 0 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+
+          event.preventDefault();
+          open(index, trigger);
+        });
+      });
+
+      closeButton.addEventListener("click", close);
+      previousButton.addEventListener("click", () => show(currentIndex - 1));
+      nextButton.addEventListener("click", () => show(currentIndex + 1));
+
+      dialog.addEventListener("click", (event) => {
+        if (
+          event.target instanceof Element &&
+          event.target.closest("[data-lightbox-backdrop]")
+        ) {
+          close();
+        }
+      });
+
+      dialog.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          show(currentIndex - 1);
+          return;
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          show(currentIndex + 1);
+          return;
+        }
+
+        if (event.key !== "Tab") return;
+
+        const focusables = Array.from(
+          dialog.querySelectorAll<HTMLButtonElement>(
+            "button:not([hidden]):not([disabled])",
+          ),
+        );
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      dialog.addEventListener("close", () => {
+        document.body.style.overflow = previousBodyOverflow;
+        lastTrigger?.focus({ preventScroll: true });
+      });
+    }
+  }
+</script>
