@@ -1,14 +1,10 @@
 import type { PortfolioData, Technology } from "../types";
-import projectVideoPoster from "../assets/project-background.avif";
-import projectVideo from "../assets/project-videos/from-music-festivals-to-developer.mp4";
-
-const testProjectVideo = {
-  type: "video",
-  title: "De festivales de música a desarrollador",
-  caption: "Video de presentación del proyecto",
-  poster: projectVideoPoster.src,
-  src: projectVideo,
-} as const;
+import memsystemsNotebook from "../assets/projects/memsystems-notebook.webp";
+import memsystemsMindmap from "../assets/projects/memsystems-mindmap.webp";
+import tasklaneBoard from "../assets/projects/tasklane-board.webp";
+import tasklanePreview from "../assets/projects/tasklane-preview.webp";
+import nimboCatalog from "../assets/projects/nimbo-catalog.webp";
+import nimboDetail from "../assets/projects/nimbo-detail.webp";
 
 const memsystemsIcons = [
   { name: "React", icon: "react" },
@@ -25,9 +21,21 @@ const tasklaneIcons = [
   { name: "TanStack Start", icon: "tanstack-router" },
   { name: "React", icon: "react" },
   { name: "Tailwind", icon: "tailwind" },
+  { name: "Bun", icon: "bun" },
+  { name: "Elysia", icon: "elysia" },
+  { name: "Better Auth", icon: "better-auth" },
+  { name: "SQLite", icon: "sqlite" },
+  { name: "Drizzle", icon: "drizzle" },
+  { name: "TypeScript", icon: "typescript" },
+] satisfies Technology[];
+
+const nimboIcons = [
+  { name: "TanStack Start", icon: "tanstack-router" },
+  { name: "React", icon: "react" },
+  { name: "Tailwind", icon: "tailwind" },
   { name: "shadcn", icon: "shadcn" },
-  { name: "Convex", icon: "convex" },
-  { name: "Clerk", icon: "clerk" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "Drizzle", icon: "drizzle" },
   { name: "Zod", icon: "zod" },
   { name: "TypeScript", icon: "typescript" },
 ] satisfies Technology[];
@@ -82,27 +90,29 @@ La aplicación se estructura mediante tableros, listas y tarjetas, y sigue un le
 
 ### Funcionalidades Principales
 
-1. **Identidad**: Registro e inicio de sesión con email y contraseña mediante Clerk.
-2. **Dashboard**: Vista de todos los Boards del usuario, con creación y estados vacíos guiados.
-3. **Boards, Lists y Cards**: CRUD completo con reordenamiento drag & drop, movimiento entre listas y edición en línea.
-4. **Detalle de Card**: Descripción con Markdown, etiquetas, fecha límite, asignación de miembros y hilo de comentarios.
-5. **Presence en tiempo real**: Franja de avatares con indicador de los miembros que están viendo el tablero.
+1. **Identidad y Sesiones**: Registro e inicio de sesión seguro con Better Auth, gestionando sesiones persistentes y control de acceso.
+2. **Dashboard**: Vista general de tableros del usuario, con creación rápida y flujos guiados para nuevos proyectos.
+3. **Boards, Lists y Cards**: CRUD completo con reordenamiento drag & drop, movimiento dinámico entre listas y edición inline.
+4. **Detalle de Card**: Descripción enriquecida en Markdown, etiquetas por disciplina, fechas límite, asignación de miembros y comentarios.
+5. **Colaboración en Tiempo Real**: Sincronización instantánea de eventos y presencia activa de miembros en el tablero mediante WebSockets.
 
 ## Stack Tecnológico
 
-- **Frontend**: TanStack Start (React 19) con renderizado en servidor y enrutamiento tipado.
-- **Diseño**: Tailwind CSS v4 y shadcn/ui.
-- **Backend**: Convex como base de datos reactiva y funciones serverless.
-- **Identidad**: Clerk con validación de tokens JWT en el backend.
-- **Pruebas**: Vitest con convex-test para pruebas en memoria.
+- **Frontend**: TanStack Start (React 19) con renderizado en servidor (SSR) y enrutamiento tipado de extremo a extremo.
+- **Diseño**: Tailwind CSS y componentes accesibles basados en shadcn/ui.
+- **Backend**: API de alto rendimiento con Bun y Elysia, optimizada para baja latencia.
+- **Base de Datos y ORM**: SQLite con Drizzle ORM para consultas tipadas, migraciones declarativas y máxima velocidad en I/O.
+- **Autenticación**: Better Auth para autenticación moderna, manejo seguro de sesiones y control directo de la persistencia.
+- **Tiempo Real**: Sincronización bidireccional basada en WebSockets nativos de Bun y Elysia.
 
 ## Decisiones de Arquitectura
 
-El desarrollo se fundamenta en Registros de Decisiones Arquitectónicas (ADRs) documentados en \`docs/adr/\`:
+El desarrollo prioriza simplicidad, rendimiento y control total sobre el stack:
 
-1. **Stack Unificado**: Convex centraliza persistencia, funciones de servidor y suscripciones reactivas.
-2. **Autenticación Delegada**: Clerk gestiona las credenciales y Convex verifica la firma JWT.
-3. **Tiempo Real y Ordenamiento**: Reordenamiento basado en anclas posicionales resueltas en el servidor y presencia mediante latidos periódicos.`;
+1. **Runtime y Servidor de Alto Desempeño**: Bun y Elysia proporcionan un arranque casi instantáneo, mínimo consumo de memoria y soporte nativo para WebSockets de alta concurrencia.
+2. **Persistencia Tipada y Ligera**: SQLite y Drizzle ORM garantizan cero latencia de red en consultas locales, tipos TypeScript estrictos desde el esquema y migraciones predecibles.
+3. **Autenticación Autónoma**: Better Auth elimina la dependencia de servicios SaaS externos para autenticación, manteniendo los datos de usuario y sesiones bajo control directo de la base de datos.
+4. **Enrutamiento y SSR Tipado**: TanStack Start unifica la carga de datos del servidor con la interactividad del cliente, logrando transiciones instantáneas sin sacrificar SEO ni rendimiento inicial.`;
 
 const radMarkdown = `## Contexto del Proyecto
 
@@ -131,6 +141,34 @@ Los archivos sensibles se almacenan en el directorio \`.storage/\` fuera de la c
 ## Despliegue
 
 El repositorio incluye utilidades en \`/scripts\`, como un generador de archivos Excel para pruebas de carga masiva y un script de despliegue automatizado.`;
+
+const nimboMarkdown = `## Contexto del Proyecto
+
+Nimbo es una tienda web de cómics y mangas diseñada para ofrecer una experiencia de compra rápida, fluida y sin fricción en el mercado chileno. El proyecto nace para solucionar la lentitud y complejidad visual típica de los catálogos editoriales tradicionales, implementando un diseño editorial limpio con arquitectura moderna de renderizado en servidor.
+
+La plataforma unifica catálogo reactivo, filtros dinámicos, gestión de carrito persistente y checkout estructurado mediante tipos de datos compartidos de extremo a extremo.
+
+### Funcionalidades Principales
+
+1. **Catálogo Facetado**: Exploración y búsqueda en tiempo real de más de 40 títulos editoriales con filtros combinados por editorial (Norma, Panini, Ivrea, DC), género, formato y rango de precio.
+2. **Detalle de Producto Enriquecido**: Vistas de producto con control de stock en tiempo real, selector de unidades, información editorial completa y recomendaciones contextuales basadas en género.
+3. **Carrito Reactivo y Persistente**: Estado global con Zustand y persistencia en almacenamiento local para preservar los pedidos entre sesiones del usuario.
+4. **Pipeline Automatizado de Assets**: Almacenamiento desacoplado con claves compatibles con buckets de objetos y generación automática de variantes responsivas en formatos modernos AVIF y WebP.
+
+## Stack Tecnológico
+
+- **Frontend**: TanStack Start (React 19) con SSR, enrutamiento basado en archivos y renderizado optimizado con Nitro.
+- **API y Tipado**: tRPC con React Query para comunicación tipada de extremo a extremo sin duplicar interfaces.
+- **Base de Datos y ORM**: PostgreSQL local administrado con Drizzle ORM, migraciones declarativas y consultas SQL tipadas.
+- **Gestión de Estado**: Zustand con middleware de persistencia para el carrito de compras.
+- **Diseño y Estilos**: Tailwind CSS v4, componentes accesibles shadcn/ui y tipografía dual (Space Grotesk y Oxanium).
+- **Validación**: Zod para esquemas de datos tanto en cliente como en servidor.
+
+## Decisiones de Arquitectura
+
+1. **Tipado Unificado con tRPC**: Garantiza que cualquier cambio en el esquema de la base de datos o en los procedimientos del servidor se refleje inmediatamente en el cliente, previniendo errores en tiempo de compilación.
+2. **Pipeline de Portadas Desacoplado**: Las imágenes de catálogo se gestionan mediante claves abstractas de almacenamiento de objetos, generando variantes optimizadas en resolución y formato para minimizar el consumo de ancho de banda.
+3. **Estado Híbrido Servidor-Cliente**: La carga de catálogo se beneficia de renderizado en servidor para velocidad de carga inicial, mientras que el carrito opera de forma reactiva en el cliente con sincronización local inmediata.`;
 
 export const portfolioData: PortfolioData = {
   hero: {
@@ -165,7 +203,6 @@ export const portfolioData: PortfolioData = {
       detailsMarkdown: memsystemsMarkdown,
       year: "2026",
       role: "Desarrollo Full Stack",
-      liveUrl: "https://example.com/memsystems",
       githubUrl: "https://github.com/johandev21/Memsystems-AI",
       icons: [...memsystemsIcons],
       sections: [
@@ -175,7 +212,21 @@ export const portfolioData: PortfolioData = {
             "Notebooks, fuentes de información, chat contextual y materiales de estudio generados por IA, unificados en una sola aplicación.",
         },
       ],
-      media: [testProjectVideo],
+      media: [
+        {
+          type: "image",
+          title: "Espacio de trabajo y chat contextual con RAG",
+          caption:
+            "Consulta de fuentes con streaming y citación en tiempo real.",
+          src: memsystemsNotebook.src,
+        },
+        {
+          type: "image",
+          title: "Generación de mapas mentales interactivos",
+          caption: "Visualización de conceptos clave extraídos mediante IA.",
+          src: memsystemsMindmap.src,
+        },
+      ],
     },
     {
       slug: "tasklane",
@@ -186,7 +237,6 @@ export const portfolioData: PortfolioData = {
       detailsMarkdown: tasklaneMarkdown,
       year: "2026",
       role: "Desarrollo Full Stack",
-      liveUrl: "https://example.com/tasklane",
       githubUrl: "https://github.com/johandev21/Tasklane",
       icons: [...tasklaneIcons],
       sections: [
@@ -196,7 +246,56 @@ export const portfolioData: PortfolioData = {
             "Cada cambio realizado por un miembro se refleja de inmediato en las pantallas de todos los usuarios conectados, sin recargar la página.",
         },
       ],
-      media: [],
+      media: [
+        {
+          type: "image",
+          title: "Tablero colaborativo Kanban en tiempo real",
+          caption:
+            "Gestión de tareas, etiquetas por disciplina y presencia de usuarios.",
+          src: tasklaneBoard.src,
+        },
+        {
+          type: "image",
+          title: "Vista general y arquitectura de producto",
+          caption: "Landing page y previsualización interactiva de tableros.",
+          src: tasklanePreview.src,
+        },
+      ],
+    },
+    {
+      slug: "nimbo",
+      title: "Nimbo",
+      subtitle: "Tienda chilena de cómics y mangas con catálogo reactivo.",
+      description:
+        "Plataforma de e-commerce con TanStack Start, React 19, tRPC, PostgreSQL y Drizzle ORM, con búsqueda facetada, carrito persistente y pipeline de imágenes responsivas.",
+      detailsMarkdown: nimboMarkdown,
+      year: "2026",
+      role: "Desarrollo Full Stack",
+      githubUrl: "https://github.com/johandev21/nimbo",
+      icons: [...nimboIcons],
+      sections: [
+        {
+          title: "Experiencia Editorial y E-Commerce",
+          content:
+            "Catálogo en tiempo real, filtros facetados, carrito persistente con Zustand y pipeline automatizado de imágenes AVIF y WebP.",
+        },
+      ],
+      media: [
+        {
+          type: "image",
+          title: "Catálogo interactivo y búsqueda facetada",
+          caption:
+            "Filtrado por editorial, género y formato con actualización instantánea.",
+          src: nimboCatalog.src,
+        },
+        {
+          type: "image",
+          title: "Ficha de producto y gestión de compra",
+          caption:
+            "Detalle con control de stock, selector de unidades y sugerencias contextuales.",
+          src: nimboDetail.src,
+        },
+      ],
     },
     {
       slug: "gestor-rad",
@@ -207,8 +306,6 @@ export const portfolioData: PortfolioData = {
       detailsMarkdown: radMarkdown,
       year: "2026",
       role: "Desarrollo Full Stack",
-      liveUrl: "https://example.com/gestor-rad",
-      githubUrl: "https://github.com/johandev21/proyecto-rad-hospital-rancagua",
       icons: [...radIcons],
       sections: [
         {
@@ -217,7 +314,7 @@ export const portfolioData: PortfolioData = {
             "Registro de centros formadores, capacidad formadora, nóminas de alumnos, eventos adversos y repositorio de documentos.",
         },
       ],
-      media: [testProjectVideo],
+      media: [],
     },
   ],
   techCategories: [

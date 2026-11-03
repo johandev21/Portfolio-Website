@@ -11,9 +11,7 @@ interface Props {
 
 const { project } = Astro.props;
 const [heroMedia, ...additionalMedia] = project.media ?? [];
-const additionalVideos = additionalMedia.filter(
-  (item) => item.type === "video" && item.src,
-);
+const validAdditionalMedia = additionalMedia.filter((item) => item.src);
 ---
 
 <article class="mx-auto w-full max-w-4xl pb-24">
@@ -70,9 +68,9 @@ const additionalVideos = additionalMedia.filter(
     </div>
   </header>
 
-  {heroMedia?.type === "video" && heroMedia.src && (
+  {heroMedia?.src && (
     <div class="mt-8 md:mt-10">
-      <ProjectMedia item={heroMedia} />
+      <ProjectMedia item={heroMedia} priority={true} />
     </div>
   )}
 
@@ -80,17 +78,17 @@ const additionalVideos = additionalMedia.filter(
     <ProjectStory project={project} />
   </div>
 
-  {additionalVideos.length > 0 && (
+  {validAdditionalMedia.length > 0 && (
     <div class="mt-14 md:mt-20">
       <section aria-labelledby="project-media-title">
         <h2
           id="project-media-title"
           class="font-serif text-2xl leading-normal font-normal text-text"
         >
-          Multimedia
+          Galería y Multimedia
         </h2>
         <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {additionalVideos.map((item) => (
+          {validAdditionalMedia.map((item) => (
             <ProjectMedia item={item} />
           ))}
         </div>

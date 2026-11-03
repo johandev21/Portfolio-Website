@@ -2,6 +2,7 @@ import type { Project } from "../types";
 import projectBackground from "../assets/project-background.avif";
 import gestorRadLogo from "../assets/project-logos/Gestor RAD.svg";
 import memsystemsLogo from "../assets/project-logos/Memsystems.svg";
+import nimboLogo from "../assets/project-logos/Nimbo.svg";
 import tasklaneLogo from "../assets/project-logos/Tasklane.svg";
 import Icon from "./Icon";
 import Placeholder from "./Placeholder";
@@ -14,6 +15,7 @@ interface ProjectCardProps {
 const projectLogos: Record<string, string> = {
   memsystems: memsystemsLogo.src,
   tasklane: tasklaneLogo.src,
+  nimbo: nimboLogo.src,
   "gestor-rad": gestorRadLogo.src,
 };
 
