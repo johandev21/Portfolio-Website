@@ -22,7 +22,6 @@ const memsystemsIcons = [
   { name: "NestJS", icon: "nestjs" },
   { name: "PostgreSQL", icon: "postgresql" },
   { name: "Drizzle", icon: "drizzle" },
-  { name: "Better Auth", icon: "better-auth" },
   { name: "TypeScript", icon: "typescript" },
 ] satisfies Technology[];
 
@@ -60,36 +59,29 @@ const radIcons = [
   { name: "TypeScript", icon: "typescript" },
 ] satisfies Technology[];
 
-const memsystemsMarkdown = `## Contexto del Proyecto
+const memsystemsMarkdown = `## Del material disperso al conocimiento conectado
 
-Memsystems es una aplicación para organizar notebooks, consultar fuentes y generar materiales de estudio con modelos de inteligencia artificial. Busca reunir en un solo lugar la investigación, el contexto y las herramientas de estudio que un usuario necesita.
+Estudiar con apuntes, documentos y páginas web implica alternar entre herramientas y reconstruir el contexto de cada tema. Memsystems reúne ese trabajo en un solo espacio: permite organizar fuentes, hacer preguntas sobre su contenido y convertirlo en materiales de repaso, con acceso a los pasajes que respaldan las respuestas.
 
-Para lograrlo, el proyecto se organizó como un monorepo con una interfaz web desarrollada con React, Vite y TanStack Router, y una API construida con NestJS, PostgreSQL y Drizzle ORM.
+## Un flujo de estudio de principio a fin
 
-### Funcionalidades Principales
+- **Reunir información:** cuadernos de trabajo para organizar texto, archivos y contenido web por tema, dentro de una biblioteca con carpetas.
+- **Consultar con contexto:** chat basado en las fuentes del cuaderno, con respuestas progresivas y citas interactivas para revisar el material original.
+- **Preparar el repaso:** generación de cuestionarios, tarjetas de estudio, rutas de aprendizaje, mapas mentales, presentaciones y resúmenes de audio. Las presentaciones pueden exportarse a PowerPoint.
 
-1. **Notebooks**: Espacios de trabajo con título, descripción, ícono e imagen de banner personalizados, además de búsqueda y listado.
-2. **Fuentes de información**: Asociadas al notebook, permiten añadir texto, importar contenido desde una URL, subir archivos y consultar fuentes mediante búsqueda web.
-3. **Chat contextual**: Chat persistente por notebook para interactuar con sus fuentes, con respuestas en streaming, selección de modelo e historial de mensajes.
-4. **Materiales de estudio**: Cuestionarios, tarjetas de estudio, rutas de aprendizaje y mapas mentales, organizados en carpetas y con papelera de recuperación.
+## Decisiones de ingeniería
 
-## Proveedores y Modelos de IA
+La solución integra una interfaz en React, Vite y TanStack Router con una API en NestJS, organizadas en un monorepo con TypeScript. La separación entre interfaz, procesamiento de fuentes y persistencia permite trabajar cada parte del flujo de forma independiente.
 
-La aplicación integra múltiples proveedores (OpenAI, DeepSeek, Anthropic, Google Gemini y Kimi) y permite consultar los modelos disponibles desde la interfaz. Las claves se configuran mediante variables de entorno o desde los ajustes de usuario.
+**Recuperación de información con RAG.** La búsqueda combina recuperación semántica y de texto completo sobre PostgreSQL con pgvector para seleccionar los fragmentos que aportan contexto al modelo. Las citas conectan la respuesta con sus pasajes de origen, de modo que el usuario pueda contrastarla en lugar de depender únicamente del texto generado.
 
-La autenticación y las sesiones se gestionan con Better Auth, mientras que la persistencia de notebooks, fuentes, chats y configuraciones se almacena en PostgreSQL.
+**Integraciones según la tarea.** Vercel AI Gateway proporciona acceso a modelos de chat; Voyage AI interviene en los embeddings y la recuperación; Firecrawl permite incorporar contenido web y extraer documentos compatibles. Los archivos TXT y Markdown se procesan localmente.
 
-## Despliegue e Infraestructura
+**Persistencia y entorno local.** Drizzle gestiona el esquema de datos y las migraciones. Docker Compose reúne frontend, API y PostgreSQL, con migraciones, datos iniciales y recarga automática para facilitar la puesta en marcha y el desarrollo.
 
-Docker ofrece dos flujos aislados: un modo de desarrollo con recarga automática y un stack local similar a producción que sirve el frontend con nginx y ejecuta el backend compilado.
+## Alcance actual
 
-- **Frontend**: Vite con HMR activo.
-- **Backend**: NestJS con reinicio automático al detectar cambios.
-- **Persistencia**: PostgreSQL y almacenamiento local, S3, R2 o MinIO mediante una interfaz compatible con S3.
-
-## Estado del Proyecto
-
-El proyecto se encuentra en desarrollo. Algunas funciones y configuraciones pueden cambiar mientras evoluciona la aplicación.`;
+Proyecto en desarrollo activo, diseñado para uso individual en un entorno local. Las funciones de IA y parte de la importación de fuentes requieren configurar las credenciales de los servicios correspondientes.`;
 
 const tasklaneMarkdown = `## Contexto del Proyecto
 
@@ -206,9 +198,9 @@ export const portfolioData: PortfolioData = {
     {
       slug: "memsystems",
       title: "Memsystems",
-      subtitle: "Organiza tu conocimiento y genera materiales de estudio con IA.",
+      subtitle: "De tus fuentes a respuestas con citas y materiales de estudio con IA.",
       description:
-        "Plataforma para organizar notebooks, consultar fuentes y generar materiales de estudio (cuestionarios, tarjetas y mapas mentales) con modelos de inteligencia artificial.",
+        "Aplicación de estudio que conecta documentos, consultas con citas y materiales de repaso mediante IA. Integra React, NestJS y PostgreSQL con pgvector para recuperar información de las fuentes y utilizarla como contexto en las respuestas.",
       detailsMarkdown: memsystemsMarkdown,
       year: "2026",
       role: "Desarrollo Full Stack",
@@ -216,9 +208,9 @@ export const portfolioData: PortfolioData = {
       icons: [...memsystemsIcons],
       sections: [
         {
-          title: "Ecosistema de Estudio",
+          title: "De las fuentes al repaso",
           content:
-            "Notebooks, fuentes de información, chat contextual y materiales de estudio generados por IA, unificados en una sola aplicación.",
+            "Un flujo que reúne documentos y contenido web, permite consultarlos con citas a los pasajes originales y los transforma en materiales de estudio con IA.",
         },
       ],
       media: [

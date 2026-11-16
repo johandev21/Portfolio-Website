@@ -18,7 +18,7 @@ type Web3FormsResponse = {
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY =
-  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "YOUR_WEB3FORMS_ACCESS_KEY";
+  (import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "").trim();
 
 const ERROR_MESSAGE =
   "Algo salió mal al enviar tu mensaje. Por favor, inténtalo de nuevo.";
@@ -58,6 +58,13 @@ export default function ContactCard({ contact }: ContactCardProps) {
     formData.append("from_name", "Sitio web del portafolio");
 
     try {
+      if (
+        !WEB3FORMS_ACCESS_KEY ||
+        WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY"
+      ) {
+        throw new Error("Web3Forms access key is not configured");
+      }
+
       const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         body: formData,

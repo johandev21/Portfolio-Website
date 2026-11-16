@@ -35,6 +35,19 @@ pnpm lint     # Ejecuta el análisis estático
 pnpm preview  # Sirve la compilación localmente
 ```
 
+## Configurar el formulario de contacto
+
+El formulario envía mensajes mediante [Web3Forms](https://web3forms.com/), sin un servidor de correo propio.
+
+1. Crea una clave de acceso para el correo receptor en Web3Forms y completa la verificación que indique el servicio. El correo publicado en este portafolio es `johandev21@gmail.com`; el destinatario real del formulario lo determina la clave de Web3Forms.
+2. Copia `.env.example` a `.env.local` y reemplaza el valor de `PUBLIC_WEB3FORMS_ACCESS_KEY` por la clave de acceso del formulario.
+3. Inicia o reinicia `pnpm dev`. Envía un mensaje de prueba desde Contacto y comprueba su recepción, incluida la carpeta de spam.
+4. En el alojamiento, configura la misma variable antes de compilar y vuelve a desplegar el sitio. Astro incorpora su valor en la compilación estática.
+
+La clave de acceso del formulario es pública por diseño de Web3Forms. No uses una API key privada de administración ni credenciales de Gmail en esta variable. `.env.local` está excluido de Git.
+
+Si falta la clave o falla el envío, el formulario conserva el mensaje y ofrece abrir el cliente de correo como alternativa.
+
 ## Contacto
 
 - [LinkedIn](https://www.linkedin.com/in/johandev21/)
