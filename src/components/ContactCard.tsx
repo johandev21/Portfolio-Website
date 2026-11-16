@@ -3,6 +3,7 @@ import { Button } from "@base-ui/react/button";
 import { Input } from "@base-ui/react/input";
 import { Toast } from "@base-ui/react/toast";
 import { ChevronUp } from "lucide";
+import { WEB3FORMS_ACCESS_KEY as web3formsAccessKey } from "astro:env/client";
 import type { ContactData } from "../types";
 import cvUrl from "../assets/johan-carrasco-cv.pdf";
 import Icon from "./Icon";
@@ -18,6 +19,7 @@ type Web3FormsResponse = {
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY =
+  web3formsAccessKey?.trim() ||
   (import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "").trim();
 
 const ERROR_MESSAGE =
